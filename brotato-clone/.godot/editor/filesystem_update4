@@ -1,0 +1,6 @@
+res://scenes/unit.tscn
+res://scenes/unit.gd
+res://scenes/players/player_well_rounded.tscn
+res://scenes/players/player.gd
+res://resources/units/unit_stats.gd
+res://resources/units/players/stats_player_well_rounded.tres

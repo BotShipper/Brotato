@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dph1xwi3nbhm4"]
+
+[ext_resource type="PackedScene" uid="uid://ci4sg0io1gh3c" path="res://scenes/unit.tscn" id="1_iafer"]
+[ext_resource type="Script" uid="uid://4snaejyqrul8" path="res://scenes/players/player.gd" id="2_tfyga"]
+[ext_resource type="Resource" uid="uid://bj8irad5pmwq" path="res://resources/units/players/stats_player_well_rounded.tres" id="3_tfyga"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vltf8"]
+radius = 29.0
+
+[node name="PlayerWellRounded" instance=ExtResource("1_iafer")]
+script = ExtResource("2_tfyga")
+dash_duration = 0.4
+dash_speed_multi = 2.7
+dash_cooldown = 1.5
+stats = ExtResource("3_tfyga")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -29)
+shape = SubResource("CircleShape2D_vltf8")
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
