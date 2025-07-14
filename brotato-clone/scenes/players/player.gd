@@ -8,6 +8,7 @@ class_name Player
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 @onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var trail: Trail = %Trail
 
 var move_dir: Vector2
 var is_dashing := false
@@ -25,6 +26,8 @@ func _process(delta: float) -> void:
 		current_velocity *= dash_speed_multi
 	
 	position += current_velocity * delta
+	position.x = clamp(position.x, -1000, 1000)
+	position.y = clamp(position.y, -500, 500)
 	
 	if can_dash():
 		start_dash()
@@ -52,6 +55,7 @@ func update_rotation() -> void:
 func start_dash() -> void:
 	is_dashing = true
 	dash_timer.start()
+	trail.start_trail()
 	visuals.modulate.a = 0.5
 	collision.set_deferred("disabled", true)
 

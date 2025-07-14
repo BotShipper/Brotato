@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Brotato Clone"
+run/main_scene="uid://cmfcp1dwtekya"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://autoloads/global.gd"
 
 [display]
 
