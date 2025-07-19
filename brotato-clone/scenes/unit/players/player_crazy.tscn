@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://wrphfixiwbbl"]
 
-[ext_resource type="PackedScene" uid="uid://dph1xwi3nbhm4" path="res://scenes/players/player_well_rounded.tscn" id="1_7853x"]
+[ext_resource type="PackedScene" uid="uid://dph1xwi3nbhm4" path="res://scenes/unit/players/player_well_rounded.tscn" id="1_7853x"]
 [ext_resource type="Texture2D" uid="uid://dq63ocnu3lset" path="res://assets/sprites/Players/Player_3}.png" id="2_jebnn"]
 [ext_resource type="Resource" uid="uid://cvotjxcs55rxk" path="res://resources/units/players/stats_player_crazy.tres" id="2_n4tec"]
 

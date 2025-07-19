@@ -1,5 +1,6 @@
+res://resources/units/enemies
+res://scenes/unit/enemy
+res://scenes
 res://autoloads
 res://scenes/arena
 res://resources/units/players
-res://scenes/players
-res://scenes

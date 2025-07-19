@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dapc3864mpm4p"]
 
-[ext_resource type="PackedScene" uid="uid://dph1xwi3nbhm4" path="res://scenes/players/player_well_rounded.tscn" id="1_rxjj0"]
+[ext_resource type="PackedScene" uid="uid://dph1xwi3nbhm4" path="res://scenes/unit/players/player_well_rounded.tscn" id="1_rxjj0"]
 [ext_resource type="Texture2D" uid="uid://bt0lww88864ws" path="res://assets/sprites/Players/Player_5.png" id="2_3moti"]
 [ext_resource type="Resource" uid="uid://dgdsousqgitvy" path="res://resources/units/players/stats_player_knight.tres" id="2_h6dch"]
 
