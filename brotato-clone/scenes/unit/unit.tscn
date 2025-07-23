@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci4sg0io1gh3c"]
+[gd_scene load_steps=11 format=3 uid="uid://ci4sg0io1gh3c"]
 
 [ext_resource type="Script" uid="uid://befslvwmhkii3" path="res://scenes/unit/unit.gd" id="1_njlxf"]
 [ext_resource type="Texture2D" uid="uid://devt2xbk78rej" path="res://assets/sprites/shadow.png" id="2_ljq1f"]
+[ext_resource type="PackedScene" uid="uid://xvqdq5lwdn2h" path="res://scenes/components/hurtbox_component.tscn" id="3_vh40f"]
+[ext_resource type="PackedScene" uid="uid://biep4h01fh5xu" path="res://scenes/components/health_component.tscn" id="4_bhlit"]
+[ext_resource type="PackedScene" uid="uid://bqvs4if07x5gy" path="res://ui/health_bar.tscn" id="5_vgvef"]
 
 [sub_resource type="Animation" id="Animation_e8hdl"]
 length = 0.001
@@ -245,3 +248,16 @@ position = Vector2(0, -60.97)
 libraries = {
 &"": SubResource("AnimationLibrary_oee7j")
 }
+
+[node name="HurtboxComponent" parent="." instance=ExtResource("3_vh40f")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_bhlit")]
+
+[node name="HealthBar" parent="." instance=ExtResource("5_vgvef")]
+offset_left = -46.0
+offset_top = -90.0
+offset_right = 50.0
+offset_bottom = -70.0
+
+[connection signal="on_damaged" from="HurtboxComponent" to="." method="_on_hurtbox_component_on_damaged"]
+[connection signal="on_health_changed" from="HealthComponent" to="HealthBar" method="_on_health_component_on_health_changed"]

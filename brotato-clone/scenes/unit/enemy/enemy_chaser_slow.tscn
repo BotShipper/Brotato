@@ -1,20 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://bblfm255mu3hj"]
+[gd_scene load_steps=9 format=3 uid="uid://bblfm255mu3hj"]
 
 [ext_resource type="PackedScene" uid="uid://ci4sg0io1gh3c" path="res://scenes/unit/unit.tscn" id="1_dd0vi"]
-[ext_resource type="Resource" uid="uid://c4odsvbca1e4" path="res://resources/units/enemies/stats_enemy_chaser_slow.tres" id="2_lmqbh"]
+[ext_resource type="Script" uid="uid://bjlf7r8dfuaw5" path="res://scenes/unit/enemy/enemy.gd" id="2_lmqbh"]
 [ext_resource type="Texture2D" uid="uid://d1ou504pylric" path="res://assets/sprites/Enemies/Enemy_1.png" id="2_oo7ju"]
+[ext_resource type="Resource" uid="uid://c4odsvbca1e4" path="res://resources/units/enemies/stats_enemy_chaser_slow.tres" id="3_lmqbh"]
+[ext_resource type="PackedScene" uid="uid://ceo5xosw62585" path="res://scenes/components/hitbox_component.tscn" id="5_e15k4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lmqbh"]
+radius = 6.08276
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pyos0"]
 radius = 150.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_421q1"]
+radius = 39.0512
+
 [node name="EnemyChaserSlow" instance=ExtResource("1_dd0vi")]
-stats = ExtResource("2_lmqbh")
+collision_layer = 2
+script = ExtResource("2_lmqbh")
+flock_push = 20.0
+stats = ExtResource("3_lmqbh")
 
 [node name="Sprite" parent="Visuals" index="1"]
 texture = ExtResource("2_oo7ju")
 
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -30)
+shape = SubResource("CircleShape2D_lmqbh")
+debug_color = Color(0.926858, 0.237749, 0.335021, 0.42)
+
 [node name="VisionArea" type="Area2D" parent="." index="3"]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea" index="0"]
 position = Vector2(0, -21)
 shape = SubResource("CircleShape2D_pyos0")
+
+[node name="HitboxComponent" parent="." index="5" instance=ExtResource("5_e15k4")]
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+position = Vector2(0, -31)
+shape = SubResource("CircleShape2D_421q1")
+debug_color = Color(0.940033, 0.0997465, 0.556719, 0.42)
+
+[node name="HealthBar" parent="." index="7"]
+offset_top = -95.0
+offset_bottom = -75.0
+back_color = Color(0.0156863, 0.054902, 0.168627, 1)
+fill_color = Color(0.372549, 0.537255, 0.756863, 1)

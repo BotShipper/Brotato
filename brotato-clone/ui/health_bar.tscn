@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqvs4if07x5gy"]
+
+[ext_resource type="Script" uid="uid://dsis3d10hjjau" path="res://ui/health_bar.gd" id="1_rwxrv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6htnt"]
+bg_color = Color(0.137255, 0.0196078, 0.027451, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwxrv"]
+bg_color = Color(1, 0.290196, 0.454902, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.137255, 0.0196078, 0.027451, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 6
+
+[node name="HealthBar" type="Control"]
+custom_minimum_size = Vector2(96, 20)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 96.0
+offset_bottom = 20.0
+script = ExtResource("1_rwxrv")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_6htnt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rwxrv")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="HealthAmount" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "10"
+horizontal_alignment = 1
