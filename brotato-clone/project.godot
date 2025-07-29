@@ -25,6 +25,16 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://autoloads/": "green",
+"res://effects/": "orange",
+"res://resources/": "teal",
+"res://scenes/": "yellow"
+}
+
 [gui]
 
 theme/custom_font="uid://kfh6ooeul77g"

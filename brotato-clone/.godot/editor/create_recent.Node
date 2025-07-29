@@ -1,4 +1,5 @@
 Label
+Timer
 ProgressBar
 Node
 CollisionShape2D
@@ -6,7 +7,6 @@ Area2D
 Marker2D
 Camera2D
 Sprite2D
-Timer
 Line2D
 Unit
 AnimationTree

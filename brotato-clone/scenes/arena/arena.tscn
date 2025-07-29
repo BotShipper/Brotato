@@ -10,6 +10,10 @@
 [node name="Arena" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_asdgj")
 player = NodePath("PlayerWellRounded")
+normal_color = Color(1, 1, 1, 1)
+blocked_color = Color(1, 0.290196, 0.454902, 1)
+critical_color = Color(0.996078, 0.780392, 0.380392, 1)
+hp_color = Color(0, 0.627451, 0.482353, 1)
 
 [node name="BlackBG" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

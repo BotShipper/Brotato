@@ -1,5 +1,6 @@
+res://scenes/ui/floating_text
+res://effects
 res://assets/font
-res://ui
 res://scenes/components
 res://resources/units/enemies
 res://scenes/unit/enemy

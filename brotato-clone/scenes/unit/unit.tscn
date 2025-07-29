@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://devt2xbk78rej" path="res://assets/sprites/shadow.png" id="2_ljq1f"]
 [ext_resource type="PackedScene" uid="uid://xvqdq5lwdn2h" path="res://scenes/components/hurtbox_component.tscn" id="3_vh40f"]
 [ext_resource type="PackedScene" uid="uid://biep4h01fh5xu" path="res://scenes/components/health_component.tscn" id="4_bhlit"]
-[ext_resource type="PackedScene" uid="uid://bqvs4if07x5gy" path="res://ui/health_bar.tscn" id="5_vgvef"]
+[ext_resource type="PackedScene" uid="uid://bqvs4if07x5gy" path="res://scenes/ui/health_bar/health_bar.tscn" id="5_vgvef"]
 
 [sub_resource type="Animation" id="Animation_e8hdl"]
 length = 0.001
@@ -259,5 +259,10 @@ offset_top = -90.0
 offset_right = 50.0
 offset_bottom = -70.0
 
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="on_damaged" from="HurtboxComponent" to="." method="_on_hurtbox_component_on_damaged"]
 [connection signal="on_health_changed" from="HealthComponent" to="HealthBar" method="_on_health_component_on_health_changed"]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]
