@@ -1,7 +1,3 @@
-res://scenes/arena/arena.tscn
-res://effects/flash.gdshader
-res://scenes/arena/arena.gd
-res://scenes/ui/floating_text/floating_text.tscn
-res://autoloads/global.gd
 res://scenes/unit/players/player_well_rounded.tscn
-res://resources/units/players/stats_player_well_rounded.tres
+res://effects/flash.gdshader
+res://scenes/unit/players/weapon_continer.gd

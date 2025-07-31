@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://c1rabhms8jqc3"]
+
+[ext_resource type="Script" uid="uid://c14704apl008u" path="res://resources/items/weapons/weapon_stats.gd" id="1_ccedh"]
+
+[resource]
+script = ExtResource("1_ccedh")
+damage = 8.0
+accuracy = 1.0
+cooldown = 1.2
+crit_chance = 0.05
+crit_damage = 1.5
+max_range = 180.0
+knockback = 1.0
+life_steal = 0.0
+recoil = 25.0
+recoil_duration = 0.1
+attack_duration = 0.2
+back_duration = 0.15
+projectile_speed = 1600.0
+metadata/_custom_type_script = "uid://c14704apl008u"
