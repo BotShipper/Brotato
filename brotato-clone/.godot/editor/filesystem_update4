@@ -1,3 +1,14 @@
-res://scenes/unit/players/player_well_rounded.tscn
+res://scenes/weapons/weapon_base.tscn
 res://effects/flash.gdshader
-res://scenes/unit/players/weapon_continer.gd
+res://resources/items/weapons/item_weapon.gd
+res://scenes/weapons/weapon.gd
+res://scenes/weapons/melee/weapon_behavior.gd
+res://scenes/unit/players/player_well_rounded.tscn
+res://scenes/weapons/melee/weapon_punch.tscn
+res://scenes/weapons/melee/melee_behavior.gd
+res://scenes/arena/arena.tscn
+res://scenes/unit/enemy/enemy.gd
+res://scenes/unit/enemy/enemy_chaser_slow.tscn
+res://scenes/unit/unit.tscn
+res://scenes/unit/unit.gd
+res://resources/items/weapons/melee/punch/stats_punch_1.tres

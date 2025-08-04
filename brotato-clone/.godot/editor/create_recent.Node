@@ -1,7 +1,8 @@
+Timer
+WeaponBehavior
+CollisionShape2D
 Marker2D
 Node2D
-CollisionShape2D
-Timer
 Area2D
 Sprite2D
 Label
@@ -11,4 +12,3 @@ Camera2D
 Line2D
 Unit
 AnimationTree
-AnimationPlayer

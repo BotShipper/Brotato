@@ -9,6 +9,7 @@ radius = 150.0
 script = ExtResource("1_v4xn6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 scale = Vector2(0.5, 0.5)
 
 [node name="RangeArea" type="Area2D" parent="."]
@@ -20,6 +21,7 @@ unique_name_in_owner = true
 shape = SubResource("CircleShape2D_vffjk")
 
 [node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="WeaponBehavior" type="Node2D" parent="."]
 
