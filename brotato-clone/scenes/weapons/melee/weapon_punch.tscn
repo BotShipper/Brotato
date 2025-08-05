@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://csxcfrncv7h13" path="res://scenes/weapons/weapon_base.tscn" id="1_soyvn"]
 [ext_resource type="Texture2D" uid="uid://l5hst1cf27oo" path="res://assets/sprites/Weapons/Melee/Weapon_Punch.png" id="2_gq287"]
 [ext_resource type="PackedScene" uid="uid://ceo5xosw62585" path="res://scenes/components/hitbox_component.tscn" id="3_sv013"]
-[ext_resource type="Script" uid="uid://c2eey24h3qbgb" path="res://scenes/weapons/melee/melee_behavior.gd" id="4_etoc4"]
+[ext_resource type="Script" uid="uid://v6gqfor36uur" path="res://scenes/weapons/melee/melee_behavior.gd" id="4_etoc4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sv013"]
 size = Vector2(51, 39)

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemWeapon" load_steps=5 format=3 uid="uid://1ihgjcuo7q61"]
+
+[ext_resource type="Texture2D" uid="uid://yk5ltsb4khr8" path="res://assets/sprites/Weapons/Icons/weapon_chainsaw_icon.png" id="1_obhvg"]
+[ext_resource type="PackedScene" uid="uid://djl6su8qiyjll" path="res://scenes/weapons/melee/weapon_chainsaw.tscn" id="2_abn7r"]
+[ext_resource type="Script" uid="uid://dt7tu5wgsfk5f" path="res://resources/items/weapons/item_weapon.gd" id="2_sywlr"]
+[ext_resource type="Resource" uid="uid://d0k51gwufk7tv" path="res://resources/items/weapons/melee/chainsaw/stats_chainsaw_4.tres" id="3_sywlr"]
+
+[resource]
+script = ExtResource("2_sywlr")
+type = 0
+scene = ExtResource("2_abn7r")
+stats = ExtResource("3_sywlr")
+item_name = "Chainsaw IV"
+item_icon = ExtResource("1_obhvg")
+item_tier = 3
+item_type = 0
+item_cost = 150
