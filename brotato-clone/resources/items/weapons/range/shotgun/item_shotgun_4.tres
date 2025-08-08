@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemWeapon" load_steps=5 format=3 uid="uid://cx05e5wtbjpq7"]
+
+[ext_resource type="Texture2D" uid="uid://dx2oqsohwycoa" path="res://assets/sprites/Weapons/Icons/weapon_shotgun_icon.png" id="1_bul0y"]
+[ext_resource type="PackedScene" uid="uid://dh1d6c7a5hyfe" path="res://scenes/weapons/range/weapon_shotgun.tscn" id="2_tijm3"]
+[ext_resource type="Script" uid="uid://dt7tu5wgsfk5f" path="res://resources/items/weapons/item_weapon.gd" id="3_usq3e"]
+[ext_resource type="Resource" uid="uid://swahi7grhaas" path="res://resources/items/weapons/range/shotgun/stats_shotgun_4.tres" id="4_bul0y"]
+
+[resource]
+script = ExtResource("3_usq3e")
+type = 1
+scene = ExtResource("2_tijm3")
+stats = ExtResource("4_bul0y")
+item_name = "Shotgun IV"
+item_icon = ExtResource("1_bul0y")
+item_tier = 3
+item_type = 0
+item_cost = 170

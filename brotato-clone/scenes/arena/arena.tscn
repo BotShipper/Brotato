@@ -1,11 +1,252 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmfcp1dwtekya"]
+[gd_scene load_steps=25 format=3 uid="uid://cmfcp1dwtekya"]
 
 [ext_resource type="Texture2D" uid="uid://cy4xfx762bxgb" path="res://assets/sprites/BG.png" id="1_8trdl"]
 [ext_resource type="Script" uid="uid://b6e12pi881nls" path="res://scenes/arena/arena.gd" id="1_asdgj"]
 [ext_resource type="Texture2D" uid="uid://ov4fmsbglo55" path="res://assets/sprites/Map.png" id="2_5tue2"]
 [ext_resource type="PackedScene" uid="uid://dph1xwi3nbhm4" path="res://scenes/unit/players/player_well_rounded.tscn" id="3_5tue2"]
 [ext_resource type="Script" uid="uid://dkskkewy1vpj3" path="res://scenes/arena/camera_2d.gd" id="4_aj7ud"]
-[ext_resource type="PackedScene" uid="uid://bblfm255mu3hj" path="res://scenes/unit/enemy/enemy_chaser_slow.tscn" id="6_jx0ua"]
+[ext_resource type="Script" uid="uid://bjlf7r8dfuaw5" path="res://scenes/unit/enemy/enemy.gd" id="6_w4nra"]
+[ext_resource type="Resource" uid="uid://ddp8avhtta2jn" path="res://resources/units/enemies/stats_enemy_shooter.tres" id="7_t3vx8"]
+[ext_resource type="Texture2D" uid="uid://devt2xbk78rej" path="res://assets/sprites/shadow.png" id="8_rhjlh"]
+[ext_resource type="Texture2D" uid="uid://4mllmwdfhmce" path="res://assets/sprites/Enemies/Enemy_4.png" id="9_tp84n"]
+[ext_resource type="PackedScene" uid="uid://xvqdq5lwdn2h" path="res://scenes/components/hurtbox_component.tscn" id="10_8kk48"]
+[ext_resource type="PackedScene" uid="uid://ceo5xosw62585" path="res://scenes/components/hitbox_component.tscn" id="11_wqbss"]
+[ext_resource type="PackedScene" uid="uid://biep4h01fh5xu" path="res://scenes/components/health_component.tscn" id="12_fir7s"]
+[ext_resource type="PackedScene" uid="uid://bqvs4if07x5gy" path="res://scenes/ui/health_bar/health_bar.tscn" id="13_gy0qm"]
+[ext_resource type="Script" uid="uid://buvxpbc55oc43" path="res://scenes/unit/enemy/shooting_behavior.gd" id="14_dh340"]
+[ext_resource type="PackedScene" uid="uid://c8txigjht6ao1" path="res://scenes/projectiles/projectile_enemy.tscn" id="15_w4nra"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lmqbh"]
+radius = 6.08276
+
+[sub_resource type="Animation" id="Animation_e8hdl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -60.97)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals/Shadow:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ruro2"]
+resource_name = "die"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -61), Vector2(0, -100), Vector2(0, -61)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15435, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.4), Vector2(0.9, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 1), Vector2(0.6, 1), Vector2(0.9, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gic7v"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(1, 1), Vector2(1.2, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Shadow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+
+[sub_resource type="Animation" id="Animation_tb304"]
+resource_name = "move"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 1.1), Vector2(1, 1), Vector2(0.8, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.261799, 0.0, -0.261799, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -61), Vector2(0, -75), Vector2(0, -61), Vector2(0, -75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 1), Vector2(0.6, 1), Vector2(0.8, 1), Vector2(0.6, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oee7j"]
+_data = {
+&"RESET": SubResource("Animation_e8hdl"),
+&"die": SubResource("Animation_ruro2"),
+&"idle": SubResource("Animation_gic7v"),
+&"move": SubResource("Animation_tb304")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pyos0"]
+radius = 150.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e15k4"]
+radius = 37.054
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_421q1"]
+radius = 39.0512
 
 [node name="Arena" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_asdgj")
@@ -28,11 +269,90 @@ texture = ExtResource("2_5tue2")
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("4_aj7ud")
 
-[node name="EnemyChaserSlow" parent="." instance=ExtResource("6_jx0ua")]
-position = Vector2(-409, -11)
+[node name="EnemyShooter" type="Area2D" parent="."]
+position = Vector2(-772, -6)
+collision_layer = 2
+script = ExtResource("6_w4nra")
+stats = ExtResource("7_t3vx8")
 
-[node name="EnemyChaserSlow2" parent="." instance=ExtResource("6_jx0ua")]
-position = Vector2(-493, 212)
+[node name="Visuals" type="Node2D" parent="EnemyShooter"]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
 
-[node name="EnemyChaserSlow3" parent="." instance=ExtResource("6_jx0ua")]
-position = Vector2(-475, -163)
+[node name="Shadow" type="Sprite2D" parent="EnemyShooter/Visuals"]
+modulate = Color(0.129412, 0.129412, 0.129412, 0.529412)
+scale = Vector2(0.8, 1)
+texture = ExtResource("8_rhjlh")
+
+[node name="Sprite" type="Sprite2D" parent="EnemyShooter/Visuals"]
+unique_name_in_owner = true
+position = Vector2(0, -60.97)
+texture = ExtResource("9_tp84n")
+
+[node name="FirePos" type="Marker2D" parent="EnemyShooter/Visuals"]
+position = Vector2(-100, -48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShooter"]
+position = Vector2(0, -30)
+shape = SubResource("CircleShape2D_lmqbh")
+debug_color = Color(0.926858, 0.237749, 0.335021, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EnemyShooter"]
+libraries = {
+&"": SubResource("AnimationLibrary_oee7j")
+}
+
+[node name="VisionArea" type="Area2D" parent="EnemyShooter"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShooter/VisionArea"]
+position = Vector2(0, -21)
+shape = SubResource("CircleShape2D_pyos0")
+
+[node name="HurtboxComponent" parent="EnemyShooter" instance=ExtResource("10_8kk48")]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShooter/HurtboxComponent"]
+position = Vector2(0, -31)
+shape = SubResource("CircleShape2D_e15k4")
+debug_color = Color(0.527433, 0.414366, 1, 0.42)
+
+[node name="HitboxComponent" parent="EnemyShooter" instance=ExtResource("11_wqbss")]
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShooter/HitboxComponent"]
+position = Vector2(0, -31)
+shape = SubResource("CircleShape2D_421q1")
+debug_color = Color(0.940033, 0.0997465, 0.556719, 0.42)
+
+[node name="HealthComponent" parent="EnemyShooter" instance=ExtResource("12_fir7s")]
+
+[node name="HealthBar" parent="EnemyShooter" instance=ExtResource("13_gy0qm")]
+offset_left = -46.0
+offset_top = -95.0
+offset_right = 50.0
+offset_bottom = -75.0
+back_color = Color(0.0156863, 0.054902, 0.168627, 1)
+fill_color = Color(0.372549, 0.537255, 0.756863, 1)
+
+[node name="FlashTimer" type="Timer" parent="EnemyShooter"]
+wait_time = 0.2
+one_shot = true
+
+[node name="KnockbackTimer" type="Timer" parent="EnemyShooter"]
+wait_time = 0.4
+one_shot = true
+
+[node name="ShootingBehavior" type="Node2D" parent="EnemyShooter" node_paths=PackedStringArray("enemy", "fire_pos")]
+script = ExtResource("14_dh340")
+enemy = NodePath("..")
+fire_pos = NodePath("../Visuals/FirePos")
+projectile_scene = ExtResource("15_w4nra")
+
+[connection signal="on_damaged" from="EnemyShooter/HurtboxComponent" to="EnemyShooter" method="_on_hurtbox_component_on_damaged"]
+[connection signal="on_health_changed" from="EnemyShooter/HealthComponent" to="EnemyShooter/HealthBar" method="_on_health_component_on_health_changed"]
+[connection signal="timeout" from="EnemyShooter/FlashTimer" to="EnemyShooter" method="_on_flash_timer_timeout"]
+[connection signal="timeout" from="EnemyShooter/KnockbackTimer" to="EnemyShooter" method="_on_knockback_timer_timeout"]
