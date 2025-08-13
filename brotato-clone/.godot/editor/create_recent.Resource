@@ -1,4 +1,0 @@
-WaveData
-WeaponStats
-ItemWeapon
-UnitStats
