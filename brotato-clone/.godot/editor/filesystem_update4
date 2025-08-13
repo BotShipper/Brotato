@@ -1,9 +1,0 @@
-res://scenes/unit/enemy/enemy_chaser.tscn
-res://effects/flash.gdshader
-res://resources/items/weapons/item_weapon.gd
-res://scenes/unit/enemy/charge_behavior.gd
-res://scenes/arena/arena.tscn
-res://scenes/unit/players/player.gd
-res://scenes/unit/enemy/enemy_shooter.tscn
-res://scenes/unit/enemy/shooting_behavior.gd
-res://scenes/projectiles/projectile_enemy.tscn

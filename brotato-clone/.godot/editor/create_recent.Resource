@@ -1,3 +1,4 @@
+WaveData
 WeaponStats
 ItemWeapon
 UnitStats
