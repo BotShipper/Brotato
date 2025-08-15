@@ -18,4 +18,3 @@ position = Vector2(-100, -48)
 script = ExtResource("4_6k67w")
 enemy = NodePath("..")
 fire_pos = NodePath("../Visuals/FirePos")
-projectile_scene = null

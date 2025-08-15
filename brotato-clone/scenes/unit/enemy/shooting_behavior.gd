@@ -17,6 +17,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if Global.game_pauseed: return
+	
 	if enemy == null:
 		return
 	

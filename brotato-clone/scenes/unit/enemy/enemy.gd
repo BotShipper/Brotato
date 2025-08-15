@@ -11,6 +11,8 @@ var knockback_dir: Vector2
 var knockback_power: float
 
 func _process(delta: float) -> void:
+	if Global.game_pauseed: return
+	
 	if not can_move:
 		return
 	
@@ -59,6 +61,13 @@ func apply_knockback(knock_dir: Vector2, knock_power: float) -> void:
 func reset_knockback() -> void:
 	knockback_dir = Vector2.ZERO
 	knockback_power = 0.0
+
+
+func destroy_enemy() -> void:
+	can_move = false
+	anim_player.play("die")
+	await anim_player.animation_finished
+	queue_free()
 
 
 func _on_knockback_timer_timeout() -> void:
