@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmfcp1dwtekya"]
+[gd_scene load_steps=12 format=3 uid="uid://cmfcp1dwtekya"]
 
 [ext_resource type="Texture2D" uid="uid://cy4xfx762bxgb" path="res://assets/sprites/BG.png" id="1_8trdl"]
 [ext_resource type="Script" uid="uid://b6e12pi881nls" path="res://scenes/arena/arena.gd" id="1_asdgj"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://1ma5s00j7b4f" path="res://scenes/arena/spawner.gd" id="7_ii07k"]
 [ext_resource type="Script" uid="uid://cghb6nfgcmssn" path="res://resources/waves/wave_data.gd" id="8_6w4xk"]
 [ext_resource type="Resource" uid="uid://cgkifwlsbgxp2" path="res://resources/waves/data/wave_1_to_5.tres" id="9_2ml6w"]
+[ext_resource type="PackedScene" uid="uid://dxxyn72kssjvp" path="res://scenes/ui/upgrade_panel/upgrade_panel.tscn" id="9_6w4xk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6w4xk"]
 font_size = 64
@@ -37,6 +38,7 @@ texture = ExtResource("2_5tue2")
 script = ExtResource("4_aj7ud")
 
 [node name="Spawner" type="Node2D" parent="."]
+visible = false
 script = ExtResource("7_ii07k")
 waves_data = Array[ExtResource("8_6w4xk")]([ExtResource("9_2ml6w")])
 
@@ -76,5 +78,9 @@ text = "10"
 label_settings = SubResource("LabelSettings_2ml6w")
 horizontal_alignment = 1
 
+[node name="UpgradePanel" parent="GameUI" instance=ExtResource("9_6w4xk")]
+visible = false
+
+[connection signal="on_wave_completed" from="Spawner" to="." method="_on_spawner_on_wave_completed"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="Spawner/WaveTimer" to="Spawner" method="_on_wave_timer_timeout"]

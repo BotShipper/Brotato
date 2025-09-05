@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemUpgrade" load_steps=3 format=3 uid="uid://cmernbp3dlnvk"]
+
+[ext_resource type="Texture2D" uid="uid://dac1qxk0rktmg" path="res://assets/sprites/Upgrades/11.png" id="1_2jex5"]
+[ext_resource type="Script" uid="uid://de8lvyxw1hcbn" path="res://resources/items/upgrades/item_upgrade.gd" id="2_dk47u"]
+
+[resource]
+script = ExtResource("2_dk47u")
+value = 5.0
+description = "+5"
+stats_id = "speed"
+item_name = "Speed"
+item_icon = ExtResource("1_2jex5")
+item_tier = 0
+item_type = 1
+item_cost = 0

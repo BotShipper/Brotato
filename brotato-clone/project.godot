@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Brotato Clone"
 run/main_scene="uid://cmfcp1dwtekya"
-config/features=PackedStringArray("4.4", "Mobile")
+config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -32,7 +32,8 @@ folder_colors={
 "res://autoloads/": "green",
 "res://effects/": "orange",
 "res://resources/": "teal",
-"res://scenes/": "yellow"
+"res://scenes/": "yellow",
+"res://styles/": "pink"
 }
 
 [gui]

@@ -22,8 +22,8 @@ func _ready() -> void:
 	dash_timer.wait_time = dash_duration
 	dash_cooldown_timer.wait_time = dash_cooldown
 	
-	#add_weapon(preload("res://resources/items/weapons/melee/punch/item_punch_1.tres"))
-	#add_weapon(preload("res://resources/items/weapons/range/pistol/item_pistol_1.tres"))
+	add_weapon(preload("res://resources/items/weapons/melee/punch/item_punch_1.tres"))
+	add_weapon(preload("res://resources/items/weapons/range/pistol/item_pistol_1.tres"))
 
 func _process(delta: float) -> void:
 	if Global.game_pauseed: return
@@ -89,9 +89,24 @@ func is_facing_right() -> bool:
 	return visuals.scale.x == -0.5
 
 
+func update_player_new_wave() -> void:
+	stats.health += stats.health_increase_per_wave
+	health_component.setup(stats)
+
+
 func _on_dash_timer_timeout() -> void:
 	is_dashing = false
 	visuals.modulate.a = 1.0
 	move_dir = Vector2.ZERO
 	collision.set_deferred("disabled", false)
 	dash_cooldown_timer.start()
+
+
+func _on_hp_regen_timer_timeout() -> void:
+	if health_component.current_health <= 0:
+		return
+	
+	if health_component.current_health < stats.health:
+		var heal := stats.hp_regen
+		health_component.heal(heal)
+		Global.on_create_heal_text.emit(self, heal)
