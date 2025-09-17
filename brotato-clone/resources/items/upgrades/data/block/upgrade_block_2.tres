@@ -10,6 +10,4 @@ description = "+2"
 stats_id = "block_chance"
 item_name = "Block"
 item_icon = ExtResource("1_6sd4a")
-item_tier = 0
 item_type = 1
-item_cost = 0

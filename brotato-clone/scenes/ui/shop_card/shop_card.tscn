@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://chm4srsn6xd8y" path="res://assets/sprites/Gold/gold_1.png" id="5_b8qnx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvaaa"]
-bg_color = Color(0.29411766, 0.29411766, 0.29411766, 0.78431374)
+bg_color = Color(0.294118, 0.294118, 0.294118, 0.784314)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vekit"]
 font_size = 24
@@ -96,7 +96,7 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "description"
 
-[node name="CustomButton" parent="MarginContainer/Control" instance=ExtResource("4_tvaaa")]
+[node name="BuyButton" parent="MarginContainer/Control" instance=ExtResource("4_tvaaa")]
 custom_minimum_size = Vector2(240, 70)
 layout_mode = 1
 offset_left = -120.0
@@ -104,7 +104,7 @@ offset_top = -70.0
 offset_right = 120.0
 text = ""
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control/CustomButton"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control/BuyButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,15 +113,17 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/Control/CustomButton/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Control/BuyButton/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("5_b8qnx")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="CoinsLabel" type="Label" parent="MarginContainer/Control/CustomButton/HBoxContainer"]
+[node name="CoinsLabel" type="Label" parent="MarginContainer/Control/BuyButton/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "30"
 label_settings = SubResource("LabelSettings_b8qnx")
+
+[connection signal="pressed" from="MarginContainer/Control/BuyButton" to="." method="_on_buy_button_pressed"]

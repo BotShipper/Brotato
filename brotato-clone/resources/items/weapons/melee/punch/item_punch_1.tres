@@ -8,13 +8,10 @@
 
 [resource]
 script = ExtResource("1_o6o4d")
-type = 0
 scene = ExtResource("2_rm85p")
 stats = ExtResource("3_rm85p")
 upgrade_to = ExtResource("4_hfoo1")
 item_name = "Punch I"
 item_icon = ExtResource("1_k4o1h")
-item_tier = 0
-item_type = 0
 item_cost = 12
 metadata/_custom_type_script = "uid://dqu1hdngjxsji"

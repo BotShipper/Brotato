@@ -52,7 +52,7 @@
 [ext_resource type="Resource" uid="uid://6wjvxltxc0mh" path="res://resources/items/upgrades/data/speed/upgrade_speed_20.tres" id="48_4hygx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oekas"]
-bg_color = Color(0.20392157, 0.20392157, 0.20392157, 1)
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vxs30"]
 font_size = 120

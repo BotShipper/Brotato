@@ -6,8 +6,9 @@ signal on_create_heal_text(unit: Node2D, heal: float)
 
 signal on_upgrade_selected
 
-const FLASH_MATERIAl = preload("res://effects/flash_material.tres")
-const FLOATING_TEXT_SCENE = preload("res://scenes/ui/floating_text/floating_text.tscn")
+const FLASH_MATERIAl = preload("uid://qk03xqy4bg3r")
+const FLOATING_TEXT_SCENE = preload("uid://de7joaxdahbcg")
+
 
 const COMMON_STYLE = preload("uid://3b40hual1tnc")
 const EPIC_STYLE = preload("uid://dnhruv2xhysss")
@@ -18,6 +19,12 @@ const UPGRADE_PROBABILITY_CONFIG = {
 	"rare": {"start_wave": 2, "base_multi": 0.06},
 	"epic": {"start_wave": 4, "base_multi": 0.02},
 	"legendary": {"start_wave": 7, "base_multi": 0.0023},
+}
+
+const SHOP_PROBABILITY_CONFIG = {
+	"rare": {"start_wave": 2, "base_multi": 0.10},
+	"epic": {"start_wave": 4, "base_multi": 0.06},
+	"legendary": {"start_wave": 7, "base_multi": 0.01},
 }
 
 enum UpgradeTier {
