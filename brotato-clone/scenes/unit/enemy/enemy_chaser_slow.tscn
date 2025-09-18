@@ -68,4 +68,5 @@ fill_color = Color(0.372549, 0.537255, 0.756863, 1)
 wait_time = 0.4
 one_shot = true
 
+[connection signal="on_unit_died" from="HealthComponent" to="." method="_on_health_component_on_unit_died"]
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_timer_timeout"]

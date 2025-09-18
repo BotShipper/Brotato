@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://ck8hfiuq31k2l"]
+[gd_scene load_steps=57 format=3 uid="uid://ck8hfiuq31k2l"]
 
 [ext_resource type="Script" uid="uid://docled11bfwhl" path="res://scenes/ui/shop_panel/shop_panel.gd" id="1_chkkr"]
 [ext_resource type="Script" uid="uid://deljl2g3ixle8" path="res://resources/items/item_base.gd" id="2_pk1f0"]
@@ -49,6 +49,7 @@
 [ext_resource type="Resource" uid="uid://b3xt0cpapqprk" path="res://resources/items/weapons/range/smg/item_smg_2.tres" id="44_im8v7"]
 [ext_resource type="Resource" uid="uid://box021xx3uy46" path="res://resources/items/weapons/range/smg/item_smg_3.tres" id="45_1oasg"]
 [ext_resource type="Resource" uid="uid://bot7h6j3afpiv" path="res://resources/items/weapons/range/smg/item_smg_4.tres" id="46_hx4qp"]
+[ext_resource type="PackedScene" uid="uid://yaqp467r4aub" path="res://scenes/ui/coins_bag/coins_bag.tscn" id="50_kche8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chkkr"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
@@ -327,5 +328,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_1gnn5")
 text = "sell"
+
+[node name="CoinsBag" parent="MarginContainer/Control" instance=ExtResource("50_kche8")]
+layout_mode = 0
 
 [connection signal="pressed" from="MarginContainer/Control/VBoxContainer/NewWaveButton" to="." method="_on_new_wave_button_pressed"]

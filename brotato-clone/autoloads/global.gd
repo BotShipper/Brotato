@@ -5,10 +5,11 @@ signal on_create_damage_text(unit: Node2D, hitbox: HitboxComponent)
 signal on_create_heal_text(unit: Node2D, heal: float)
 
 signal on_upgrade_selected
+signal on_enemy_died(enemy: Enemy)
 
 const FLASH_MATERIAl = preload("uid://qk03xqy4bg3r")
 const FLOATING_TEXT_SCENE = preload("uid://de7joaxdahbcg")
-
+const COINS_SCENE = preload("uid://c0gxgyeg3phog")
 
 const COMMON_STYLE = preload("uid://3b40hual1tnc")
 const EPIC_STYLE = preload("uid://dnhruv2xhysss")
