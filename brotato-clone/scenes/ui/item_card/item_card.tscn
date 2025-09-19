@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4ahqxku4821t"]
+
+[ext_resource type="StyleBox" uid="uid://3b40hual1tnc" path="res://styles/common_style.tres" id="1_ygfnm"]
+[ext_resource type="Script" uid="uid://bi8v5p167demn" path="res://scenes/ui/item_card/item_card.gd" id="2_8p6uk"]
+
+[node name="ItemCard" type="Button"]
+custom_minimum_size = Vector2(80, 80)
+theme_override_styles/focus = ExtResource("1_ygfnm")
+script = ExtResource("2_8p6uk")
+
+[node name="ItemIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
