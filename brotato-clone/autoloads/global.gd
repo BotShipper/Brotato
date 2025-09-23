@@ -29,6 +29,12 @@ const SHOP_PROBABILITY_CONFIG = {
 	"legendary": {"start_wave": 7, "base_multi": 0.01},
 }
 
+const TIER_COLORS: Dictionary[UpgradeTier, Color] = {
+	UpgradeTier.RARE: Color(0.0, 0.557, 0.741),
+	UpgradeTier.EPIC: Color(0.478, 0.251, 0.71),
+	UpgradeTier.LEGENDARY: Color(0.906, 0.212, 0212),
+}
+
 enum UpgradeTier {
 	COMMON,
 	RARE,
@@ -40,6 +46,7 @@ var coins: int = 500
 var player: Player
 var game_pauseed := false
 
+var selected_weapon: ItemWeapon
 var equipped_weapons: Array[ItemWeapon]
 
 

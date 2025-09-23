@@ -1,6 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://csxcfrncv7h13"]
+[gd_scene load_steps=6 format=3 uid="uid://csxcfrncv7h13"]
 
 [ext_resource type="Script" uid="uid://dyue844sarxew" path="res://scenes/weapons/weapon.gd" id="1_v4xn6"]
+[ext_resource type="Shader" uid="uid://cxmfa2mmvn3lr" path="res://shaders/outline.gdshader" id="2_omet7"]
+[ext_resource type="Texture2D" uid="uid://l5hst1cf27oo" path="res://assets/sprites/Weapons/Melee/Weapon_Punch.png" id="3_cs7wt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_no4jq"]
+resource_local_to_scene = true
+shader = ExtResource("2_omet7")
+shader_parameter/outline_color = Color(1.001, 1.001, 1.001, 1)
+shader_parameter/outline_width = 8.00000038
+shader_parameter/glow_intensity = 4.00000019
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vffjk"]
 radius = 150.0
@@ -10,7 +19,9 @@ script = ExtResource("1_v4xn6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
+material = SubResource("ShaderMaterial_no4jq")
 scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_cs7wt")
 
 [node name="RangeArea" type="Area2D" parent="."]
 collision_layer = 0

@@ -1,5 +1,5 @@
 extends Node2D
-class_name Weapon 
+class_name Weapon
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision: CollisionShape2D = %CollisionShape2D
@@ -37,6 +37,7 @@ func _process(delta: float) -> void:
 func setup_weapon(data: ItemWeapon) -> void:
 	self.data = data
 	collision.shape.radius = data.stats.max_range
+	apply_tier_outline()
 
 
 func use_weapon() -> void:
@@ -109,6 +110,15 @@ func get_closest_target() -> Node2D:
 
 func can_use_weapon() -> bool:
 	return cooldown_timer.is_stopped() and closest_target
+
+
+func apply_tier_outline() -> void:
+	if data.item_tier == Global.UpgradeTier.COMMON:
+		sprite.material = null
+		return
+	
+	var outline_color := Global.TIER_COLORS[data.item_tier]
+	sprite.material.set_shader_parameter("outline_color", outline_color)
 
 
 func _on_range_area_area_entered(area: Area2D) -> void:

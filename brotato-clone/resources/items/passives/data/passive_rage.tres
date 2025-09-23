@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemPassive" load_steps=3 format=3 uid="uid://bucmp2pp44prs"]
+
+[ext_resource type="Script" uid="uid://ckv6olxvpv5xa" path="res://resources/items/passives/item_passive.gd" id="1_ay6v8"]
+[ext_resource type="Texture2D" uid="uid://dyvhlxy2ogrl5" path="res://assets/sprites/Upgrades/9.png" id="1_fe1fw"]
+
+[resource]
+script = ExtResource("1_ay6v8")
+add_value = 10.0
+add_stats = "damage"
+remove_value = 20.0
+remove_stats = "speed"
+item_name = "Rage"
+item_icon = ExtResource("1_fe1fw")
+item_tier = 1
+item_type = 2
+item_cost = 45
+metadata/_custom_type_script = "uid://ckv6olxvpv5xa"
