@@ -1,0 +1,268 @@
+[gd_scene load_steps=26 format=3 uid="uid://d0kl0p3waqs5w"]
+
+[ext_resource type="Script" uid="uid://by4lcicomcqdb" path="res://scenes/ui/selection_panel/selection_panel.gd" id="1_656q6"]
+[ext_resource type="Texture2D" uid="uid://cproxhccob85g" path="res://assets/sprites/Players/Player_1.png" id="1_bybo5"]
+[ext_resource type="StyleBox" uid="uid://3b40hual1tnc" path="res://styles/common_style.tres" id="1_x5l0j"]
+[ext_resource type="Script" uid="uid://ckbrfmpm10l24" path="res://resources/units/unit_stats.gd" id="2_dh0xd"]
+[ext_resource type="PackedScene" uid="uid://cnm2eidoxxs44" path="res://scenes/ui/custom_button/custom_button.tscn" id="2_ldask"]
+[ext_resource type="Resource" uid="uid://rlhntiylmii1" path="res://resources/units/players/stats_player_brawler.tres" id="3_m67jx"]
+[ext_resource type="Resource" uid="uid://1882rxmh4ivl" path="res://resources/units/players/stats_player_bunny.tres" id="4_5ne7w"]
+[ext_resource type="PackedScene" uid="uid://b76itnee15dxm" path="res://scenes/ui/selection_panel/selection_card.tscn" id="4_uo8tu"]
+[ext_resource type="Resource" uid="uid://cvotjxcs55rxk" path="res://resources/units/players/stats_player_crazy.tres" id="5_6e6br"]
+[ext_resource type="Resource" uid="uid://dgdsousqgitvy" path="res://resources/units/players/stats_player_knight.tres" id="6_3c111"]
+[ext_resource type="Resource" uid="uid://bj8irad5pmwq" path="res://resources/units/players/stats_player_well_rounded.tres" id="7_v1nb4"]
+[ext_resource type="Script" uid="uid://dqu1hdngjxsji" path="res://resources/items/weapons/item_weapon.gd" id="8_hu73q"]
+[ext_resource type="Resource" uid="uid://b1cpgsnisp755" path="res://resources/items/weapons/melee/axe/item_axe_1.tres" id="9_3scu4"]
+[ext_resource type="Resource" uid="uid://ce3e0y3uiyw7k" path="res://resources/items/weapons/melee/chainsaw/item_chainsaw_1.tres" id="10_10geq"]
+[ext_resource type="Resource" uid="uid://ubr7hbifp57w" path="res://resources/items/weapons/melee/mace/item_mace_1.tres" id="11_0pu13"]
+[ext_resource type="Resource" uid="uid://c4810bwgw5qiq" path="res://resources/items/weapons/melee/punch/item_punch_1.tres" id="12_ie7rk"]
+[ext_resource type="Resource" uid="uid://cgdk4a1vfyo2j" path="res://resources/items/weapons/melee/sword/item_sword_1.tres" id="13_y6xu8"]
+[ext_resource type="Resource" uid="uid://cgerr5oqpjun7" path="res://resources/items/weapons/melee/wand/item_wand_1.tres" id="14_q3p5q"]
+[ext_resource type="Resource" uid="uid://imimryc45lel" path="res://resources/items/weapons/range/laser/item_laser_1.tres" id="15_4wjk5"]
+[ext_resource type="Resource" uid="uid://sd3i4060m7hp" path="res://resources/items/weapons/range/pistol/item_pistol_1.tres" id="16_tx3iw"]
+[ext_resource type="Resource" uid="uid://cus7cp8qtvf2x" path="res://resources/items/weapons/range/revolver/item_revolver_1.tres" id="17_lur41"]
+[ext_resource type="Resource" uid="uid://4sxp5j11l8yy" path="res://resources/items/weapons/range/shotgun/item_shotgun_1.tres" id="18_rjdwg"]
+[ext_resource type="Resource" uid="uid://xa5yx3ou1hck" path="res://resources/items/weapons/range/smg/item_smg_1.tres" id="19_n7hlw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldask"]
+bg_color = Color(0.23921569, 0.23921569, 0.23921569, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x5l0j"]
+font_size = 24
+
+[node name="SelectionPanel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ldask")
+script = ExtResource("1_656q6")
+players = Array[ExtResource("2_dh0xd")]([ExtResource("3_m67jx"), ExtResource("4_5ne7w"), ExtResource("5_6e6br"), ExtResource("6_3c111"), ExtResource("7_v1nb4")])
+start_weapons = Array[ExtResource("8_hu73q")]([ExtResource("9_3scu4"), ExtResource("10_10geq"), ExtResource("11_0pu13"), ExtResource("12_ie7rk"), ExtResource("13_y6xu8"), ExtResource("14_q3p5q"), ExtResource("15_4wjk5"), ExtResource("16_tx3iw"), ExtResource("17_lur41"), ExtResource("18_rjdwg"), ExtResource("19_n7hlw")])
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 550)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(380, 550)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -275.0
+offset_right = 190.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_x5l0j")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Control/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/Control/Panel/MarginContainer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_bybo5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PlayerName" type="Label" parent="MarginContainer/VBoxContainer/Control/Panel/MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 128.0
+offset_top = 5.0
+offset_right = 292.0
+offset_bottom = 34.0
+text = "Player name"
+label_settings = SubResource("LabelSettings_x5l0j")
+
+[node name="PlayerTitle" type="Label" parent="MarginContainer/VBoxContainer/Control/Panel/MarginContainer/Control"]
+unique_name_in_owner = true
+modulate = Color(0.8039216, 0.6784314, 0.09803922, 1)
+layout_mode = 0
+offset_left = 128.0
+offset_top = 47.0
+offset_right = 292.0
+offset_bottom = 76.0
+text = "Player"
+label_settings = SubResource("LabelSettings_x5l0j")
+
+[node name="PlayerDescription" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Control/Panel/MarginContainer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(332, 353)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -166.0
+offset_top = -353.0
+offset_right = 166.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "Description
+"
+
+[node name="CustomButton" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource("2_ldask")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -172.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 58.0
+grow_horizontal = 0
+grow_vertical = 1
+text = "Continue"
+
+[node name="Items" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Items"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="PlayerContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Items/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="SelectionCard" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/PlayerContainer" instance=ExtResource("4_uo8tu")]
+layout_mode = 2
+
+[node name="SelectionCard2" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/PlayerContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[node name="SelectionCard3" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/PlayerContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[node name="SelectionCard4" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/PlayerContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[node name="SelectionCard5" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/PlayerContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[node name="WeaponContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Items/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="SelectionCard" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/WeaponContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[node name="SelectionCard2" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/WeaponContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[node name="SelectionCard3" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/WeaponContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[node name="SelectionCard4" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/WeaponContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[node name="SelectionCard5" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/WeaponContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[node name="SelectionCard6" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/WeaponContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[node name="SelectionCard7" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/WeaponContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[node name="SelectionCard8" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/WeaponContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[node name="SelectionCard9" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/WeaponContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[node name="SelectionCard10" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/WeaponContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[node name="SelectionCard11" type="Button" parent="MarginContainer/VBoxContainer/Items/VBoxContainer/WeaponContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_x5l0j")

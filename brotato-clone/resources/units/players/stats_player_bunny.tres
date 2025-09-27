@@ -1,17 +1,19 @@
-[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3 uid="uid://b6yssnv6kj11j"]
+[gd_resource type="Resource" script_class="UnitStats" load_steps=3 format=3 uid="uid://1882rxmh4ivl"]
 
-[ext_resource type="Script" uid="uid://ckbrfmpm10l24" path="res://resources/units/unit_stats.gd" id="1_fokdh"]
+[ext_resource type="Script" uid="uid://dslkq61ggb3ft" path="res://resources/units/unit_stats.gd" id="1_02km3"]
+[ext_resource type="Texture2D" uid="uid://dmox6e28kf6ax" path="res://assets/sprites/Players/Player_4.png" id="1_ul0bi"]
 
 [resource]
-script = ExtResource("1_fokdh")
-name = ""
+script = ExtResource("1_02km3")
+name = "Bunny"
 type = 0
-health = 1
+icon = ExtResource("1_ul0bi")
+health = 20
 health_increase_per_wave = 1.0
-damage = 1
-damage_increase_per_wave = 1.0
-speed = 300
-luck = 1.0
-block_chance = 0.0
-gold_drop = 1
-metadata/_custom_type_script = "uid://ckbrfmpm10l24"
+damage = 5
+damage_increase_per_wave = 0.0
+speed = 325
+luck = 5.0
+block_chance = 3.0
+gold_drop = 0
+metadata/_custom_type_script = "uid://dslkq61ggb3ft"

@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="UnitStats" load_steps=3 format=3 uid="uid://rlhntiylmii1"]
+[gd_resource type="Resource" script_class="UnitStats" load_steps=3 format=3 uid="uid://bohade16ieo0f"]
 
 [ext_resource type="Texture2D" uid="uid://dpxw8tsbgrfse" path="res://assets/sprites/Players/Player_2.png" id="1_artcn"]
-[ext_resource type="Script" uid="uid://ckbrfmpm10l24" path="res://resources/units/unit_stats.gd" id="1_fokdh"]
+[ext_resource type="Script" uid="uid://dslkq61ggb3ft" path="res://resources/units/unit_stats.gd" id="1_fokdh"]
 
 [resource]
 script = ExtResource("1_fokdh")
@@ -16,4 +16,4 @@ speed = 270
 luck = 3.0
 block_chance = 5.0
 gold_drop = 0
-metadata/_custom_type_script = "uid://ckbrfmpm10l24"
+metadata/_custom_type_script = "uid://dslkq61ggb3ft"
