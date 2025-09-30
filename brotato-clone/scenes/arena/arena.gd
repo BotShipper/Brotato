@@ -1,8 +1,6 @@
 extends Node2D
 class_name Arena
 
-@export var player: Player
-
 @export var normal_color: Color
 @export var blocked_color: Color
 @export var critical_color: Color
@@ -19,14 +17,12 @@ var gold_list: Array[Coins]
 
 
 func _ready() -> void:
-	Global.player = player
 	Global.on_create_block_text.connect(_on_create_block_text)
 	Global.on_create_damage_text.connect(_on_create_damage_text)
 	Global.on_upgrade_selected.connect(_on_upgrade_selected)
 	Global.on_create_heal_text.connect(_on_create_heal_text)
 	Global.on_enemy_died.connect(_on_enemy_died)
 	
-	spawner.start_wave()
 
 func _process(delta: float) -> void:
 	if Global.game_pauseed: return
@@ -114,3 +110,14 @@ func _on_shop_panel_on_shop_next_wave() -> void:
 
 func _on_enemy_died(enemy: Enemy) -> void:
 	spawner_coins(enemy)
+
+
+func _on_selection_panel_on_selection_completed() -> void:
+	var player := Global.get_selected_player()
+	add_child(player)
+	player.add_weapon(Global.main_weapon_selected)
+	shop_panel.create_item_weapon(Global.main_weapon_selected)
+	Global.equipped_weapons.append(Global.main_weapon_selected)
+	
+	spawner.start_wave()
+	Global.game_pauseed = false

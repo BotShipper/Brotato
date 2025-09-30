@@ -25,6 +25,9 @@ func _set_shop_item(value: ItemBase) -> void:
 
 
 func _on_buy_button_pressed() -> void:
+	if Global.equipped_weapons.size() >= 6:
+		return
+	
 	if Global.coins >= shop_item.item_cost:
 		Global.coins -= shop_item.item_cost
 		on_item_purchased.emit(shop_item)

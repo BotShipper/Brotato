@@ -5,12 +5,12 @@
 [ext_resource type="StyleBox" uid="uid://3b40hual1tnc" path="res://styles/common_style.tres" id="1_x5l0j"]
 [ext_resource type="Script" uid="uid://ckbrfmpm10l24" path="res://resources/units/unit_stats.gd" id="2_dh0xd"]
 [ext_resource type="PackedScene" uid="uid://cnm2eidoxxs44" path="res://scenes/ui/custom_button/custom_button.tscn" id="2_ldask"]
-[ext_resource type="Resource" uid="uid://rlhntiylmii1" path="res://resources/units/players/stats_player_brawler.tres" id="3_m67jx"]
+[ext_resource type="Resource" uid="uid://bohade16ieo0f" path="res://resources/units/players/stats_player_brawler.tres" id="3_m67jx"]
 [ext_resource type="Resource" uid="uid://1882rxmh4ivl" path="res://resources/units/players/stats_player_bunny.tres" id="4_5ne7w"]
 [ext_resource type="PackedScene" uid="uid://b76itnee15dxm" path="res://scenes/ui/selection_panel/selection_card.tscn" id="4_uo8tu"]
-[ext_resource type="Resource" uid="uid://cvotjxcs55rxk" path="res://resources/units/players/stats_player_crazy.tres" id="5_6e6br"]
-[ext_resource type="Resource" uid="uid://dgdsousqgitvy" path="res://resources/units/players/stats_player_knight.tres" id="6_3c111"]
-[ext_resource type="Resource" uid="uid://bj8irad5pmwq" path="res://resources/units/players/stats_player_well_rounded.tres" id="7_v1nb4"]
+[ext_resource type="Resource" uid="uid://cn0unmmub6kf" path="res://resources/units/players/stats_player_crazy.tres" id="5_6e6br"]
+[ext_resource type="Resource" uid="uid://rn54posoohkv" path="res://resources/units/players/stats_player_knight.tres" id="6_3c111"]
+[ext_resource type="Resource" uid="uid://ily2pkpehjv4" path="res://resources/units/players/stats_player_well_rounded.tres" id="7_v1nb4"]
 [ext_resource type="Script" uid="uid://dqu1hdngjxsji" path="res://resources/items/weapons/item_weapon.gd" id="8_hu73q"]
 [ext_resource type="Resource" uid="uid://b1cpgsnisp755" path="res://resources/items/weapons/melee/axe/item_axe_1.tres" id="9_3scu4"]
 [ext_resource type="Resource" uid="uid://ce3e0y3uiyw7k" path="res://resources/items/weapons/melee/chainsaw/item_chainsaw_1.tres" id="10_10geq"]
@@ -146,7 +146,7 @@ bbcode_enabled = true
 text = "Description
 "
 
-[node name="CustomButton" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource("2_ldask")]
+[node name="ContinueButton" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource("2_ldask")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -266,3 +266,5 @@ theme_override_styles/normal = ExtResource("1_x5l0j")
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("1_x5l0j")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Control/ContinueButton" to="." method="_on_continue_button_pressed"]

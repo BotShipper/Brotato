@@ -1,6 +1,8 @@
 extends Panel
 class_name SelectionPanel
 
+signal on_selection_completed
+
 @export var players: Array[UnitStats]
 @export var start_weapons: Array[ItemWeapon]
 
@@ -19,6 +21,7 @@ func _ready() -> void:
 	
 	show_player_info(false)
 	load_player()
+	load_weapons()
 	
 
 func load_player() -> void:
@@ -30,6 +33,17 @@ func load_player() -> void:
 		card.pressed.connect(_on_player_selected.bind(player))
 		player_container.add_child(card)
 		card.set_icon(player.icon)
+
+
+func load_weapons() -> void:
+	if start_weapons.is_empty():
+		return
+	
+	for weapon: ItemWeapon in start_weapons:
+		var card: SelectionCard = Global.SELECTION_CARD_SCENE.instantiate()
+		card.pressed.connect(_on_weapon_selected.bind(weapon))
+		weapon_container.add_child(card)
+		card.icon = weapon.item_icon
 
 
 func show_player_info(value: bool) -> void:
@@ -46,3 +60,16 @@ func _on_player_selected(player: UnitStats) -> void:
 	player_icon.texture = player.icon
 	player_name.text = player.name
 	player_description.text = "[code]Health: [color=green]%s[/color]\nDamage: [color=green]%s[/color]\nSpeed: [color=green]%s[/color]\nLuck: [color=green]%s[/color]\nBlock Chance: [color=green]%s%%[/color]\n[/code]" % [player.health, player.damage, player.speed, player.luck, player.block_chance]
+
+
+func _on_weapon_selected(weapon: ItemWeapon) -> void:
+	Global.main_weapon_selected = weapon
+
+
+func _on_continue_button_pressed() -> void:
+	if not Global.main_player_selected and not Global.main_weapon_selected:
+		return
+	
+	on_selection_completed.emit()
+	hide()
+	

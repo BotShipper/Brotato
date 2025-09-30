@@ -38,6 +38,12 @@ func create_item_card() -> ItemCard:
 	return item_card
 
 
+func create_item_weapon(weapon: ItemWeapon) -> void:
+	var card := create_item_card()
+	weapons_container.add_child(card)
+	card.item = weapon
+
+
 func _on_new_wave_button_pressed() -> void:
 	on_shop_next_wave.emit()
 

@@ -21,11 +21,7 @@ func _ready() -> void:
 	super._ready()
 	dash_timer.wait_time = dash_duration
 	dash_cooldown_timer.wait_time = dash_cooldown
-	
-	add_weapon(preload("res://resources/items/weapons/range/laser/item_laser_4.tres"))
-	add_weapon(preload("res://resources/items/weapons/range/pistol/item_pistol_4.tres"))
-	add_weapon(preload("res://resources/items/weapons/range/shotgun/item_shotgun_4.tres"))
-	add_weapon(preload("res://resources/items/weapons/range/revolver/item_revolver_4.tres"))
+
 
 func _process(delta: float) -> void:
 	if Global.game_pauseed: return
