@@ -9,3 +9,6 @@ theme_override_styles/normal = ExtResource("1_cfe8w")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_8o7mv")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

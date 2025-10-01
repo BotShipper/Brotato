@@ -59,6 +59,13 @@ func spawn_enemy() -> void:
 	var enemy_scene := current_wave_data.get_random_unit_scene() as PackedScene
 	if enemy_scene:
 		var spawn_pos := get_random_spawn_position()
+		
+		var spawn_anim := Global.SPAWN_EFFECT_SCENE.instantiate()
+		get_parent().add_child(spawn_anim)
+		spawn_anim.global_position = spawn_pos
+		await  spawn_anim.anim_player.animation_finished
+		spawn_anim.queue_free()
+		
 		var enemy_instance := enemy_scene.instantiate() as Enemy
 		enemy_instance.global_position = spawn_pos
 		get_parent().add_child(enemy_instance)

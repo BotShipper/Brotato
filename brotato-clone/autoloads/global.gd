@@ -12,6 +12,7 @@ const FLOATING_TEXT_SCENE = preload("uid://de7joaxdahbcg")
 const COINS_SCENE = preload("uid://c0gxgyeg3phog")
 const ITEM_CARD_SCENE = preload("uid://d4ahqxku4821t")
 const SELECTION_CARD_SCENE = preload("uid://b76itnee15dxm")
+const SPAWN_EFFECT_SCENE = preload("uid://bghlbhbjte68a")
 
 const COMMON_STYLE = preload("uid://3b40hual1tnc")
 const EPIC_STYLE = preload("uid://dnhruv2xhysss")

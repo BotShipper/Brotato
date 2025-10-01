@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cmfcp1dwtekya"]
+[gd_scene load_steps=15 format=3 uid="uid://cmfcp1dwtekya"]
 
 [ext_resource type="Texture2D" uid="uid://cy4xfx762bxgb" path="res://assets/sprites/BG.png" id="1_8trdl"]
 [ext_resource type="Script" uid="uid://b6e12pi881nls" path="res://scenes/arena/arena.gd" id="1_asdgj"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dxxyn72kssjvp" path="res://scenes/ui/upgrade_panel/upgrade_panel.tscn" id="9_6w4xk"]
 [ext_resource type="PackedScene" uid="uid://yaqp467r4aub" path="res://scenes/ui/coins_bag/coins_bag.tscn" id="9_xgbxb"]
 [ext_resource type="PackedScene" uid="uid://ck8hfiuq31k2l" path="res://scenes/ui/shop_panel/shop_panel.tscn" id="10_2ml6w"]
+[ext_resource type="AudioStream" uid="uid://prc8bub0x4s1" path="res://assets/audio/Bg Music.mp3" id="12_s83md"]
 [ext_resource type="PackedScene" uid="uid://d0kl0p3waqs5w" path="res://scenes/ui/selection_panel/selection_panel.tscn" id="12_vmsrg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6w4xk"]
@@ -89,6 +90,12 @@ unique_name_in_owner = true
 visible = false
 
 [node name="SelectionPanel" parent="GameUI" instance=ExtResource("12_vmsrg")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_s83md")
+volume_db = -30.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="on_wave_completed" from="Spawner" to="." method="_on_spawner_on_wave_completed"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
