@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://biqhwrglepsi5"]
+[gd_scene load_steps=6 format=3 uid="uid://b0nwu1370004c"]
 
-[ext_resource type="Script" uid="uid://dik25bjctuuoy" path="res://scenes/ui/upgrade_card/upgrade_card.gd" id="1_7erta"]
-[ext_resource type="StyleBox" uid="uid://3b40hual1tnc" path="res://styles/common_style.tres" id="1_v41mk"]
-[ext_resource type="Texture2D" uid="uid://dn68qq5evmvwa" path="res://assets/sprites/Upgrades/12.png" id="2_mkexl"]
-[ext_resource type="PackedScene" uid="uid://cnm2eidoxxs44" path="res://scenes/ui/custom_button/custom_button.tscn" id="4_kjnsj"]
+[ext_resource type="Script" uid="uid://ciwpleyi5ot6u" path="res://scenes/ui/upgrade_card/upgrade_card.gd" id="1_7erta"]
+[ext_resource type="StyleBox" uid="uid://dn43vff5bgab1" path="res://styles/common_style.tres" id="1_v41mk"]
+[ext_resource type="Texture2D" uid="uid://dn68qq5evmvwa" path="res://assets/sprites/Upgrades/12.png" id="3_kjnsj"]
+[ext_resource type="PackedScene" uid="uid://fbgjpc1m3ig1" path="res://scenes/ui/custom_button/custom_buttom.tscn" id="4_oy0iu"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_v41mk"]
+[sub_resource type="LabelSettings" id="LabelSettings_w4p5w"]
 font_size = 28
 
 [node name="UpgradeCard" type="Panel"]
@@ -36,7 +36,7 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_mkexl")
+texture = ExtResource("3_kjnsj")
 expand_mode = 1
 stretch_mode = 5
 
@@ -45,10 +45,10 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 100.0
 offset_top = 10.0
-offset_right = 291.0
-offset_bottom = 49.0
+offset_right = 293.0
+offset_bottom = 48.6667
 text = "damage"
-label_settings = SubResource("LabelSettings_v41mk")
+label_settings = SubResource("LabelSettings_w4p5w")
 vertical_alignment = 1
 
 [node name="Description" type="Label" parent="MarginContainer/Control"]
@@ -56,18 +56,18 @@ unique_name_in_owner = true
 modulate = Color(0.827451, 0.909804, 0.172549, 1)
 layout_mode = 0
 offset_left = 100.0
-offset_top = 54.0
-offset_right = 291.0
-offset_bottom = 93.0
-text = "+1"
-label_settings = SubResource("LabelSettings_v41mk")
+offset_top = 56.0
+offset_right = 293.0
+offset_bottom = 94.6667
+text = "+ 1"
+label_settings = SubResource("LabelSettings_w4p5w")
 vertical_alignment = 1
 
-[node name="CustomButton" parent="MarginContainer/Control" instance=ExtResource("4_kjnsj")]
+[node name="CustomButtom" parent="MarginContainer/Control" instance=ExtResource("4_oy0iu")]
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 1
 offset_left = -130.0
-offset_top = -58.0
+offset_top = -66.0
 offset_right = 130.0
 
-[connection signal="pressed" from="MarginContainer/Control/CustomButton" to="." method="_on_custom_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/CustomButtom" to="." method="_on_custom_buttom_pressed"]

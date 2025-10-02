@@ -3,7 +3,6 @@ class_name MeleeBehavior
 
 @export var hitbox: HitboxComponent
 
-
 func execute_attack() -> void:
 	weapon.is_attacking = true
 	

@@ -9,7 +9,7 @@ class_name Player
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var trail: Trail = %Trail
-@onready var weapon_continer: WeaponContainer = $WeaponContiner
+@onready var weapon_container: WeaponContainer = $WeaponContainer
 
 var current_weapons: Array[Weapon] = []
 
@@ -24,9 +24,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Global.game_pauseed: return
+	if Global.game_paused: return
 	
-	move_dir = Input.get_vector("move_left","move_right","move_up","move_down")
+	move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	var current_velocity := move_dir * stats.speed
 	if is_dashing:
@@ -49,7 +49,8 @@ func add_weapon(data: ItemWeapon) -> void:
 	
 	weapon.setup_weapon(data)
 	current_weapons.append(weapon)
-	weapon_continer.update_weapons_position(current_weapons)
+	weapon_container.update_weapons_position(current_weapons)
+
 
 func update_animations() -> void:
 	if move_dir.length() > 0:

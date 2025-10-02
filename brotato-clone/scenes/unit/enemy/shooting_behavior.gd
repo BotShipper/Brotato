@@ -11,13 +11,11 @@ class_name ShootingBehavior
 
 var current_cooldown := 0.0
 
-
 func _ready() -> void:
 	current_cooldown = cooldown
 
-
 func _process(delta: float) -> void:
-	if Global.game_pauseed: return
+	if Global.game_paused: return
 	
 	if enemy == null:
 		return
@@ -28,7 +26,6 @@ func _process(delta: float) -> void:
 		shoot()
 		current_cooldown = cooldown
 
-
 func shoot() -> void:
 	if not is_instance_valid(Global.player):
 		return
@@ -38,7 +35,7 @@ func shoot() -> void:
 	var direction := enemy.global_position.direction_to(Global.player.global_position)
 	var start_angle := -arc_angle / 2.0
 	var angle_step := arc_angle / float(projectile_count - 1 if projectile_count > 1 else 0.0)
-	 
+	
 	for i in range(projectile_count):
 		var projectile := projectile_scene.instantiate() as Projectile
 		get_tree().root.add_child(projectile)
@@ -50,3 +47,4 @@ func shoot() -> void:
 	
 	await get_tree().create_timer(1).timeout
 	enemy.can_move = true
+	

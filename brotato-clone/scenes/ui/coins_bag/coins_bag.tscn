@@ -10,8 +10,8 @@ font_size = 64
 custom_minimum_size = Vector2(128, 96)
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 159.0
-offset_bottom = 106.0
+offset_right = 50.0
+offset_bottom = 50.0
 script = ExtResource("1_sdugs")
 
 [node name="TextureRect" type="TextureRect" parent="."]

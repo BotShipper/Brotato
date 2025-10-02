@@ -1,7 +1,7 @@
 extends Panel
 class_name UpgradePanel
 
-const UPGRADE_CARD_SCENE = preload("res://scenes/ui/upgrade_card/upgrade_card.tscn")
+const UPGRADE_CARD_SCENE = preload("uid://b0nwu1370004c")
 
 @export var upgrade_list: Array[ItemUpgrade]
 

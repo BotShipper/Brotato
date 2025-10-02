@@ -10,6 +10,7 @@ const SHOP_CARD_SCENE = preload("uid://csmrkxii0a74i")
 @onready var items_container: HBoxContainer = %ItemsContainer
 @onready var passives_container: GridContainer = %PassivesContainer
 @onready var weapons_container: GridContainer = %WeaponsContainer
+
 @onready var combine_button: Button = %CombineButton
 
 var context_card: ItemCard
@@ -18,13 +19,11 @@ func _ready() -> void:
 	for child in passives_container.get_children(): child.queue_free()
 	for child in weapons_container.get_children(): child.queue_free()
 
-
 func load_shop(current_wave: int) -> void:
 	for child in items_container.get_children(): child.queue_free()
 	
 	var config := Global.SHOP_PROBABILITY_CONFIG
 	var selected_items := Global.select_items_for_offer(shop_items, current_wave, config)
-	
 	for shop_item : ItemBase in selected_items:
 		var card_instance := SHOP_CARD_SCENE.instantiate() as ShopCard
 		card_instance.on_item_purchased.connect(_on_item_purchased)
@@ -92,10 +91,10 @@ func _on_combine_button_pressed() -> void:
 	if not clicked_weapon.upgrade_to:
 		return
 	
-	var weapons_to_remove: Array[Weapon] = Global.player.current_weapons.filter(func(w: Weapon):
+	var weapons_to_remove: Array[Weapon] = Global.player.current_weapons.filter(func(w: Weapon): 
 		return w.data.item_name == clicked_weapon.item_name).slice(0, 2)
 	
-	var card_to_remove = weapons_container.get_children().filter(func(c: ItemCard):
+	var card_to_remove = weapons_container.get_children().filter(func(c: ItemCard): 
 		return c.item.item_name == clicked_weapon.item_name).slice(0, 2)
 	
 	if weapons_to_remove.size() < 2 or card_to_remove.size() < 2:
@@ -133,7 +132,7 @@ func _on_sell_button_pressed() -> void:
 	var clicked_weapon := context_card.item as ItemWeapon
 	var coins := clicked_weapon.item_cost * 0.75
 	
-	var weapon_to_remove: Weapon = Global.player.current_weapons.filter(func(w: Weapon):
+	var weapon_to_remove: Weapon = Global.player.current_weapons.filter(func(w: Weapon): 
 		return w.data.item_name == clicked_weapon.item_name).front()
 	
 	if weapon_to_remove:

@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmfagbvrctkeb"]
+[gd_scene load_steps=6 format=3 uid="uid://c4cjnb8eiq6ds"]
 
-[ext_resource type="PackedScene" uid="uid://csxcfrncv7h13" path="res://scenes/weapons/weapon_base.tscn" id="1_t2mr8"]
+[ext_resource type="PackedScene" uid="uid://ce1tkjy826jkd" path="res://scenes/weapons/weapon_base.tscn" id="1_t2mr8"]
 [ext_resource type="Texture2D" uid="uid://bbw1axlomamnl" path="res://assets/sprites/Weapons/Melee/Weapon_axe.png" id="2_8qyoe"]
-[ext_resource type="PackedScene" uid="uid://ceo5xosw62585" path="res://scenes/components/hitbox_component.tscn" id="3_hoyei"]
+[ext_resource type="PackedScene" uid="uid://3t6iqc1kav5h" path="res://scenes/components/hitbox_component.tscn" id="3_hoyei"]
 [ext_resource type="Script" uid="uid://v6gqfor36uur" path="res://scenes/weapons/melee/melee_behavior.gd" id="4_m7whl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kma3u"]

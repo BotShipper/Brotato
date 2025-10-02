@@ -7,18 +7,19 @@ class_name Enemy
 @onready var knockback_timer: Timer = $KnockbackTimer
 
 var can_move := true
+
 var knockback_dir: Vector2
 var knockback_power: float
 
 func _process(delta: float) -> void:
-	if Global.game_pauseed: return
+	if Global.game_paused: return
 	
 	if not can_move:
 		return
 	
 	if not can_move_towards_player():
 		return
-		
+	
 	position += (get_move_direction() + knockback_dir * knockback_power) * stats.speed * delta
 	update_rotation()
 
@@ -35,10 +36,11 @@ func get_move_direction() -> Vector2:
 	
 	return direction
 
+
 func update_rotation() -> void:
 	if not is_instance_valid(Global.player):
 		return
-		
+	
 	var player_pos := Global.player.global_position
 	var moving_right := global_position.x < player_pos.x
 	visuals.scale = Vector2(-0.5, 0.5) if moving_right else Vector2(0.5, 0.5)
@@ -46,7 +48,7 @@ func update_rotation() -> void:
 
 func can_move_towards_player() -> bool:
 	return is_instance_valid(Global.player) and\
-	global_position.distance_to(Global.player.global_position) > 60
+	global_position.distance_to(Global.player.global_position) > 60  
 
 
 func apply_knockback(knock_dir: Vector2, knock_power: float) -> void:
@@ -57,6 +59,7 @@ func apply_knockback(knock_dir: Vector2, knock_power: float) -> void:
 		reset_knockback()
 	
 	knockback_timer.start()
+
 
 func reset_knockback() -> void:
 	knockback_dir = Vector2.ZERO
@@ -72,6 +75,7 @@ func destroy_enemy() -> void:
 
 func _on_knockback_timer_timeout() -> void:
 	reset_knockback()
+
 
 func _on_hurtbox_component_on_damaged(hitbox: HitboxComponent) -> void:
 	super._on_hurtbox_component_on_damaged(hitbox)

@@ -9,7 +9,6 @@ var target_screen_pos := Vector2.INF
 var target_pos: Vector2
 var collected := false
 
-
 func _process(delta: float) -> void:
 	if collected and target_screen_pos == Vector2.INF:
 		if is_instance_valid(Global.player):

@@ -7,45 +7,46 @@ signal on_create_heal_text(unit: Node2D, heal: float)
 signal on_upgrade_selected
 signal on_enemy_died(enemy: Enemy)
 
-const FLASH_MATERIAl = preload("uid://qk03xqy4bg3r")
-const FLOATING_TEXT_SCENE = preload("uid://de7joaxdahbcg")
+const FLASH_MATERIAL = preload("uid://coi4nu8ohpgeo")
+const FLOATING_TEXT_SCENE = preload("uid://bmy2qb3fuvnts")
 const COINS_SCENE = preload("uid://c0gxgyeg3phog")
 const ITEM_CARD_SCENE = preload("uid://d4ahqxku4821t")
-const SELECTION_CARD_SCENE = preload("uid://b76itnee15dxm")
+const SELECTION_CARD_SCENE = preload("uid://dnablojs1s8")
 const SPAWN_EFFECT_SCENE = preload("uid://bghlbhbjte68a")
 
-const COMMON_STYLE = preload("uid://3b40hual1tnc")
-const EPIC_STYLE = preload("uid://dnhruv2xhysss")
+const COMMON_STYLE = preload("uid://dn43vff5bgab1")
+const EPIC_STYLE = preload("uid://chxsktowv55wp")
 const LEGENDARY_STYLE = preload("uid://omjdrwevlaw8")
 const RARE_STYLE = preload("uid://cu7iu2w861ga4")
 
 const UPGRADE_PROBABILITY_CONFIG = {
-	"rare": {"start_wave": 2, "base_multi": 0.06},
-	"epic": {"start_wave": 4, "base_multi": 0.02},
-	"legendary": {"start_wave": 7, "base_multi": 0.0023},
+	"rare": { "start_wave": 2, "base_multi": 0.06 },
+	"epic": { "start_wave": 4, "base_multi": 0.02 },
+	"legendary": { "start_wave": 7, "base_multi": 0.0023 },
 }
 
 const SHOP_PROBABILITY_CONFIG = {
-	"rare": {"start_wave": 2, "base_multi": 0.10},
-	"epic": {"start_wave": 4, "base_multi": 0.06},
-	"legendary": {"start_wave": 7, "base_multi": 0.01},
+	"rare": { "start_wave": 2, "base_multi": 0.10 },
+	"epic": { "start_wave": 4, "base_multi": 0.06 },
+	"legendary": { "start_wave": 7, "base_multi": 0.01 },
 }
+
 
 const TIER_COLORS: Dictionary[UpgradeTier, Color] = {
 	UpgradeTier.RARE: Color(0.0, 0.557, 0.741),
 	UpgradeTier.EPIC: Color(0.478, 0.251, 0.71),
-	UpgradeTier.LEGENDARY: Color(0.906, 0.212, 0212),
+	UpgradeTier.LEGENDARY: Color(0.906, 0.212, 0.212),
 }
 
-const available_players: Dictionary[String, PackedScene] = {
-	"Brawler": preload("uid://boi1w5s8vdm7y"),
-	"Bunny": preload("uid://davdkh4115sne"),
-	"Crazy": preload("uid://wrphfixiwbbl"),
-	"Knight": preload("uid://dapc3864mpm4p"),
-	"Well Rounded": preload("uid://dph1xwi3nbhm4"),
+var available_players: Dictionary[String, PackedScene] = {
+	"Brawler": preload("uid://b6emn4n6ogmg8"),
+	"Bunny": preload("uid://dx5yb8804ik6x"),
+	"Crazy": preload("uid://dkjqu0ys4k662"),
+	"Knight": preload("uid://cecw4o0onlxq8"),
+	"Well Rounded": preload("uid://bwo04frw2wqoy"),
 }
 
-enum UpgradeTier {
+enum UpgradeTier{
 	COMMON,
 	RARE,
 	EPIC,
@@ -54,13 +55,12 @@ enum UpgradeTier {
 
 var coins: int = 500
 var player: Player
-var game_pauseed := false
+var game_paused := false
 
 var main_player_selected: UnitStats
 var main_weapon_selected: ItemWeapon
 
 var equipped_weapons: Array[ItemWeapon]
-
 
 func get_harvesting_coins() -> void:
 	coins += player.stats.harvesting
@@ -73,12 +73,11 @@ func get_selected_player() -> Player:
 	return player
 
 
-func get_chance_success(chance: float) -> bool:
+func get_chance_sucess(chance: float) -> bool:
 	var random := randf_range(0, 1.0)
 	if random < chance:
 		return true
 	return false
-
 
 func get_tier_style(tier: UpgradeTier) -> StyleBoxFlat:
 	match tier:
@@ -88,9 +87,8 @@ func get_tier_style(tier: UpgradeTier) -> StyleBoxFlat:
 			return RARE_STYLE
 		UpgradeTier.EPIC:
 			return EPIC_STYLE
-	
-	return LEGENDARY_STYLE
-
+		_:
+			return LEGENDARY_STYLE
 
 func calculate_tier_probability(current_wave: int, config: Dictionary) -> Array[float]:
 	var common_chance := 0.0
@@ -106,7 +104,7 @@ func calculate_tier_probability(current_wave: int, config: Dictionary) -> Array[
 	if current_wave >= config.epic.start_wave:
 		epic_chance = min(1.0, (current_wave - 3) * config.epic.base_multi)
 	
-	# LEGENDARY:  Starts increasing from wave 7 (0% at wave 6)
+	# LEGENDARY: Starts increasing from wave 7 (0% at wave 6)
 	if current_wave >= config.legendary.start_wave:
 		legendary_chance = min(1.0, (current_wave - 6) * config.legendary.base_multi)
 	
@@ -130,7 +128,7 @@ func calculate_tier_probability(current_wave: int, config: Dictionary) -> Array[
 	common_chance = 1.0 - total_non_common_chances
 	
 	# Debug print
-	print("Wave: %d, Luck: %.1f => Chances: C:%.2f R:%.2f E:%.2f L:%.2f" %
+	print("Wave: %d, Luck: %.1f => Chances: C:%.2f R:%.2f E:%.2f L:%.2f" % 
 	[current_wave, Global.player.stats.luck, common_chance, rare_chance, epic_chance, legendary_chance])
 	
 	return [
@@ -143,7 +141,7 @@ func calculate_tier_probability(current_wave: int, config: Dictionary) -> Array[
 
 func select_items_for_offer(item_pool: Array, current_wave: int, config: Dictionary) -> Array:
 	
-	# [ 0.7 , 0.2 , 0.08 , 0.02 ]
+	# [ 0.7 , 0.2 , 0.08 , 0.02 ]  
 	var tier_chances := calculate_tier_probability(current_wave, config)
 	
 	var legendary_limit = tier_chances[3]
@@ -160,7 +158,7 @@ func select_items_for_offer(item_pool: Array, current_wave: int, config: Diction
 			chosen_tier_index = 2 # Epic
 		elif roll < rare_limit:
 			chosen_tier_index = 1 # Rare
-			
+		
 		var potential_items: Array = []
 		var current_search_tier_index := chosen_tier_index
 		
@@ -171,7 +169,7 @@ func select_items_for_offer(item_pool: Array, current_wave: int, config: Diction
 				current_search_tier_index -= 1
 			else:
 				break
-			
+		
 		if not potential_items.is_empty():
 			var selected_item = potential_items.pick_random()
 			

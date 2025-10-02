@@ -14,4 +14,4 @@ class_name WeaponStats
 @export_range(0.1, 3.0) var attack_duration := 0.2
 @export_range(0.1, 3.0) var back_duration := 0.15
 @export var projectile_scene: PackedScene
-@export var projectile_speed:= 1600.0
+@export var projectile_speed := 1600.0

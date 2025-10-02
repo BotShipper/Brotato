@@ -11,6 +11,7 @@ remove_value = 2.0
 remove_stats = "health"
 item_name = "Cape"
 item_icon = ExtResource("1_t2prv")
+item_tier = 0
 item_type = 2
 item_cost = 22
 metadata/_custom_type_script = "uid://ckv6olxvpv5xa"

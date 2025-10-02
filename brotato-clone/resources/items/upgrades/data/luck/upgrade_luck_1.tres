@@ -1,15 +1,16 @@
 [gd_resource type="Resource" script_class="ItemUpgrade" load_steps=3 format=3 uid="uid://cp00158af8q3h"]
 
 [ext_resource type="Texture2D" uid="uid://ccm3apetb532i" path="res://assets/sprites/Upgrades/1.png" id="1_yp2ca"]
-[ext_resource type="Script" uid="uid://de8lvyxw1hcbn" path="res://resources/items/upgrades/item_upgrade.gd" id="2_gx20t"]
+[ext_resource type="Script" uid="uid://cr0po024cxfg5" path="res://resources/items/upgrades/item_upgrade.gd" id="2_gx20t"]
 
 [resource]
 script = ExtResource("2_gx20t")
 value = 1.0
 description = "+1"
-stats_id = "luck"
+stat_id = "luck"
 item_name = "Luck"
 item_icon = ExtResource("1_yp2ca")
 item_tier = 0
 item_type = 1
 item_cost = 0
+metadata/_custom_type_script = "uid://cr0po024cxfg5"

@@ -1,5 +1,5 @@
 extends Control
-class_name HealBar
+class_name HealthBar
 
 @export var back_color: Color
 @export var fill_color: Color

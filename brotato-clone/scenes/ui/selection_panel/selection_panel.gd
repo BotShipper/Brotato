@@ -14,17 +14,16 @@ signal on_selection_completed
 @onready var player_title: Label = %PlayerTitle
 @onready var player_description: RichTextLabel = %PlayerDescription
 
-
 func _ready() -> void:
 	for child in player_container.get_children(): child.queue_free()
 	for child in weapon_container.get_children(): child.queue_free()
 	
 	show_player_info(false)
-	load_player()
+	load_players()
 	load_weapons()
-	
 
-func load_player() -> void:
+
+func load_players() -> void:
 	if players.is_empty():
 		return
 	
@@ -59,14 +58,14 @@ func _on_player_selected(player: UnitStats) -> void:
 	
 	player_icon.texture = player.icon
 	player_name.text = player.name
-	player_description.text = "[code]Health: [color=green]%s[/color]\nDamage: [color=green]%s[/color]\nSpeed: [color=green]%s[/color]\nLuck: [color=green]%s[/color]\nBlock Chance: [color=green]%s%%[/color]\n[/code]" % [player.health, player.damage, player.speed, player.luck, player.block_chance]
+	player_description.text = "[code]Health: [color=green]%s[/color]\nDamage: [color=green]%s[/color]\nSpeed: [color=green]%s[/color]\nLuck: [color=green]%s[/color]\nBlock Chance: [color=green]%s%%[/color][/code]" % [player.health, player.damage, player.speed, player.luck, player.block_chance]
 
 
 func _on_weapon_selected(weapon: ItemWeapon) -> void:
 	Global.main_weapon_selected = weapon
 
 
-func _on_continue_button_pressed() -> void:
+func _on_continue_buttom_pressed() -> void:
 	SoundManager.play_sound(SoundManager.Sound.UI)
 	
 	if not Global.main_player_selected and not Global.main_weapon_selected:
@@ -74,4 +73,3 @@ func _on_continue_button_pressed() -> void:
 	
 	on_selection_completed.emit()
 	hide()
-	

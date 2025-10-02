@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cl0p8oumv16gb"]
+[gd_scene load_steps=4 format=3 uid="uid://clnrskabvakml"]
 
-[ext_resource type="PackedScene" uid="uid://csxcfrncv7h13" path="res://scenes/weapons/weapon_base.tscn" id="1_r5jol"]
+[ext_resource type="PackedScene" uid="uid://ce1tkjy826jkd" path="res://scenes/weapons/weapon_base.tscn" id="1_r5jol"]
 [ext_resource type="Texture2D" uid="uid://xqoogkscdty6" path="res://assets/sprites/Weapons/Range/WeaponLaser.png" id="2_jsyfg"]
-[ext_resource type="Script" uid="uid://da6iyphu22hfy" path="res://scenes/weapons/range/range_behavior.gd" id="3_50c4r"]
+[ext_resource type="Script" uid="uid://c536k38sign4j" path="res://scenes/weapons/range/range_behavior.gd" id="3_50c4r"]
 
 [node name="WeaponLaser" instance=ExtResource("1_r5jol")]
 

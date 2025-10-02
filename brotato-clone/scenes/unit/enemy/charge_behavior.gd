@@ -13,6 +13,7 @@ var is_charging := false
 func _ready() -> void:
 	current_cooldown = cooldown
 
+
 func _process(delta: float) -> void:
 	if enemy == null:
 		return
@@ -29,6 +30,8 @@ func _process(delta: float) -> void:
 			if is_instance_valid(Global.player):
 				charge_attack_position = Global.player.global_position
 				start_charge()
+
+
 
 func start_charge() -> void:
 	enemy.can_move = false

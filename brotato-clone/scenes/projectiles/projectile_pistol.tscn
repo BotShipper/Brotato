@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://717lvam5rhtn"]
+[gd_scene load_steps=5 format=3 uid="uid://cs4y516rwuuxm"]
 
-[ext_resource type="Script" uid="uid://dx28trfcpdw3i" path="res://scenes/projectiles/projectile.gd" id="1_71gtn"]
-[ext_resource type="PackedScene" uid="uid://ceo5xosw62585" path="res://scenes/components/hitbox_component.tscn" id="1_u4710"]
+[ext_resource type="Script" uid="uid://1soxcbowsco2" path="res://scenes/projectiles/projectile.gd" id="1_71gtn"]
+[ext_resource type="PackedScene" uid="uid://3t6iqc1kav5h" path="res://scenes/components/hitbox_component.tscn" id="1_u4710"]
 [ext_resource type="Texture2D" uid="uid://45dwbyxmy4wd" path="res://assets/sprites/Projectiles/Projectile_2.png" id="2_yt6ye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_reban"]
-radius = 19.0
+radius = 16.0312
 
-[node name="ProjectilePistol" type="Node2D"]
+[node name="ProjectilePistol" type="Node2D" node_paths=PackedStringArray("hitbox")]
 script = ExtResource("1_71gtn")
+hitbox = NodePath("HitboxComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.6)

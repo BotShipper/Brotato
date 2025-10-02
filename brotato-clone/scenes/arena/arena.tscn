@@ -1,17 +1,23 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmfcp1dwtekya"]
+[gd_scene load_steps=21 format=3 uid="uid://bjhraywhhpn3h"]
 
-[ext_resource type="Texture2D" uid="uid://cy4xfx762bxgb" path="res://assets/sprites/BG.png" id="1_8trdl"]
-[ext_resource type="Script" uid="uid://b6e12pi881nls" path="res://scenes/arena/arena.gd" id="1_asdgj"]
-[ext_resource type="Texture2D" uid="uid://ov4fmsbglo55" path="res://assets/sprites/Map.png" id="2_5tue2"]
-[ext_resource type="Script" uid="uid://dkskkewy1vpj3" path="res://scenes/arena/camera_2d.gd" id="4_aj7ud"]
-[ext_resource type="Script" uid="uid://1ma5s00j7b4f" path="res://scenes/arena/spawner.gd" id="7_ii07k"]
-[ext_resource type="Script" uid="uid://cghb6nfgcmssn" path="res://resources/waves/wave_data.gd" id="8_6w4xk"]
-[ext_resource type="Resource" uid="uid://cgkifwlsbgxp2" path="res://resources/waves/data/wave_1_to_5.tres" id="9_2ml6w"]
-[ext_resource type="PackedScene" uid="uid://dxxyn72kssjvp" path="res://scenes/ui/upgrade_panel/upgrade_panel.tscn" id="9_6w4xk"]
-[ext_resource type="PackedScene" uid="uid://yaqp467r4aub" path="res://scenes/ui/coins_bag/coins_bag.tscn" id="9_xgbxb"]
-[ext_resource type="PackedScene" uid="uid://ck8hfiuq31k2l" path="res://scenes/ui/shop_panel/shop_panel.tscn" id="10_2ml6w"]
-[ext_resource type="AudioStream" uid="uid://prc8bub0x4s1" path="res://assets/audio/Bg Music.mp3" id="12_s83md"]
-[ext_resource type="PackedScene" uid="uid://d0kl0p3waqs5w" path="res://scenes/ui/selection_panel/selection_panel.tscn" id="12_vmsrg"]
+[ext_resource type="Texture2D" uid="uid://cy4xfx762bxgb" path="res://assets/sprites/BG.png" id="1_5tue2"]
+[ext_resource type="Script" uid="uid://fylssyuoxjey" path="res://scenes/arena/arena.gd" id="1_asdgj"]
+[ext_resource type="Texture2D" uid="uid://ov4fmsbglo55" path="res://assets/sprites/Map.png" id="2_aj7ud"]
+[ext_resource type="Resource" uid="uid://cy0wv0o4fyk46" path="res://resources/waves/data/wave_1_to_5.tres" id="2_u52cf"]
+[ext_resource type="Script" uid="uid://xik4iqa2n4lo" path="res://scenes/arena/camera_2d.gd" id="4_aj7ud"]
+[ext_resource type="Script" uid="uid://c1r0p6xkr6l1v" path="res://scenes/arena/spawner.gd" id="7_6w4xk"]
+[ext_resource type="Script" uid="uid://bst7pbtwe4mop" path="res://resources/waves/wave_data.gd" id="8_2ml6w"]
+[ext_resource type="Script" uid="uid://dslkq61ggb3ft" path="res://resources/units/unit_stats.gd" id="9_fv88w"]
+[ext_resource type="Resource" uid="uid://cxvbykjlw4gle" path="res://resources/units/enemies/stats_enemy_charger.tres" id="10_w4nra"]
+[ext_resource type="Resource" uid="uid://c52c4qj5v27y1" path="res://resources/units/enemies/stats_enemy_chaser_fast.tres" id="11_t3vx8"]
+[ext_resource type="Resource" uid="uid://dpgg6c8kxhpvl" path="res://resources/units/enemies/stats_enemy_chaser_mid.tres" id="12_rhjlh"]
+[ext_resource type="Resource" uid="uid://bot26fxolfx55" path="res://resources/units/enemies/stats_enemy_chaser_slow.tres" id="13_tp84n"]
+[ext_resource type="Resource" uid="uid://bh5b84v18vdto" path="res://resources/units/enemies/stats_enemy_shooter.tres" id="14_8kk48"]
+[ext_resource type="PackedScene" uid="uid://yaqp467r4aub" path="res://scenes/ui/coins_bag/coins_bag.tscn" id="15_rhjlh"]
+[ext_resource type="PackedScene" uid="uid://d88phqluv8gk" path="res://scenes/ui/upgrade_panel/upgrade_panel.tscn" id="15_w4nra"]
+[ext_resource type="PackedScene" uid="uid://ck8hfiuq31k2l" path="res://scenes/ui/shop_panel/shop_panel.tscn" id="16_t3vx8"]
+[ext_resource type="AudioStream" uid="uid://prc8bub0x4s1" path="res://assets/audio/Bg Music.mp3" id="18_8kk48"]
+[ext_resource type="PackedScene" uid="uid://be4y0ch5v7qa5" path="res://scenes/ui/selection_panel/selection_panel.tscn" id="18_tp84n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6w4xk"]
 font_size = 64
@@ -28,19 +34,19 @@ hp_color = Color(0, 0.627451, 0.482353, 1)
 
 [node name="BlackBG" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("1_8trdl")
+texture = ExtResource("1_5tue2")
 
 [node name="GrassBG" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("2_5tue2")
+texture = ExtResource("2_aj7ud")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("4_aj7ud")
 
 [node name="Spawner" type="Node2D" parent="."]
-visible = false
-script = ExtResource("7_ii07k")
-waves_data = Array[ExtResource("8_6w4xk")]([ExtResource("9_2ml6w")])
+script = ExtResource("7_6w4xk")
+waves_data = Array[ExtResource("8_2ml6w")]([ExtResource("2_u52cf")])
+enemy_collection = Array[ExtResource("9_fv88w")]([ExtResource("10_w4nra"), ExtResource("11_t3vx8"), ExtResource("12_rhjlh"), ExtResource("13_tp84n"), ExtResource("14_8kk48")])
 
 [node name="SpawnTimer" type="Timer" parent="Spawner"]
 one_shot = true
@@ -50,7 +56,7 @@ one_shot = true
 
 [node name="GameUI" type="CanvasLayer" parent="."]
 
-[node name="CoinsBag" parent="GameUI" instance=ExtResource("9_xgbxb")]
+[node name="CoinsBag" parent="GameUI" instance=ExtResource("15_rhjlh")]
 unique_name_in_owner = true
 
 [node name="WaveIndexLabel" type="Label" parent="GameUI"]
@@ -58,10 +64,10 @@ unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -110.0
+offset_left = -27.5
 offset_top = 20.0
-offset_right = 110.0
-offset_bottom = 97.3333
+offset_right = 27.5
+offset_bottom = 39.3333
 grow_horizontal = 2
 text = "Wave 1"
 label_settings = SubResource("LabelSettings_6w4xk")
@@ -71,28 +77,26 @@ unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -110.0
+offset_left = -27.5
 offset_top = 100.0
-offset_right = 110.0
-offset_bottom = 177.333
+offset_right = 27.5
+offset_bottom = 119.333
 grow_horizontal = 2
-size_flags_horizontal = 0
 text = "10"
 label_settings = SubResource("LabelSettings_2ml6w")
-horizontal_alignment = 1
 
-[node name="UpgradePanel" parent="GameUI" instance=ExtResource("9_6w4xk")]
+[node name="UpgradePanel" parent="GameUI" instance=ExtResource("15_w4nra")]
 unique_name_in_owner = true
 visible = false
 
-[node name="ShopPanel" parent="GameUI" instance=ExtResource("10_2ml6w")]
+[node name="ShopPanel" parent="GameUI" instance=ExtResource("16_t3vx8")]
 unique_name_in_owner = true
 visible = false
 
-[node name="SelectionPanel" parent="GameUI" instance=ExtResource("12_vmsrg")]
+[node name="SelectionPanel" parent="GameUI" instance=ExtResource("18_tp84n")]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_s83md")
+stream = ExtResource("18_8kk48")
 volume_db = -30.0
 autoplay = true
 bus = &"Music"

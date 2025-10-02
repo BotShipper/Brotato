@@ -1,10 +1,10 @@
-[gd_scene load_steps=53 format=3 uid="uid://dxxyn72kssjvp"]
+[gd_scene load_steps=53 format=3 uid="uid://d88phqluv8gk"]
 
-[ext_resource type="PackedScene" uid="uid://biqhwrglepsi5" path="res://scenes/ui/upgrade_card/upgrade_card.tscn" id="1_52meh"]
-[ext_resource type="Script" uid="uid://dfiedenmpst4k" path="res://scenes/ui/upgrade_panel/upgrade_panel.gd" id="1_l8hix"]
-[ext_resource type="Script" uid="uid://de8lvyxw1hcbn" path="res://resources/items/upgrades/item_upgrade.gd" id="2_dm02s"]
-[ext_resource type="PackedScene" uid="uid://c2ht6hi4x08if" path="res://scenes/ui/stats_container/stats_container.tscn" id="2_l8hix"]
+[ext_resource type="Script" uid="uid://bnqmmbbvxupea" path="res://scenes/ui/upgrade_panel/upgrade_panel.gd" id="1_l8hix"]
+[ext_resource type="Script" uid="uid://0kfyb4qfa66q" path="res://resources/items/upgrades/item_upgrade.gd" id="2_aghkh"]
+[ext_resource type="PackedScene" uid="uid://b0nwu1370004c" path="res://scenes/ui/upgrade_card/upgrade_card.tscn" id="2_vxs30"]
 [ext_resource type="Resource" uid="uid://chfx34trkjpk7" path="res://resources/items/upgrades/data/block/upgrade_block_1.tres" id="3_oekas"]
+[ext_resource type="PackedScene" uid="uid://b6bse8wisg38j" path="res://scenes/ui/stats_container/stats_container.tscn" id="3_oi75p"]
 [ext_resource type="Resource" uid="uid://coth3bmqwlujl" path="res://resources/items/upgrades/data/block/upgrade_block_2.tres" id="4_k56t5"]
 [ext_resource type="Resource" uid="uid://c6s1jtw3o7cpn" path="res://resources/items/upgrades/data/block/upgrade_block_4.tres" id="5_l4p84"]
 [ext_resource type="Resource" uid="uid://cam7axfg1flx2" path="res://resources/items/upgrades/data/block/upgrade_block_5.tres" id="6_625vb"]
@@ -52,9 +52,18 @@
 [ext_resource type="Resource" uid="uid://6wjvxltxc0mh" path="res://resources/items/upgrades/data/speed/upgrade_speed_20.tres" id="48_4hygx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oekas"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
-[sub_resource type="LabelSettings" id="LabelSettings_vxs30"]
+[sub_resource type="LabelSettings" id="LabelSettings_mfnog"]
 font_size = 120
 
 [node name="UpgradePanel" type="Panel"]
@@ -65,7 +74,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oekas")
 script = ExtResource("1_l8hix")
-upgrade_list = Array[ExtResource("2_dm02s")]([ExtResource("3_oekas"), ExtResource("4_k56t5"), ExtResource("5_l4p84"), ExtResource("6_625vb"), ExtResource("7_rm2kw"), ExtResource("8_kbsgn"), ExtResource("9_a1b4m"), ExtResource("10_5ewdg"), ExtResource("11_u36xe"), ExtResource("12_8rmpg"), ExtResource("13_vmsa8"), ExtResource("14_bppm0"), ExtResource("15_lo8g7"), ExtResource("16_mpu6n"), ExtResource("17_0na6y"), ExtResource("18_nipon"), ExtResource("19_5j17u"), ExtResource("20_0vvts"), ExtResource("21_bir3b"), ExtResource("22_3eupe"), ExtResource("23_5000v"), ExtResource("24_u74v4"), ExtResource("25_p6etl"), ExtResource("26_1tim8"), ExtResource("27_eakci"), ExtResource("28_l6ohj"), ExtResource("29_agreq"), ExtResource("30_7uwbt"), ExtResource("31_e51u4"), ExtResource("32_g7n0k"), ExtResource("33_if5nx"), ExtResource("34_27sma"), ExtResource("35_5x8vq"), ExtResource("36_0mn6i"), ExtResource("37_ibvf6"), ExtResource("38_lfla0"), ExtResource("39_x24kl"), ExtResource("40_qsvnt"), ExtResource("41_2maa3"), ExtResource("42_u7vwi"), ExtResource("43_4dvkj"), ExtResource("44_twlxy"), ExtResource("45_1121e"), ExtResource("46_v7mxw"), ExtResource("47_eyac8"), ExtResource("48_4hygx")])
+upgrade_list = Array[ExtResource("2_aghkh")]([ExtResource("3_oekas"), ExtResource("4_k56t5"), ExtResource("5_l4p84"), ExtResource("6_625vb"), ExtResource("7_rm2kw"), ExtResource("8_kbsgn"), ExtResource("9_a1b4m"), ExtResource("10_5ewdg"), ExtResource("11_u36xe"), ExtResource("12_8rmpg"), ExtResource("13_vmsa8"), ExtResource("14_bppm0"), ExtResource("15_lo8g7"), ExtResource("16_mpu6n"), ExtResource("17_0na6y"), ExtResource("18_nipon"), ExtResource("19_5j17u"), ExtResource("20_0vvts"), ExtResource("21_bir3b"), ExtResource("22_3eupe"), ExtResource("23_5000v"), ExtResource("24_u74v4"), ExtResource("25_p6etl"), ExtResource("26_1tim8"), ExtResource("27_eakci"), ExtResource("28_l6ohj"), ExtResource("29_agreq"), ExtResource("30_7uwbt"), ExtResource("31_e51u4"), ExtResource("32_g7n0k"), ExtResource("33_if5nx"), ExtResource("34_27sma"), ExtResource("35_5x8vq"), ExtResource("36_0mn6i"), ExtResource("37_ibvf6"), ExtResource("38_lfla0"), ExtResource("39_x24kl"), ExtResource("40_qsvnt"), ExtResource("41_2maa3"), ExtResource("42_u7vwi"), ExtResource("43_4dvkj"), ExtResource("44_twlxy"), ExtResource("45_1121e"), ExtResource("46_v7mxw"), ExtResource("47_eyac8"), ExtResource("48_4hygx")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -87,8 +96,8 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Wave completed"
-label_settings = SubResource("LabelSettings_vxs30")
+text = "wave completed"
+label_settings = SubResource("LabelSettings_mfnog")
 horizontal_alignment = 1
 
 [node name="ItemsContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
@@ -96,19 +105,19 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="UpgradeCard" parent="MarginContainer/HBoxContainer/VBoxContainer/ItemsContainer" instance=ExtResource("1_52meh")]
+[node name="UpgradeCard" parent="MarginContainer/HBoxContainer/VBoxContainer/ItemsContainer" instance=ExtResource("2_vxs30")]
 layout_mode = 2
 
-[node name="UpgradeCard2" parent="MarginContainer/HBoxContainer/VBoxContainer/ItemsContainer" instance=ExtResource("1_52meh")]
+[node name="UpgradeCard2" parent="MarginContainer/HBoxContainer/VBoxContainer/ItemsContainer" instance=ExtResource("2_vxs30")]
 layout_mode = 2
 
-[node name="UpgradeCard3" parent="MarginContainer/HBoxContainer/VBoxContainer/ItemsContainer" instance=ExtResource("1_52meh")]
+[node name="UpgradeCard3" parent="MarginContainer/HBoxContainer/VBoxContainer/ItemsContainer" instance=ExtResource("2_vxs30")]
 layout_mode = 2
 
-[node name="UpgradeCard4" parent="MarginContainer/HBoxContainer/VBoxContainer/ItemsContainer" instance=ExtResource("1_52meh")]
+[node name="UpgradeCard4" parent="MarginContainer/HBoxContainer/VBoxContainer/ItemsContainer" instance=ExtResource("2_vxs30")]
 layout_mode = 2
 
-[node name="StatsContainer" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_l8hix")]
+[node name="StatsContainer" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_oi75p")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

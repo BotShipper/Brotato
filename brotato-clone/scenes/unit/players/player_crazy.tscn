@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://wrphfixiwbbl"]
+[gd_scene load_steps=4 format=3 uid="uid://dkjqu0ys4k662"]
 
-[ext_resource type="PackedScene" uid="uid://dph1xwi3nbhm4" path="res://scenes/unit/players/player_well_rounded.tscn" id="1_7853x"]
-[ext_resource type="Texture2D" uid="uid://dq63ocnu3lset" path="res://assets/sprites/Players/Player_3}.png" id="2_jebnn"]
-[ext_resource type="Resource" uid="uid://cvotjxcs55rxk" path="res://resources/units/players/stats_player_crazy.tres" id="2_n4tec"]
+[ext_resource type="PackedScene" uid="uid://bwo04frw2wqoy" path="res://scenes/unit/players/player_well_rounded.tscn" id="1_5054k"]
+[ext_resource type="Resource" uid="uid://cn0unmmub6kf" path="res://resources/units/players/stats_player_crazy.tres" id="2_e1phh"]
+[ext_resource type="Texture2D" uid="uid://dq63ocnu3lset" path="res://assets/sprites/Players/Player_3}.png" id="2_ii53f"]
 
-[node name="PlayerCrazy" instance=ExtResource("1_7853x")]
-stats = ExtResource("2_n4tec")
+[node name="PlayerCrazy" instance=ExtResource("1_5054k")]
+stats = ExtResource("2_e1phh")
 
 [node name="Sprite" parent="Visuals" index="2"]
-texture = ExtResource("2_jebnn")
+texture = ExtResource("2_ii53f")

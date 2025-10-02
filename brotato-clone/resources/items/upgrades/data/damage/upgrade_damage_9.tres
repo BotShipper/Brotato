@@ -1,15 +1,16 @@
 [gd_resource type="Resource" script_class="ItemUpgrade" load_steps=3 format=3 uid="uid://trq5at3i8viv"]
 
 [ext_resource type="Texture2D" uid="uid://dn68qq5evmvwa" path="res://assets/sprites/Upgrades/12.png" id="1_24534"]
-[ext_resource type="Script" uid="uid://de8lvyxw1hcbn" path="res://resources/items/upgrades/item_upgrade.gd" id="2_rllvo"]
+[ext_resource type="Script" uid="uid://cr0po024cxfg5" path="res://resources/items/upgrades/item_upgrade.gd" id="2_rllvo"]
 
 [resource]
 script = ExtResource("2_rllvo")
 value = 9.0
 description = "+9"
-stats_id = "damage"
+stat_id = "damage"
 item_name = "Damage"
 item_icon = ExtResource("1_24534")
 item_tier = 3
 item_type = 1
 item_cost = 0
+metadata/_custom_type_script = "uid://cr0po024cxfg5"

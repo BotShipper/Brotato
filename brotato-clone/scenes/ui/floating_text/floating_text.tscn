@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://de7joaxdahbcg"]
+[gd_scene load_steps=3 format=3 uid="uid://bmy2qb3fuvnts"]
 
-[ext_resource type="Script" uid="uid://cmsj124sbu74e" path="res://scenes/ui/floating_text/floating_text.gd" id="1_32222"]
+[ext_resource type="Script" uid="uid://bf5nndrhqabyg" path="res://scenes/ui/floating_text/floating_text.gd" id="1_32222"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_dsam5"]
+[sub_resource type="LabelSettings" id="LabelSettings_482db"]
 font_size = 32
 outline_size = 10
-outline_color = Color(0.099986, 0.099986, 0.099986, 1)
+outline_color = Color(0.0295066, 0.0295066, 0.0295066, 1)
 
 [node name="FloatingText" type="Node2D"]
 z_index = 10
@@ -24,5 +24,5 @@ offset_bottom = 19.3333
 grow_horizontal = 2
 grow_vertical = 2
 text = "10"
-label_settings = SubResource("LabelSettings_dsam5")
+label_settings = SubResource("LabelSettings_482db")
 horizontal_alignment = 1

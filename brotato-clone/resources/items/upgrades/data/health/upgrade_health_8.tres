@@ -1,15 +1,16 @@
 [gd_resource type="Resource" script_class="ItemUpgrade" load_steps=3 format=3 uid="uid://d2r78osqk8j7x"]
 
 [ext_resource type="Texture2D" uid="uid://513vy8yuf2c3" path="res://assets/sprites/Upgrades/6.png" id="1_hg2qu"]
-[ext_resource type="Script" uid="uid://de8lvyxw1hcbn" path="res://resources/items/upgrades/item_upgrade.gd" id="2_1rpc0"]
+[ext_resource type="Script" uid="uid://cr0po024cxfg5" path="res://resources/items/upgrades/item_upgrade.gd" id="2_1rpc0"]
 
 [resource]
 script = ExtResource("2_1rpc0")
 value = 8.0
 description = "+8"
-stats_id = "health"
+stat_id = "health"
 item_name = "Health"
 item_icon = ExtResource("1_hg2qu")
 item_tier = 2
 item_type = 1
 item_cost = 0
+metadata/_custom_type_script = "uid://cr0po024cxfg5"

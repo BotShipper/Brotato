@@ -16,7 +16,6 @@ enum SpawnType {
 @export var min_spawn_time := 1.0
 @export var max_spawn_time := 1.0
 
-
 func get_random_unit_scene() -> PackedScene:
 	if units.is_empty():
 		printerr("No Units.")
@@ -32,7 +31,6 @@ func get_random_unit_scene() -> PackedScene:
 	var rng := RandomNumberGenerator.new()
 	var random_unit = enemies[rng.rand_weighted(weights)]
 	return random_unit
-
 
 func is_valid_index(index: int) -> bool:
 	return index >= from and index <= to

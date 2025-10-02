@@ -8,6 +8,7 @@ class_name Arena
 
 @onready var wave_index_label: Label = %WaveIndexLabel
 @onready var wave_time_label: Label = %WaveTimeLabel
+
 @onready var spawner: Spawner = $Spawner
 @onready var upgrade_panel: UpgradePanel = %UpgradePanel
 @onready var shop_panel: ShopPanel = %ShopPanel
@@ -15,17 +16,16 @@ class_name Arena
 
 var gold_list: Array[Coins]
 
-
 func _ready() -> void:
 	Global.on_create_block_text.connect(_on_create_block_text)
 	Global.on_create_damage_text.connect(_on_create_damage_text)
 	Global.on_upgrade_selected.connect(_on_upgrade_selected)
 	Global.on_create_heal_text.connect(_on_create_heal_text)
 	Global.on_enemy_died.connect(_on_enemy_died)
-	
+
 
 func _process(delta: float) -> void:
-	if Global.game_pauseed: return
+	if Global.game_paused: return
 	wave_index_label.text = spawner.get_wave_text()
 	wave_time_label.text = spawner.get_wave_timer_text()
 
@@ -45,7 +45,7 @@ func show_upgrades() -> void:
 
 
 func start_new_wave() -> void:
-	Global.game_pauseed = false
+	Global.game_paused = false
 	Global.player.update_player_new_wave()
 	spawner.wave_index += 1
 	spawner.start_wave()
@@ -57,14 +57,15 @@ func clean_arena() -> void:
 		for gold in gold_list:
 			if is_instance_valid(gold):
 				var gold_item := gold as Coins
-				gold_item.set_collection_target(target_center_pos) 
+				gold_item.set_collection_target(target_center_pos)
 	
 	gold_list.clear()
 	spawner.clear_enemies()
 
-func spawner_coins(enemy: Enemy) -> void:
+
+func spawn_coins(enemy: Enemy) -> void:
 	var random_angle := randf_range(0, TAU)
-	var offset := Vector2.RIGHT.rotated(random_angle) * 35
+	var offset := Vector2.RIGHT.rotated(random_angle) * 35 
 	var spawn_pos := enemy.global_position + offset
 	
 	var gold_instance := Global.COINS_SCENE.instantiate() as Coins
@@ -76,12 +77,12 @@ func spawner_coins(enemy: Enemy) -> void:
 
 
 func _on_create_block_text(unit: Node2D) -> void:
-	var text :=  create_floating_text(unit)
+	var text := create_floating_text(unit)
 	text.setup("Blocked!", blocked_color)
 
 
 func _on_create_damage_text(unit: Node2D, hitbox: HitboxComponent) -> void:
-	var text :=  create_floating_text(unit)
+	var text := create_floating_text(unit)
 	var color := critical_color if hitbox.critical else normal_color
 	text.setup(str(hitbox.damage), color)
 
@@ -95,6 +96,7 @@ func _on_upgrade_selected() -> void:
 	upgrade_panel.hide()
 	shop_panel.load_shop(spawner.wave_index)
 	shop_panel.show()
+
 
 func _on_spawner_on_wave_completed() -> void:
 	if not Global.player: return
@@ -110,7 +112,7 @@ func _on_shop_panel_on_shop_next_wave() -> void:
 
 
 func _on_enemy_died(enemy: Enemy) -> void:
-	spawner_coins(enemy)
+	spawn_coins(enemy)
 
 
 func _on_selection_panel_on_selection_completed() -> void:
@@ -121,4 +123,4 @@ func _on_selection_panel_on_selection_completed() -> void:
 	Global.equipped_weapons.append(Global.main_weapon_selected)
 	
 	spawner.start_wave()
-	Global.game_pauseed = false
+	Global.game_paused = false

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://bqdcv3jpj2wha"]
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://cri2hfh8boubc"]
 
-[ext_resource type="Script" uid="uid://c14704apl008u" path="res://resources/items/weapons/weapon_stats.gd" id="1_kkanm"]
+[ext_resource type="Script" uid="uid://7nww4cvtvv64" path="res://resources/items/weapons/weapon_stats.gd" id="1_kkanm"]
 
 [resource]
 script = ExtResource("1_kkanm")
@@ -9,7 +9,7 @@ accuracy = 1.0
 cooldown = 0.7
 crit_chance = 0.1
 crit_damage = 2.0
-max_range = 180.0
+max_range = 200.0
 knockback = 1.0
 life_steal = 0.0
 recoil = 25.0
@@ -17,4 +17,4 @@ recoil_duration = 0.1
 attack_duration = 0.2
 back_duration = 0.15
 projectile_speed = 1600.0
-metadata/_custom_type_script = "uid://c14704apl008u"
+metadata/_custom_type_script = "uid://7nww4cvtvv64"

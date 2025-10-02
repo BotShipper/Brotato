@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="ItemUpgrade" load_steps=3 format=3 uid="uid://dij17ywc2nism"]
 
 [ext_resource type="Texture2D" uid="uid://dac1qxk0rktmg" path="res://assets/sprites/Upgrades/11.png" id="1_5wpm1"]
-[ext_resource type="Script" uid="uid://de8lvyxw1hcbn" path="res://resources/items/upgrades/item_upgrade.gd" id="2_lnq26"]
+[ext_resource type="Script" uid="uid://0kfyb4qfa66q" path="res://resources/items/upgrades/item_upgrade.gd" id="2_lnq26"]
 
 [resource]
 script = ExtResource("2_lnq26")
 value = 7.0
 description = "+7"
-stats_id = "speed"
+stat_id = "speed"
 item_name = "Speed"
 item_icon = ExtResource("1_5wpm1")
 item_tier = 0

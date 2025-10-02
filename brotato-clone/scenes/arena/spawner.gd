@@ -4,7 +4,7 @@ class_name Spawner
 signal on_wave_completed
 
 @export var spawn_area_size := Vector2(1000, 500)
-@export var waves_data : Array[WaveData]
+@export var waves_data: Array[WaveData]
 @export var enemy_collection: Array[UnitStats]
 
 @onready var spawn_timer: Timer = $SpawnTimer
@@ -20,7 +20,6 @@ func find_wave_data() -> WaveData:
 		if wave and wave.is_valid_index(wave_index):
 			return wave
 	return null
-
 
 func start_wave() -> void:
 	current_wave_data = find_wave_data()
@@ -47,8 +46,8 @@ func set_spawn_timer() -> void:
 	
 	if spawn_timer.is_stopped():
 		spawn_timer.start()
-		
-		
+
+
 func get_random_spawn_position() -> Vector2:
 	var random_x := randf_range(-spawn_area_size.x, spawn_area_size.x)
 	var random_y := randf_range(-spawn_area_size.y, spawn_area_size.y)
@@ -63,7 +62,7 @@ func spawn_enemy() -> void:
 		var spawn_anim := Global.SPAWN_EFFECT_SCENE.instantiate()
 		get_parent().add_child(spawn_anim)
 		spawn_anim.global_position = spawn_pos
-		await  spawn_anim.anim_player.animation_finished
+		await spawn_anim.anim_player.animation_finished
 		spawn_anim.queue_free()
 		
 		var enemy_instance := enemy_scene.instantiate() as Enemy
@@ -88,6 +87,7 @@ func clear_enemies() -> void:
 	
 	spawned_enemies.clear()
 
+
 func get_wave_text() -> String:
 	return "Wave %s" % wave_index
 
@@ -100,12 +100,12 @@ func _on_spawn_timer_timeout() -> void:
 	if not current_wave_data or wave_timer.is_stopped():
 		spawn_timer.stop()
 		return
-		
+	
 	spawn_enemy()
 
 
 func _on_wave_timer_timeout() -> void:
-	Global.game_pauseed = true
+	Global.game_paused = true
 	Global.get_harvesting_coins()
 	on_wave_completed.emit()
 	spawn_timer.stop()

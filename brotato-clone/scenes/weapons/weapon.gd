@@ -13,13 +13,12 @@ var targets: Array[Enemy]
 var closest_target: Enemy
 var weapon_spread: float
 
-
 func _ready() -> void:
 	atk_start_pos = sprite.position
 
 
 func _process(delta: float) -> void:
-	if Global.game_pauseed: return
+	if Global.game_paused: return
 	
 	if not is_attacking:
 		if targets.size() > 0:
@@ -45,6 +44,7 @@ func use_weapon() -> void:
 	weapon_behavior.execute_attack()
 	cooldown_timer.wait_time = data.stats.cooldown
 	cooldown_timer.start()
+
 
 func rotate_to_target() -> void:
 	if is_attacking:
@@ -75,9 +75,10 @@ func get_idle_rotation() -> float:
 	else:
 		return PI
 
+
 func update_visuals() -> void:
 	if abs(rotation) > PI / 2:
-		sprite.scale.y = -0.5 
+		sprite.scale.y = -0.5
 	else:
 		sprite.scale.y = 0.5
 
@@ -107,6 +108,7 @@ func get_closest_target() -> Node2D:
 			closest_distance = distance
 	
 	return closest_enemy
+
 
 func can_use_weapon() -> bool:
 	return cooldown_timer.is_stopped() and closest_target

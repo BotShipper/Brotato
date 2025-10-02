@@ -8,7 +8,6 @@ class_name WeaponContainer
 @onready var five: Node2D = $Five
 @onready var six: Node2D = $Six
 
-
 func update_weapons_position(weapons: Array[Weapon]) -> void:
 	var count := weapons.size()
 	var reference_node: Node2D

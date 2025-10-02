@@ -5,7 +5,6 @@ class_name Projectile
 
 var velocity: Vector2
 
-
 func _process(delta: float) -> void:
 	position += velocity * delta
 
@@ -15,7 +14,7 @@ func set_projectile(velocity: Vector2, damage: float, critical: bool, knockback:
 	rotation = velocity.angle()
 	if hitbox:
 		hitbox.setup(damage, critical, knockback, unit)
-
+	
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

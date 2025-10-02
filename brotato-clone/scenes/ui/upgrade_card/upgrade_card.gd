@@ -16,8 +16,7 @@ func _set_data(value: ItemUpgrade) -> void:
 	var style := Global.get_tier_style(item_data.item_tier)
 	add_theme_stylebox_override("panel", style)
 
-
-func _on_custom_button_pressed() -> void:
+func _on_custom_buttom_pressed() -> void:
 	if item_data and is_instance_valid(Global.player):
 		item_data.apply_upgrade()
 		SoundManager.play_sound(SoundManager.Sound.UI)

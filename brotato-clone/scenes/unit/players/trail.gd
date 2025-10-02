@@ -20,7 +20,6 @@ func _process(delta: float) -> void:
 	
 	points = points_array
 
-
 func start_trail() -> void:
 	is_active = true
 	clear_points()

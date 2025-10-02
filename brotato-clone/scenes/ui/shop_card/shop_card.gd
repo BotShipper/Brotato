@@ -11,7 +11,6 @@ signal on_item_purchased(item: ItemBase)
 @onready var item_description: RichTextLabel = %ItemDescription
 @onready var coins_label: Label = %CoinsLabel
 
-
 func _set_shop_item(value: ItemBase) -> void:
 	shop_item = value
 	item_icon.texture = value.item_icon
@@ -24,7 +23,7 @@ func _set_shop_item(value: ItemBase) -> void:
 	add_theme_stylebox_override("panel", style)
 
 
-func _on_buy_button_pressed() -> void:
+func _on_buy_buttom_pressed() -> void:
 	SoundManager.play_sound(SoundManager.Sound.UI)
 	
 	if Global.equipped_weapons.size() >= 6:

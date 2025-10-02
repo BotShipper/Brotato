@@ -7,6 +7,8 @@
 script = ExtResource("1_o2n5b")
 add_value = 15.0
 add_stats = "luck"
+remove_value = 0.0
+remove_stats = ""
 item_name = "Mighty Sword"
 item_icon = ExtResource("1_jlslf")
 item_tier = 2

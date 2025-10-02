@@ -7,8 +7,11 @@
 script = ExtResource("1_li645")
 add_value = 5.0
 add_stats = "damage"
+remove_value = 0.0
+remove_stats = ""
 item_name = "Power Ball"
 item_icon = ExtResource("1_jwmow")
+item_tier = 0
 item_type = 2
 item_cost = 30
 metadata/_custom_type_script = "uid://ckv6olxvpv5xa"

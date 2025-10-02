@@ -7,7 +7,6 @@ signal on_item_card_selected(card: ItemCard)
 
 @onready var item_icon: TextureRect = $ItemIcon
 
-
 func _set_item(value: ItemBase) -> void:
 	item = value
 	item_icon.texture = item.item_icon
