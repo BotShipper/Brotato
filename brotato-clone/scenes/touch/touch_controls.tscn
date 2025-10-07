@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://dml5iq6dbq4p3"]
+
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_vdgtm"]
+[ext_resource type="Texture2D" uid="uid://cg8i01i4vek32" path="res://assets/sprites/Spawn_mark.png" id="2_1ajt5"]
+
+[node name="TouchControls" type="CanvasLayer"]
+layer = 2
+
+[node name="LeftSide" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -500.0
+offset_right = 500.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="LeftSide"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Virtual Joystick" parent="LeftSide/MarginContainer" instance=ExtResource("1_vdgtm")]
+layout_mode = 2
+pressed_color = Color(0.2526132, 0.5134868, 0.36757272, 1)
+clampzone_size = 150.0
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+
+[node name="RightSide" type="Control" parent="."]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -500.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="RightSide"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Dash" type="Control" parent="RightSide/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="RightSide/MarginContainer/Dash"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+icon = ExtResource("2_1ajt5")
