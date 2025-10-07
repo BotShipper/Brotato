@@ -96,13 +96,15 @@ visible = false
 
 [node name="SelectionPanel" parent="GameUI" instance=ExtResource("18_tp84n")]
 
-[node name="TouchControls" parent="GameUI" instance=ExtResource("19_8kk48")]
-
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_8kk48")
 volume_db = -30.0
 autoplay = true
 bus = &"Music"
+
+[node name="TouchControls" parent="." instance=ExtResource("19_8kk48")]
+unique_name_in_owner = true
+visible = false
 
 [connection signal="on_wave_completed" from="Spawner" to="." method="_on_spawner_on_wave_completed"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]

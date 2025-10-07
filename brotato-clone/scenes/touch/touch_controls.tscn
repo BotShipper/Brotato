@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dml5iq6dbq4p3"]
+[gd_scene load_steps=4 format=3 uid="uid://dml5iq6dbq4p3"]
 
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_vdgtm"]
 [ext_resource type="Texture2D" uid="uid://cg8i01i4vek32" path="res://assets/sprites/Spawn_mark.png" id="2_1ajt5"]
+[ext_resource type="Script" uid="uid://blrrccyaiur8c" path="res://scenes/touch/dash_button.gd" id="3_pkg12"]
 
 [node name="TouchControls" type="CanvasLayer"]
 layer = 2
@@ -59,12 +60,13 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Dash" type="Control" parent="RightSide/MarginContainer"]
+[node name="Control" type="Control" parent="RightSide/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Button" type="Button" parent="RightSide/MarginContainer/Dash"]
+[node name="DashButton" type="Button" parent="RightSide/MarginContainer/Control"]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 icon = ExtResource("2_1ajt5")
+script = ExtResource("3_pkg12")

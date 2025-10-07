@@ -84,6 +84,11 @@ func can_dash() -> bool:
 	move_dir != Vector2.ZERO
 
 
+func trigger_dash() -> void:
+	if can_dash():
+		start_dash()
+
+
 func is_facing_right() -> bool:
 	return visuals.scale.x == -0.5
 

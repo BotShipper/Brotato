@@ -13,6 +13,7 @@ class_name Arena
 @onready var upgrade_panel: UpgradePanel = %UpgradePanel
 @onready var shop_panel: ShopPanel = %ShopPanel
 @onready var coins_bag: CoinsBag = %CoinsBag
+@onready var touch_controls: CanvasLayer = %TouchControls
 
 var gold_list: Array[Coins]
 
@@ -49,6 +50,7 @@ func start_new_wave() -> void:
 	Global.player.update_player_new_wave()
 	spawner.wave_index += 1
 	spawner.start_wave()
+	touch_controls.show()
 
 
 func clean_arena() -> void:
@@ -100,6 +102,7 @@ func _on_upgrade_selected() -> void:
 
 func _on_spawner_on_wave_completed() -> void:
 	if not Global.player: return
+	touch_controls.hide()
 	clean_arena()
 	await get_tree().create_timer(1.0).timeout
 	show_upgrades()
@@ -124,3 +127,4 @@ func _on_selection_panel_on_selection_completed() -> void:
 	
 	spawner.start_wave()
 	Global.game_paused = false
+	touch_controls.show()
