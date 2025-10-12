@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb10h88yku4ja"]
+
+[ext_resource type="Script" uid="uid://jvmbhcenwotr" path="res://scenes/menu/main_menu.gd" id="1_3rkf3"]
+[ext_resource type="Texture2D" uid="uid://cd5miclta1xlb" path="res://assets/download/PC _ Computer - Brotato - Miscellaneous - Title Screen.png" id="1_nl8w3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl8w3"]
+atlas = ExtResource("1_nl8w3")
+region = Rect2(4141, 1080, 2067, 1080)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3rkf3"]
+texture = SubResource("AtlasTexture_nl8w3")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rkf3"]
+atlas = ExtResource("1_nl8w3")
+region = Rect2(0, 1082, 2064, 1079)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_247la"]
+texture = SubResource("AtlasTexture_3rkf3")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_247la"]
+atlas = ExtResource("1_nl8w3")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiqgm"]
+atlas = SubResource("AtlasTexture_247la")
+region = Rect2(511, 2552, 1048, 272)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3rkf3")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3rkf3")
+
+[node name="Background2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_247la")
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -349.0
+offset_top = -405.0
+offset_right = -109.0
+offset_bottom = -325.00003
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_kiqgm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.25
+offset_top = -89.0
+offset_right = 294.25
+offset_bottom = 219.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "start game
+"
+
+[node name="SettingButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "setting
+"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "exit
+"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

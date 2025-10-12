@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Brotato Clone"
-run/main_scene="uid://bjhraywhhpn3h"
+run/main_scene="uid://cb10h88yku4ja"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
