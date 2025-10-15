@@ -21,6 +21,12 @@ func find_wave_data() -> WaveData:
 			return wave
 	return null
 
+func check_wave_data(wave_current: int) -> bool:
+	for wave in waves_data:
+		if wave and wave.is_valid_index(wave_current):
+			return true
+	return false
+
 func start_wave() -> void:
 	current_wave_data = find_wave_data()
 	if not current_wave_data:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cb10h88yku4ja"]
+[gd_scene load_steps=10 format=3 uid="uid://cb10h88yku4ja"]
 
 [ext_resource type="Script" uid="uid://jvmbhcenwotr" path="res://scenes/menu/main_menu.gd" id="1_3rkf3"]
 [ext_resource type="Texture2D" uid="uid://cd5miclta1xlb" path="res://assets/download/PC _ Computer - Brotato - Miscellaneous - Title Screen.png" id="1_nl8w3"]
+[ext_resource type="AudioStream" uid="uid://prc8bub0x4s1" path="res://assets/audio/Bg Music.mp3" id="3_247la"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nl8w3"]
 atlas = ExtResource("1_nl8w3")
@@ -104,6 +105,12 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
 text = "exit
 "
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_247la")
+volume_db = -30.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
