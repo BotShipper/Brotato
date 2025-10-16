@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bjhraywhhpn3h"]
+[gd_scene load_steps=23 format=3 uid="uid://bjhraywhhpn3h"]
 
 [ext_resource type="Texture2D" uid="uid://cy4xfx762bxgb" path="res://assets/sprites/BG.png" id="1_5tue2"]
 [ext_resource type="Script" uid="uid://fylssyuoxjey" path="res://scenes/arena/arena.gd" id="1_asdgj"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://ck8hfiuq31k2l" path="res://scenes/ui/shop_panel/shop_panel.tscn" id="16_t3vx8"]
 [ext_resource type="AudioStream" uid="uid://prc8bub0x4s1" path="res://assets/audio/Bg Music.mp3" id="18_8kk48"]
 [ext_resource type="PackedScene" uid="uid://be4y0ch5v7qa5" path="res://scenes/ui/selection_panel/selection_panel.tscn" id="18_tp84n"]
+[ext_resource type="PackedScene" uid="uid://b3if6e64nlj3c" path="res://scenes/menu/sub_screen.tscn" id="18_wqbss"]
 [ext_resource type="PackedScene" uid="uid://dml5iq6dbq4p3" path="res://scenes/touch/touch_controls.tscn" id="19_8kk48"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6w4xk"]
@@ -95,6 +96,10 @@ unique_name_in_owner = true
 visible = false
 
 [node name="SelectionPanel" parent="GameUI" instance=ExtResource("18_tp84n")]
+
+[node name="SubScreen" parent="GameUI" instance=ExtResource("18_wqbss")]
+unique_name_in_owner = true
+visible = false
 
 [node name="TouchControls" parent="." instance=ExtResource("19_8kk48")]
 unique_name_in_owner = true

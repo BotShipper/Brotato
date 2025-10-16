@@ -14,8 +14,8 @@ class_name Arena
 @onready var shop_panel: ShopPanel = %ShopPanel
 @onready var coins_bag: CoinsBag = %CoinsBag
 @onready var touch_controls: CanvasLayer = %TouchControls
+@onready var sub_screen: SubScreen = %SubScreen
 
-var MAIN_MENU_SCENE = "res://scenes/menu/main_menu.tscn"
 var gold_list: Array[Coins]
 
 func _ready() -> void:
@@ -108,7 +108,7 @@ func _on_spawner_on_wave_completed() -> void:
 	await get_tree().create_timer(1.0).timeout
 	if not spawner.check_wave_data(spawner.wave_index + 1):
 		print("End")
-		get_tree().change_scene_to_file(MAIN_MENU_SCENE)
+		sub_screen.show_win_screen()
 	else: 
 		show_upgrades()
 
