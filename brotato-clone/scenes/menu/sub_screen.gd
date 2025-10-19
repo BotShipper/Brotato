@@ -60,4 +60,4 @@ func show_win_screen():
 func _on_menu_button_pressed():
 	print("Menu button pressed")
 	# Chuyển về màn hình chính - thay đổi đường dẫn cho đúng
-	get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
+	get_tree().change_scene_to_file(Global.MAIN_MENU_PATH)

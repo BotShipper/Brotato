@@ -15,6 +15,7 @@ class_name Arena
 @onready var coins_bag: CoinsBag = %CoinsBag
 @onready var touch_controls: CanvasLayer = %TouchControls
 @onready var sub_screen: SubScreen = %SubScreen
+@onready var tutorial_manager: TutorialManager = %TutorialManager
 
 var gold_list: Array[Coins]
 
@@ -24,12 +25,23 @@ func _ready() -> void:
 	Global.on_upgrade_selected.connect(_on_upgrade_selected)
 	Global.on_create_heal_text.connect(_on_create_heal_text)
 	Global.on_enemy_died.connect(_on_enemy_died)
+	
+	# Tạo group đễ dễ truy cập
+	tutorial_manager.add_to_group("tutorial_manager")
+	
+	# Connect signals
+	tutorial_manager.tutorial_finished.connect(_on_tutorial_finished)
+	
 
 
 func _process(delta: float) -> void:
 	if Global.game_paused: return
 	wave_index_label.text = spawner.get_wave_text()
 	wave_time_label.text = spawner.get_wave_timer_text()
+
+
+func _on_tutorial_finished() -> void:
+	get_tree().change_scene_to_file(Global.MAIN_MENU_PATH)
 
 
 func create_floating_text(unit: Node2D) -> FloatingText:
@@ -132,3 +144,4 @@ func _on_selection_panel_on_selection_completed() -> void:
 	spawner.start_wave()
 	Global.game_paused = false
 	touch_controls.show()
+	tutorial_manager.start()

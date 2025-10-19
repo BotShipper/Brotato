@@ -19,6 +19,11 @@ const EPIC_STYLE = preload("uid://chxsktowv55wp")
 const LEGENDARY_STYLE = preload("uid://omjdrwevlaw8")
 const RARE_STYLE = preload("uid://cu7iu2w861ga4")
 
+const MAIN_MENU_PATH = "res://scenes/menu/main_menu.tscn"
+const ARENA_SCENE_PATH = "res://scenes/arena/arena.tscn"
+
+const TUTORIAL_GROUP = "tutorial_manager"
+
 const UPGRADE_PROBABILITY_CONFIG = {
 	"rare": { "start_wave": 2, "base_multi": 0.06 },
 	"epic": { "start_wave": 4, "base_multi": 0.02 },
