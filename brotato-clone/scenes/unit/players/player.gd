@@ -17,7 +17,6 @@ var move_dir: Vector2
 var is_dashing := false
 var dash_available := true
 
-var has_moved = false
 
 func _ready() -> void:
 	super._ready()
@@ -37,13 +36,6 @@ func _process(delta: float) -> void:
 	position += current_velocity * delta
 	position.x = clamp(position.x, -1000, 1000)
 	position.y = clamp(position.y, -500, 500)
-	
-	# Kiểm tra chuyển động lần đầu tiên
-	if not has_moved and move_dir != Vector2.ZERO:
-		has_moved = true
-		var tutorial = get_tree().get_first_node_in_group(Global.TUTORIAL_GROUP)
-		if tutorial:
-			tutorial.check_step_condition("move")
 	
 	if can_dash():
 		start_dash()

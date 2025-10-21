@@ -61,6 +61,7 @@ var _touch_index : int = -1
 @onready var _tip_default_position : Vector2 = _tip.position
 
 @onready var _default_color : Color = _tip.modulate
+var has_moved = false
 
 # FUNCTIONS
 
@@ -75,6 +76,9 @@ func _ready() -> void:
 	
 	if visibility_mode == Visibility_mode.WHEN_TOUCHED:
 		hide()
+		
+	# Tạo group đễ dễ truy cập
+	add_to_group(Global.JOYSTICK_GROUP)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
@@ -89,6 +93,14 @@ func _input(event: InputEvent) -> void:
 					_tip.modulate = pressed_color
 					_update_joystick(event.position)
 					get_viewport().set_input_as_handled()
+					
+					# Kiểm tra chuyển động lần đầu tiên
+					if not has_moved:
+						has_moved = true
+						var tutorial = get_tree().get_first_node_in_group(Global.TUTORIAL_GROUP)
+						if tutorial:
+							tutorial.check_step_condition("move")
+		
 		elif event.index == _touch_index:
 			_reset()
 			if visibility_mode == Visibility_mode.WHEN_TOUCHED:
@@ -159,6 +171,8 @@ func _update_joystick(touch_position: Vector2) -> void:
 			Input.action_press(action_up, -output.y)
 		if output.y > 0:
 			Input.action_press(action_down, output.y)
+			
+			
 
 func _reset():
 	is_pressed = false

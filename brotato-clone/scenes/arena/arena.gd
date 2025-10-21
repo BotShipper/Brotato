@@ -25,9 +25,10 @@ func _ready() -> void:
 	Global.on_upgrade_selected.connect(_on_upgrade_selected)
 	Global.on_create_heal_text.connect(_on_create_heal_text)
 	Global.on_enemy_died.connect(_on_enemy_died)
+	Global.game_paused_changed.connect(_on_game_paused_changed)
 	
 	# Tạo group đễ dễ truy cập
-	tutorial_manager.add_to_group("tutorial_manager")
+	tutorial_manager.add_to_group(Global.TUTORIAL_GROUP)
 	
 	# Connect signals
 	tutorial_manager.tutorial_finished.connect(_on_tutorial_finished)
@@ -42,6 +43,13 @@ func _process(delta: float) -> void:
 
 func _on_tutorial_finished() -> void:
 	get_tree().change_scene_to_file(Global.MAIN_MENU_PATH)
+
+
+func _on_game_paused_changed(is_paused: bool) -> void:
+	if spawner.spawn_timer and not spawner.spawn_timer.is_stopped():
+		spawner.spawn_timer.paused = is_paused
+	if spawner.wave_timer and not spawner.wave_timer.is_stopped():
+		spawner.wave_timer.paused = is_paused
 
 
 func create_floating_text(unit: Node2D) -> FloatingText:

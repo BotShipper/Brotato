@@ -18,8 +18,8 @@ var tutorial_steps = []
 var current_step_index = 0
 var is_tutorial_active = false
 var tutorial_completed = false
-var is_started := false
 
+var is_started = false
 
 # Định nghĩa các bước tutorial
 func _ready():
@@ -28,13 +28,6 @@ func _ready():
 	print("📄 File tutorial: ", save_path + "tutorial_completed.save")
 	
 	hide_tutorial()
-	
-	
-
-
-func _process(delta: float) -> void:
-	if not is_started:
-		return
 
 
 func start() -> void:
@@ -53,14 +46,14 @@ func setup_tutorial_steps():
 			"id": "welcome",
 			"message": "Chào mừng đến với game! Sử dụng WASD hoặc phím mũi tên để di chuyển.",
 			"condition": "move",
-			"arrow_target": null,
-			"pause_game": false
+			"arrow_target": "joystick",
+			"pause_game": true
 		},
 		{
 			"id": "auto_attack",
 			"message": "Tốt lắm! Vũ khí của bạn sẽ tự động tấn công kẻ địch gần nhất.",
 			"condition": "wait",
-			"wait_time": 5.0,
+			"wait_time": 3.0,
 			"arrow_target": null,
 			"pause_game": false
 		},
@@ -132,7 +125,7 @@ func show_current_step():
 	# Pause game khi cần (vd: khi hiển thị màn hình level up hoặc shop)
 	if step.get("pause_game", false):
 		print("🎮 Tutorial đang tạm dừng game")
-		get_tree().paused = true
+		Global.game_paused = true
 		# Đảm bảo UI tutorial vẫn hoạt động khi pause
 		process_mode = Node.PROCESS_MODE_ALWAYS
 	
@@ -153,7 +146,7 @@ func complete_current_step():
 	tutorial_step_completed.emit(step.id)
 	
 	# Unpause game
-	get_tree().paused = false
+	Global.game_paused = false
 	
 	# Chuyển sang bước tiếp theo
 	current_step_index += 1
@@ -190,37 +183,46 @@ func hide_tutorial():
 
 func show_arrow_to_target(target_name: String):
 	"""
-	Hiển thị mũi tên chỉ vào một đối tượng cụ thể trên màn hình.
-	target_name: Tên group của node cần chỉ (vd: "health_bar", "exp_gem", "shop_button")
+	Hiển thị mũi tên chỉ vào một đối tượng cụ thể.
 	
-	VÍ DỤ SỬ DỤNG:
-	- Nếu bạn muốn chỉ vào thanh máu, thêm vào Health Bar node:
-	  add_to_group("health_bar")
-	- Nếu muốn chỉ vào viên exp đầu tiên:
-	  add_to_group("exp_gem")
+	Ví dụ sử dụng:
+	  add_to_group("health_bar") trong node cần chỉ
+	  show_arrow_to_target("health_bar")
 	"""
 	# Tìm node target trong scene
 	var target = get_tree().get_first_node_in_group(target_name)
+	
 	if target:
+		var target_position: Vector2
+		
+		# Xử lý khác nhau cho Control node (UI) và Node2D (game object)
+		if target is Control:
+			# Với Control node: lấy vị trí THỰC TẾ trên màn hình
+			# get_global_rect() trả về Rect2 với position và size THỰC TẾ sau khi tính anchor, margin
+			var rect = target.get_global_rect()
+			# Lấy điểm giữa trên cùng của rect
+			target_position = Vector2(rect.position.x + rect.size.x / 2, rect.position.y)
+			
+		elif target is Node2D:
+			# Với Node2D: dùng global_position như bình thường
+			target_position = target.global_position
+		else:
+			# Fallback cho các loại node khác
+			target_position = target.global_position if "global_position" in target else Vector2.ZERO
+		
+		# Đặt arrow ở trên target
+		arrow.global_position = target_position + Vector2(0, -80)
 		arrow.visible = true
 		
-		# Nếu target là Control node (UI), dùng global_position
-		if target is Control:
-			arrow.global_position = target.global_position + Vector2(0, -60)
-		# Nếu target là Node2D (game object)
-		elif target is Node2D:
-			# Chuyển từ world position sang screen position
-			var camera = get_viewport().get_camera_2d()
-			if camera:
-				var screen_pos = camera.get_screen_center_position()
-				var offset = target.global_position - screen_pos
-				arrow.position = get_viewport().get_visible_rect().size / 2 + offset + Vector2(0, -60)
-			else:
-				# Nếu không có camera, dùng global_position trực tiếp
-				arrow.global_position = target.global_position + Vector2(0, -60)
+		# Debug để kiểm tra
+		print("🎯 Arrow pointing to: ", target.name)
+		print("   Target rect: ", target.get_global_rect() if target is Control else "N/A")
+		print("   Arrow position: ", arrow.global_position)
 		
-		# Animation bounce cho arrow
+		# Animation bounce đơn giản
 		var tween = create_tween().set_loops()
+		tween.set_trans(Tween.TRANS_SINE)
+		tween.set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(arrow, "position:y", arrow.position.y - 15, 0.5)
 		tween.tween_property(arrow, "position:y", arrow.position.y, 0.5)
 	else:
@@ -228,18 +230,51 @@ func show_arrow_to_target(target_name: String):
 		print("⚠️ Không tìm thấy target: ", target_name)
 
 # Save/Load tutorial completion
+const SAVE_PATH = "user://tutorial_completed.save"
+
 func has_completed_tutorial() -> bool:
-	return FileAccess.file_exists("user://tutorial_completed.save")
+	return FileAccess.file_exists(SAVE_PATH)
 
 func save_tutorial_completion():
-	var file = FileAccess.open("user://tutorial_completed.save", FileAccess.WRITE)
-	file.store_string("completed")
-	file.close()
+	var save_data = {
+		"completed": true,
+		"completed_at": Time.get_datetime_string_from_system(),
+		"version": "1.0"
+	}
+	
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(save_data, "\t"))  # Thêm indent cho dễ đọc
+		file.close()
+		print("💾 Tutorial completion saved to: ", ProjectSettings.globalize_path(SAVE_PATH))
+	else:
+		print("❌ Failed to save tutorial completion")
+
+func reset_tutorial():
+	"""Xóa file save để chơi lại tutorial"""
+	if FileAccess.file_exists(SAVE_PATH):
+		var global_path = ProjectSettings.globalize_path(SAVE_PATH)
+		DirAccess.remove_absolute(global_path)
+		print("🗑️ Tutorial save deleted")
+		
+		# Restart tutorial
+		is_tutorial_active = false
+		tutorial_completed = false
+		current_step_index = 0
+		start_tutorial()
+	else:
+		print("⚠️ No tutorial save file found")
+
+func open_save_folder():
+	"""Mở thư mục chứa file save"""
+	var path = ProjectSettings.globalize_path("user://")
+	OS.shell_open(path)
+	print("📁 Opened save folder: ", path)
 
 func skip_tutorial():
 	"""Cho phép người chơi bỏ qua tutorial"""
 	is_tutorial_active = false
 	hide_tutorial()
-	get_tree().paused = false
+	Global.game_paused = false
 	save_tutorial_completion()
 	tutorial_finished.emit()

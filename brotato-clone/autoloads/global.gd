@@ -6,6 +6,7 @@ signal on_create_heal_text(unit: Node2D, heal: float)
 
 signal on_upgrade_selected
 signal on_enemy_died(enemy: Enemy)
+signal game_paused_changed(is_paused: bool)
 
 const FLASH_MATERIAL = preload("uid://coi4nu8ohpgeo")
 const FLOATING_TEXT_SCENE = preload("uid://bmy2qb3fuvnts")
@@ -23,6 +24,8 @@ const MAIN_MENU_PATH = "res://scenes/menu/main_menu.tscn"
 const ARENA_SCENE_PATH = "res://scenes/arena/arena.tscn"
 
 const TUTORIAL_GROUP = "tutorial_manager"
+const JOYSTICK_GROUP = "joystick"
+
 
 const UPGRADE_PROBABILITY_CONFIG = {
 	"rare": { "start_wave": 2, "base_multi": 0.06 },
@@ -60,8 +63,11 @@ enum UpgradeTier{
 
 var coins: int = 500
 var player: Player
-var game_paused := false
-
+var game_paused := false:
+	set(value):
+		game_paused = value
+		game_paused_changed.emit(value)
+		
 var main_player_selected: UnitStats
 var main_weapon_selected: ItemWeapon
 
