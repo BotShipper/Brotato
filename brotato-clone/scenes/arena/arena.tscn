@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjhraywhhpn3h"]
+[gd_scene load_steps=25 format=3 uid="uid://bjhraywhhpn3h"]
 
 [ext_resource type="Texture2D" uid="uid://cy4xfx762bxgb" path="res://assets/sprites/BG.png" id="1_5tue2"]
 [ext_resource type="Script" uid="uid://fylssyuoxjey" path="res://scenes/arena/arena.gd" id="1_asdgj"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://dpgg6c8kxhpvl" path="res://resources/units/enemies/stats_enemy_chaser_mid.tres" id="12_rhjlh"]
 [ext_resource type="Resource" uid="uid://bot26fxolfx55" path="res://resources/units/enemies/stats_enemy_chaser_slow.tres" id="13_tp84n"]
 [ext_resource type="Resource" uid="uid://bh5b84v18vdto" path="res://resources/units/enemies/stats_enemy_shooter.tres" id="14_8kk48"]
+[ext_resource type="Script" uid="uid://pomrljk0uyt6" path="res://scenes/arena/wave_time_label.gd" id="15_gy0qm"]
 [ext_resource type="PackedScene" uid="uid://yaqp467r4aub" path="res://scenes/ui/coins_bag/coins_bag.tscn" id="15_rhjlh"]
 [ext_resource type="PackedScene" uid="uid://d88phqluv8gk" path="res://scenes/ui/upgrade_panel/upgrade_panel.tscn" id="15_w4nra"]
 [ext_resource type="PackedScene" uid="uid://ck8hfiuq31k2l" path="res://scenes/ui/shop_panel/shop_panel.tscn" id="16_t3vx8"]
@@ -87,6 +88,7 @@ offset_bottom = 119.333
 grow_horizontal = 2
 text = "10"
 label_settings = SubResource("LabelSettings_2ml6w")
+script = ExtResource("15_gy0qm")
 
 [node name="UpgradePanel" parent="GameUI" instance=ExtResource("15_w4nra")]
 unique_name_in_owner = true

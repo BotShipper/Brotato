@@ -78,7 +78,7 @@ func _ready() -> void:
 		hide()
 		
 	# Tạo group đễ dễ truy cập
-	add_to_group(Global.JOYSTICK_GROUP)
+	add_to_group(Global.JOYSTICK_TAG)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:

@@ -24,7 +24,11 @@ const MAIN_MENU_PATH = "res://scenes/menu/main_menu.tscn"
 const ARENA_SCENE_PATH = "res://scenes/arena/arena.tscn"
 
 const TUTORIAL_GROUP = "tutorial_manager"
-const JOYSTICK_GROUP = "joystick"
+const JOYSTICK_TAG = "joystick"
+const COINS_TAG = "coins"
+const TIMER_TAG = "timer"
+const UPGRADE_TAG = "upgrade"
+const SHOP_TAG = "shop"
 
 
 const UPGRADE_PROBABILITY_CONFIG = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://d88phqluv8gk"]
+[gd_scene load_steps=54 format=3 uid="uid://d88phqluv8gk"]
 
 [ext_resource type="Script" uid="uid://bnqmmbbvxupea" path="res://scenes/ui/upgrade_panel/upgrade_panel.gd" id="1_l8hix"]
 [ext_resource type="Script" uid="uid://0kfyb4qfa66q" path="res://resources/items/upgrades/item_upgrade.gd" id="2_aghkh"]
@@ -50,6 +50,7 @@
 [ext_resource type="Resource" uid="uid://c1t0jhsjhjgio" path="res://resources/items/upgrades/data/speed/upgrade_speed_12.tres" id="46_v7mxw"]
 [ext_resource type="Resource" uid="uid://bk16w8e7dx5um" path="res://resources/items/upgrades/data/speed/upgrade_speed_15.tres" id="47_eyac8"]
 [ext_resource type="Resource" uid="uid://6wjvxltxc0mh" path="res://resources/items/upgrades/data/speed/upgrade_speed_20.tres" id="48_4hygx"]
+[ext_resource type="Script" uid="uid://blwq0q8jop3w8" path="res://scenes/ui/upgrade_panel/items_container.gd" id="49_k56t5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oekas"]
 content_margin_left = 0.0
@@ -104,6 +105,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 24
+script = ExtResource("49_k56t5")
 
 [node name="UpgradeCard" parent="MarginContainer/HBoxContainer/VBoxContainer/ItemsContainer" instance=ExtResource("2_vxs30")]
 layout_mode = 2

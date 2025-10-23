@@ -7,6 +7,17 @@ class_name UpgradeCard
 @onready var item_name: Label = %Name
 @onready var item_description: Label = %Description
 
+func _ready() -> void:
+	add_to_group(Global.UPGRADE_TAG)
+	
+	# Debug để kiểm tra vị trí
+	await get_tree().process_frame
+	print("🎴 UpgradeCard ", name)
+	print("   Local position: ", position)
+	print("   Global position: ", global_position)
+	print("   Global rect: ", get_global_rect())
+	print("   Visible: ", visible)
+
 func _set_data(value: ItemUpgrade) -> void:
 	item_data = value
 	item_icon.texture = item_data.item_icon

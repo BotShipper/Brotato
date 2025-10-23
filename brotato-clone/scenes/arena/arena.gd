@@ -97,6 +97,9 @@ func spawn_coins(enemy: Enemy) -> void:
 	gold_instance.global_position = spawn_pos
 	gold_instance.value = enemy.stats.gold_drop
 	call_deferred("add_child", gold_instance)
+	
+	# ✅ Add coin vào group (không phải parent)
+	gold_instance.call_deferred("add_to_group", Global.COINS_TAG)
 
 
 func _on_create_block_text(unit: Node2D) -> void:
@@ -131,6 +134,8 @@ func _on_spawner_on_wave_completed() -> void:
 		sub_screen.show_win_screen()
 	else: 
 		show_upgrades()
+		tutorial_manager.check_step_condition("wave_complete")
+		
 
 
 func _on_shop_panel_on_shop_next_wave() -> void:

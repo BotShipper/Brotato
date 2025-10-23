@@ -86,4 +86,6 @@ func _on_hurtbox_component_on_damaged(hitbox: HitboxComponent) -> void:
 
 
 func _on_health_component_on_unit_died() -> void:
+	var tutorial = get_tree().get_first_node_in_group(Global.TUTORIAL_GROUP)
+	tutorial.check_step_condition("kill_enemy")
 	Global.on_enemy_died.emit(self)

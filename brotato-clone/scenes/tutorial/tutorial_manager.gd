@@ -46,44 +46,45 @@ func setup_tutorial_steps():
 			"id": "welcome",
 			"message": "Chào mừng đến với game! Sử dụng WASD hoặc phím mũi tên để di chuyển.",
 			"condition": "move",
-			"arrow_target": "joystick",
+			"arrow_target": Global.JOYSTICK_TAG,
 			"pause_game": true
 		},
 		{
 			"id": "auto_attack",
 			"message": "Tốt lắm! Vũ khí của bạn sẽ tự động tấn công kẻ địch gần nhất.",
 			"condition": "wait",
-			"wait_time": 3.0,
+			"wait_time": 5.0,
 			"arrow_target": null,
 			"pause_game": false
 		},
 		{
-			"id": "collect_exp",
-			"message": "Hạ gục kẻ địch để nhận kinh nghiệm (XP). Đi thu thập chúng!",
-			"condition": "collect_exp",
-			"arrow_target": "exp_gem",
-			"pause_game": false
-		},
-		{
-			"id": "level_up",
-			"message": "Khi lên cấp, bạn có thể chọn nâng cấp vũ khí hoặc chỉ số!",
-			"condition": "level_up",
+			"id": "kill_enemy",
+			"message": "Hạ gục kẻ địch để nhận đồng xu và thu thập chúng",
+			"condition": "wait",
+			"wait_time": 5.0,
 			"arrow_target": null,
-			"pause_game": true
+			"pause_game": false
 		},
 		{
 			"id": "survive_wave",
 			"message": "Hãy sống sót qua từng đợt quái! Thời gian còn lại hiển thị ở góc trên.",
 			"condition": "wave_complete",
-			"arrow_target": "timer",
+			"arrow_target": Global.TIMER_TAG,
+			"pause_game": false
+		},
+		{
+			"id": "upgrade",
+			"message": "Giữa các đợt, bạn có thể chọn nâng cấp cho nhân vật!",
+			"condition": "upgrade_open",
+			"arrow_target": Global.UPGRADE_TAG,
 			"pause_game": false
 		},
 		{
 			"id": "shop",
-			"message": "Giữa các đợt, bạn có thể mua vũ khí và nâng cấp tại cửa hàng!",
+			"message": "Bạn có thể mua vũ khí và nâng cấp tại cửa hàng!",
 			"condition": "shop_open",
-			"arrow_target": null,
-			"pause_game": true
+			"arrow_target": Global.SHOP_TAG,
+			"pause_game": false
 		},
 		{
 			"id": "complete",
@@ -184,47 +185,111 @@ func hide_tutorial():
 func show_arrow_to_target(target_name: String):
 	"""
 	Hiển thị mũi tên chỉ vào một đối tượng cụ thể.
+	Tự động chọn vị trí tốt nhất (trên/dưới/trái/phải) để luôn hiển thị trong viewport.
 	
 	Ví dụ sử dụng:
 	  add_to_group("health_bar") trong node cần chỉ
 	  show_arrow_to_target("health_bar")
 	"""
+	# Đợi nhiều frame để đảm bảo layout đã được cập nhật hoàn toàn
+	# Đặc biệt quan trọng khi target nằm trong panel vừa mới hiển thị
+	for i in range(3):
+		await get_tree().process_frame
+	
 	# Tìm node target trong scene
 	var target = get_tree().get_first_node_in_group(target_name)
 	
 	if target:
 		var target_position: Vector2
+		var target_rect: Rect2
 		
 		# Xử lý khác nhau cho Control node (UI) và Node2D (game object)
 		if target is Control:
-			# Với Control node: lấy vị trí THỰC TẾ trên màn hình
-			# get_global_rect() trả về Rect2 với position và size THỰC TẾ sau khi tính anchor, margin
-			var rect = target.get_global_rect()
-			# Lấy điểm giữa trên cùng của rect
-			target_position = Vector2(rect.position.x + rect.size.x / 2, rect.position.y)
-			
+			target_rect = target.get_global_rect()
+			# Lấy điểm giữa của rect
+			target_position = target_rect.get_center()
 		elif target is Node2D:
-			# Với Node2D: dùng global_position như bình thường
 			target_position = target.global_position
+			# Tạo rect giả cho Node2D (kích thước 50x50 cho đơn giản)
+			target_rect = Rect2(target_position - Vector2(25, 25), Vector2(50, 50))
 		else:
-			# Fallback cho các loại node khác
 			target_position = target.global_position if "global_position" in target else Vector2.ZERO
+			target_rect = Rect2(target_position - Vector2(25, 25), Vector2(50, 50))
 		
-		# Đặt arrow ở trên target
-		arrow.global_position = target_position + Vector2(0, -80)
+		# Lấy kích thước viewport
+		var viewport_size = get_viewport().get_visible_rect().size
+		
+		# Khoảng cách an toàn từ mép màn hình
+		var safe_margin = 200
+		var arrow_offset = 50  # Khoảng cách từ target đến arrow
+		
+		# Tính khoảng trống ở 4 hướng
+		var space_top = target_position.y
+		var space_bottom = viewport_size.y - target_position.y
+		var space_left = target_position.x
+		var space_right = viewport_size.x - target_position.x
+		
+		# Chọn vị trí tốt nhất dựa trên khoảng trống
+		var arrow_pos: Vector2
+		var rotation: float
+		var animation_axis: String
+		
+		# Ưu tiên: Dưới > Trên > Phải > Trái
+		if space_bottom > safe_margin + arrow_offset:
+			# Đặt arrow ở dưới, chỉ lên
+			arrow_pos = Vector2(target_position.x, target_rect.position.y + target_rect.size.y + arrow_offset)
+			rotation = -90
+			animation_axis = "y"
+		elif space_top > safe_margin + arrow_offset:
+			# Đặt arrow ở trên, chỉ xuống
+			arrow_pos = Vector2(target_position.x, target_rect.position.y - arrow_offset)
+			rotation = 90
+			animation_axis = "y"
+		elif space_right > safe_margin + arrow_offset:
+			# Đặt arrow ở phải, chỉ sang trái
+			arrow_pos = Vector2(target_rect.position.x + target_rect.size.x + arrow_offset, target_position.y)
+			rotation = 180
+			animation_axis = "x"
+		elif space_left > safe_margin + arrow_offset:
+			# Đặt arrow ở trái, chỉ sang phải
+			arrow_pos = Vector2(target_rect.position.x - arrow_offset, target_position.y)
+			rotation = 0
+			animation_axis = "x"
+		else:
+			# Không đủ chỗ ở bất kỳ hướng nào, đặt ở giữa màn hình
+			arrow_pos = viewport_size / 2
+			rotation = 180
+			animation_axis = "y"
+		
+		# Đảm bảo arrow luôn trong viewport
+		arrow_pos.x = clamp(arrow_pos.x, safe_margin * 0.5, viewport_size.x - safe_margin * 0.5)
+		arrow_pos.y = clamp(arrow_pos.y, safe_margin * 0.5, viewport_size.y - safe_margin * 0.5)
+		
+		arrow.global_position = arrow_pos
+		arrow.rotation_degrees = rotation
 		arrow.visible = true
 		
 		# Debug để kiểm tra
 		print("🎯 Arrow pointing to: ", target.name)
-		print("   Target rect: ", target.get_global_rect() if target is Control else "N/A")
+		print("   Target position: ", target_position)
 		print("   Arrow position: ", arrow.global_position)
+		print("   Arrow rotation: ", rotation, "°")
+		print("   Spaces - Top: %.0f, Bottom: %.0f, Left: %.0f, Right: %.0f" % [space_top, space_bottom, space_left, space_right])
 		
-		# Animation bounce đơn giản
+		# Animation bounce thông minh theo trục phù hợp
 		var tween = create_tween().set_loops()
 		tween.set_trans(Tween.TRANS_SINE)
 		tween.set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(arrow, "position:y", arrow.position.y - 15, 0.5)
-		tween.tween_property(arrow, "position:y", arrow.position.y, 0.5)
+		
+		var bounce_distance = 15
+		if animation_axis == "y":
+			var base_y = arrow.position.y
+			tween.tween_property(arrow, "position:y", base_y + (bounce_distance if rotation == 180 else -bounce_distance), 0.5)
+			tween.tween_property(arrow, "position:y", base_y, 0.5)
+		else:  # animation_axis == "x"
+			var base_x = arrow.position.x
+			tween.tween_property(arrow, "position:x", base_x + (bounce_distance if rotation == 90 else -bounce_distance), 0.5)
+			tween.tween_property(arrow, "position:x", base_x, 0.5)
 	else:
 		arrow.visible = false
 		print("⚠️ Không tìm thấy target: ", target_name)

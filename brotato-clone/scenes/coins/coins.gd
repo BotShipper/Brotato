@@ -9,6 +9,7 @@ var target_screen_pos := Vector2.INF
 var target_pos: Vector2
 var collected := false
 
+
 func _process(delta: float) -> void:
 	if collected and target_screen_pos == Vector2.INF:
 		if is_instance_valid(Global.player):
@@ -26,6 +27,10 @@ func _process(delta: float) -> void:
 
 func add_coins() -> void:
 	Global.coins += value
+	
+	var tutorial = get_tree().get_first_node_in_group(Global.TUTORIAL_GROUP)
+	tutorial.check_step_condition("collect_coins")
+	
 	queue_free()
 
 
