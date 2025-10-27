@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://ck8hfiuq31k2l"]
+[gd_scene load_steps=63 format=3 uid="uid://ck8hfiuq31k2l"]
 
 [ext_resource type="Script" uid="uid://docled11bfwhl" path="res://scenes/ui/shop_panel/shop_panel.gd" id="1_chkkr"]
 [ext_resource type="Script" uid="uid://b4nfc1us3wfgc" path="res://resources/items/item_base.gd" id="2_pk1f0"]
@@ -55,6 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://d4ahqxku4821t" path="res://scenes/ui/item_card/item_card.tscn" id="49_rqkor"]
 [ext_resource type="Resource" uid="uid://bucmp2pp44prs" path="res://resources/items/passives/data/passive_rage.tres" id="50_2vdj1"]
 [ext_resource type="PackedScene" uid="uid://yaqp467r4aub" path="res://scenes/ui/coins_bag/coins_bag.tscn" id="50_kche8"]
+[ext_resource type="Script" uid="uid://b1dfdieb4cop6" path="res://scenes/ui/shop_panel/new_wave_button.gd" id="55_5i27n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uw7t7"]
 content_margin_left = 0.0
@@ -343,6 +344,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_ws1b3")
 text = "next wave"
+script = ExtResource("55_5i27n")
 
 [node name="CombineButton" type="Button" parent="MarginContainer/Control/VBoxContainer"]
 unique_name_in_owner = true

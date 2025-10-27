@@ -29,6 +29,9 @@ func load_shop(current_wave: int) -> void:
 		card_instance.on_item_purchased.connect(_on_item_purchased)
 		items_container.add_child(card_instance)
 		card_instance.shop_item = shop_item
+	
+	var tutorial = get_tree().get_first_node_in_group(Global.TUTORIAL_GROUP)
+	tutorial.check_step_condition("upgrade_open")
 
 
 func create_item_card() -> ItemCard:
@@ -45,6 +48,12 @@ func create_item_weapon(weapon: ItemWeapon) -> void:
 
 func _on_new_wave_button_pressed() -> void:
 	SoundManager.play_sound(SoundManager.Sound.UI)
+	
+	var tutorial = get_tree().get_first_node_in_group(Global.TUTORIAL_GROUP)
+	if not tutorial && not tutorial.tutorial_completed:
+		tutorial.check_step_condition("complete")
+		return
+	
 	on_shop_next_wave.emit()
 
 
@@ -61,6 +70,7 @@ func _on_item_purchased(item: ItemBase) -> void:
 		passives_container.add_child(item_card)
 		var passive := item as ItemPassive
 		passive.apply_passive()
+	
 	
 	item_card.item = item
 

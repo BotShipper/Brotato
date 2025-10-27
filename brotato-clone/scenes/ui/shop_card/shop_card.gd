@@ -11,6 +11,9 @@ signal on_item_purchased(item: ItemBase)
 @onready var item_description: RichTextLabel = %ItemDescription
 @onready var coins_label: Label = %CoinsLabel
 
+func _ready() -> void:
+	add_to_group(Global.SHOP_TAG)
+
 func _set_shop_item(value: ItemBase) -> void:
 	shop_item = value
 	item_icon.texture = value.item_icon
@@ -33,3 +36,6 @@ func _on_buy_buttom_pressed() -> void:
 		Global.coins -= shop_item.item_cost
 		on_item_purchased.emit(shop_item)
 		queue_free()
+	
+	var tutorial = get_tree().get_first_node_in_group(Global.TUTORIAL_GROUP)
+	tutorial.check_step_condition("shop_open")

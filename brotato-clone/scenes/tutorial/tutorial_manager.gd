@@ -44,54 +44,53 @@ func setup_tutorial_steps():
 	tutorial_steps = [
 		{
 			"id": "welcome",
-			"message": "Chào mừng đến với game! Sử dụng WASD hoặc phím mũi tên để di chuyển.",
+			"message": "Welcome to the game! Use WASD or arrow keys to move.",
 			"condition": "move",
 			"arrow_target": Global.JOYSTICK_TAG,
 			"pause_game": true
 		},
 		{
 			"id": "auto_attack",
-			"message": "Tốt lắm! Vũ khí của bạn sẽ tự động tấn công kẻ địch gần nhất.",
+			"message": "Well done! Your weapon will automatically attack the nearest enemy.",
 			"condition": "wait",
-			"wait_time": 5.0,
+			"wait_time": 3.0,
 			"arrow_target": null,
 			"pause_game": false
 		},
 		{
 			"id": "kill_enemy",
-			"message": "Hạ gục kẻ địch để nhận đồng xu và thu thập chúng",
+			"message": "Defeat enemies to earn coins and collect them",
 			"condition": "wait",
-			"wait_time": 5.0,
+			"wait_time": 3.0,
 			"arrow_target": null,
 			"pause_game": false
 		},
 		{
 			"id": "survive_wave",
-			"message": "Hãy sống sót qua từng đợt quái! Thời gian còn lại hiển thị ở góc trên.",
+			"message": "Survive each wave of monsters! Remaining time is displayed at the top.",
 			"condition": "wave_complete",
 			"arrow_target": Global.TIMER_TAG,
 			"pause_game": false
 		},
 		{
 			"id": "upgrade",
-			"message": "Giữa các đợt, bạn có thể chọn nâng cấp cho nhân vật!",
+			"message": "Between waves, you can choose upgrades for your character!",
 			"condition": "upgrade_open",
 			"arrow_target": Global.UPGRADE_TAG,
 			"pause_game": false
 		},
 		{
 			"id": "shop",
-			"message": "Bạn có thể mua vũ khí và nâng cấp tại cửa hàng!",
+			"message": "You can buy weapons and upgrades at the shop!",
 			"condition": "shop_open",
 			"arrow_target": Global.SHOP_TAG,
 			"pause_game": false
 		},
 		{
 			"id": "complete",
-			"message": "Tuyệt vời! Bây giờ bạn đã sẵn sàng chiến đấu! Chúc may mắn!",
-			"condition": "wait",
-			"wait_time": 3.0,
-			"arrow_target": null,
+			"message": "Excellent! You're now ready to fight! Good luck!",
+			"condition": "complete",
+			"arrow_target": Global.COMPLETE_TAG,
 			"pause_game": false
 		}
 	]
@@ -110,7 +109,7 @@ func show_current_step():
 	
 	# Hiển thị message
 	message_label.text = step.message
-	progress_label.text = "Bước %d/%d" % [current_step_index + 1, tutorial_steps.size()]
+	progress_label.text = "Step %d/%d" % [current_step_index + 1, tutorial_steps.size()]
 	
 	# Show tutorial panel
 	tutorial_panel.visible = true

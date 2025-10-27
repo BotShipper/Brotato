@@ -29,6 +29,7 @@ const COINS_TAG = "coins"
 const TIMER_TAG = "timer"
 const UPGRADE_TAG = "upgrade"
 const SHOP_TAG = "shop"
+const COMPLETE_TAG = "complete"
 
 
 const UPGRADE_PROBABILITY_CONFIG = {
