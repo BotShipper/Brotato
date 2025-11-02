@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgucq2pno7b11"]
+[gd_scene load_steps=8 format=3 uid="uid://fnyovsfc2fn3"]
 
-[ext_resource type="PackedScene" uid="uid://bblfm255mu3hj" path="res://scenes/unit/enemy/enemy_chaser_slow.tscn" id="1_l5su8"]
+[ext_resource type="PackedScene" uid="uid://b4e7q33xixefa" path="res://scenes/unit/enemy/enemy_chaser_slow.tscn" id="1_l5su8"]
 [ext_resource type="Texture2D" uid="uid://emsi6ifyt0vf" path="res://assets/sprites/Enemies/Enemy_5.png" id="2_h2eap"]
-[ext_resource type="Resource" uid="uid://d4e0um5866rlx" path="res://resources/units/enemies/stats_enemy_charger.tres" id="2_sgnud"]
-[ext_resource type="Script" uid="uid://dnhbw3tlr6vdp" path="res://scenes/unit/enemy/charge_behavior.gd" id="4_sgnud"]
+[ext_resource type="Resource" uid="uid://cxvbykjlw4gle" path="res://resources/units/enemies/stats_enemy_charger.tres" id="2_sgnud"]
+[ext_resource type="Script" uid="uid://b7pooscks25b2" path="res://scenes/unit/enemy/charge_behavior.gd" id="4_sgnud"]
 
 [sub_resource type="Animation" id="Animation_eyr1q"]
 length = 0.001

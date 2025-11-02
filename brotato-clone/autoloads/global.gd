@@ -33,15 +33,15 @@ const COMPLETE_TAG = "complete"
 
 
 const UPGRADE_PROBABILITY_CONFIG = {
-	"rare": { "start_wave": 2, "base_multi": 0.06 },
-	"epic": { "start_wave": 4, "base_multi": 0.02 },
-	"legendary": { "start_wave": 7, "base_multi": 0.0023 },
+	"rare": { "start_wave": 1, "base_multi": 0.3 },
+	"epic": { "start_wave": 2, "base_multi": 0.2 },
+	"legendary": { "start_wave": 3, "base_multi": 0.1 },
 }
 
 const SHOP_PROBABILITY_CONFIG = {
-	"rare": { "start_wave": 2, "base_multi": 0.10 },
-	"epic": { "start_wave": 4, "base_multi": 0.06 },
-	"legendary": { "start_wave": 7, "base_multi": 0.01 },
+	"rare": { "start_wave": 1, "base_multi": 0.3 },
+	"epic": { "start_wave": 2, "base_multi": 0.2 },
+	"legendary": { "start_wave": 3, "base_multi": 0.1 },
 }
 
 
@@ -114,15 +114,15 @@ func calculate_tier_probability(current_wave: int, config: Dictionary) -> Array[
 	
 	# RARE: Starts increasing from wave 2 (0% at wave 1)
 	if current_wave >= config.rare.start_wave:
-		rare_chance = min(1.0, (current_wave - 1) * config.rare.base_multi)
+		rare_chance = min(1.0, (current_wave) * config.rare.base_multi)
 	
 	# EPIC: Starts increasing from wave 4 (0% at wave 3)
 	if current_wave >= config.epic.start_wave:
-		epic_chance = min(1.0, (current_wave - 3) * config.epic.base_multi)
+		epic_chance = min(1.0, (current_wave - 1) * config.epic.base_multi)
 	
 	# LEGENDARY: Starts increasing from wave 7 (0% at wave 6)
 	if current_wave >= config.legendary.start_wave:
-		legendary_chance = min(1.0, (current_wave - 6) * config.legendary.base_multi)
+		legendary_chance = min(1.0, (current_wave - 2) * config.legendary.base_multi)
 	
 	# Player luck increases the chance of finding higher tiers.
 	# Example: 10 luck = 10% chance = 1.1 multi

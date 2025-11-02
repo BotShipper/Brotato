@@ -33,7 +33,7 @@ grow_vertical = 2
 [node name="Virtual Joystick" parent="LeftSide/MarginContainer" instance=ExtResource("1_vdgtm")]
 layout_mode = 2
 pressed_color = Color(0.2526132, 0.5134868, 0.36757272, 1)
-clampzone_size = 150.0
+clampzone_size = 100.0
 action_left = "move_left"
 action_right = "move_right"
 action_up = "move_up"
