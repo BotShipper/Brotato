@@ -38,3 +38,12 @@ func heal(amount: float) -> void:
 
 func die() -> void:
 	owner.queue_free()
+	print("End1")
+
+	if owner.is_in_group("player"):
+		Global.game_paused = true
+		var sub_screen = get_tree().get_first_node_in_group("sub_screen")
+		print("End2")
+		if sub_screen:
+			print("End3")
+			sub_screen.show_win_screen(false)

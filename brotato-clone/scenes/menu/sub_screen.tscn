@@ -7,7 +7,7 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4dfpd"]
 font_size = 72
-font_color = Color(1, 1, 0, 1)
+font_color = Color(1, 0, 0, 1)
 
 [node name="SubScreen" type="Panel"]
 visible = false

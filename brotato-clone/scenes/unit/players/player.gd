@@ -22,6 +22,7 @@ func _ready() -> void:
 	super._ready()
 	dash_timer.wait_time = dash_duration
 	dash_cooldown_timer.wait_time = dash_cooldown
+	add_to_group("player")
 
 
 func _process(delta: float) -> void:

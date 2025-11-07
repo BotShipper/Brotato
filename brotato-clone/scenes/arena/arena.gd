@@ -29,6 +29,7 @@ func _ready() -> void:
 	
 	# Tạo group đễ dễ truy cập
 	tutorial_manager.add_to_group(Global.TUTORIAL_GROUP)
+	sub_screen.add_to_group("sub_screen")
 	
 	# Connect signals
 	tutorial_manager.tutorial_finished.connect(_on_tutorial_finished)
@@ -131,7 +132,7 @@ func _on_spawner_on_wave_completed() -> void:
 	await get_tree().create_timer(1.0).timeout
 	if not spawner.check_wave_data(spawner.wave_index + 1):
 		print("End")
-		sub_screen.show_win_screen()
+		sub_screen.show_win_screen(true)
 	else: 
 		show_upgrades()
 		tutorial_manager.check_step_condition("wave_complete")

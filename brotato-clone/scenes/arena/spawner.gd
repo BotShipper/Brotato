@@ -30,7 +30,6 @@ func check_wave_data(wave_current: int) -> bool:
 func start_wave() -> void:
 	current_wave_data = find_wave_data()
 	if not current_wave_data:
-		printerr("No valid wave.")
 		spawn_timer.stop()
 		wave_timer.stop()
 		return
@@ -50,10 +49,8 @@ func set_spawn_timer() -> void:
 			var max_t := current_wave_data.max_spawn_time
 			spawn_timer.wait_time = randf_range(min_t, max_t)
 	
-	print("set_spawn_timer ", spawn_timer)
 	
 	if spawn_timer.is_stopped():
-		print("set_spawn_timer success", spawn_timer)
 		spawn_timer.paused = false
 		spawn_timer.start()
 
@@ -63,11 +60,8 @@ func get_random_spawn_position() -> Vector2:
 	var random_y := randf_range(-spawn_area_size.y, spawn_area_size.y)
 	return Vector2(random_x, random_y)
 
-var i := 0
 func spawn_enemy() -> void:
 	var enemy_scene := current_wave_data.get_random_unit_scene() as PackedScene
-	i = i+1
-	print("%d ", i, " ", enemy_scene)
 	if enemy_scene:
 		var spawn_pos := get_random_spawn_position()
 		
@@ -109,7 +103,6 @@ func get_wave_timer_text() -> String:
 
 
 func _on_spawn_timer_timeout() -> void:
-	printerr("_on_spawn_timer_timeout")
 	if not current_wave_data or wave_timer.is_stopped():
 		spawn_timer.stop()
 		return
