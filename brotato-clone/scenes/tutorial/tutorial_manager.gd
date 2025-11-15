@@ -25,7 +25,6 @@ var is_started = false
 func _ready():
 	var save_path = ProjectSettings.globalize_path("user://")
 	print("📁 Thư mục save: ", save_path)
-	print("📄 File tutorial: ", save_path + "tutorial_completed.save")
 	
 	hide_tutorial()
 
@@ -47,6 +46,13 @@ func setup_tutorial_steps():
 			"message": "Welcome to the game! Use WASD or arrow keys to move.",
 			"condition": "move",
 			"arrow_target": Global.JOYSTICK_TAG,
+			"pause_game": true
+		},
+		{
+			"id": "dash",
+			"message": "You can dash to dodge.",
+			"condition": "dash",
+			"arrow_target": Global.DASH_TAG,
 			"pause_game": true
 		},
 		{

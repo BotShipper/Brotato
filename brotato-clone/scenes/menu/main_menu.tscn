@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cb10h88yku4ja"]
+[gd_scene load_steps=12 format=3 uid="uid://cb10h88yku4ja"]
 
 [ext_resource type="Script" uid="uid://jvmbhcenwotr" path="res://scenes/menu/main_menu.gd" id="1_3rkf3"]
 [ext_resource type="Texture2D" uid="uid://cd5miclta1xlb" path="res://assets/download/PC _ Computer - Brotato - Miscellaneous - Title Screen.png" id="1_nl8w3"]
@@ -24,6 +24,12 @@ atlas = ExtResource("1_nl8w3")
 [sub_resource type="AtlasTexture" id="AtlasTexture_kiqgm"]
 atlas = SubResource("AtlasTexture_247la")
 region = Rect2(511, 2552, 1048, 272)
+
+[sub_resource type="LabelSettings" id="LabelSettings_247la"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_kiqgm"]
+font_size = 24
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -111,6 +117,26 @@ stream = ExtResource("3_247la")
 volume_db = -30.0
 autoplay = true
 bus = &"Music"
+
+[node name="RecordLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 157.0
+offset_bottom = 60.0
+text = "Record Label"
+label_settings = SubResource("LabelSettings_247la")
+
+[node name="StatsLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 78.0
+offset_right = 189.0
+offset_bottom = 108.208336
+text = "statsLabel"
+label_settings = SubResource("LabelSettings_kiqgm")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]

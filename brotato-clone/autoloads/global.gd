@@ -25,6 +25,7 @@ const ARENA_SCENE_PATH = "res://scenes/arena/arena.tscn"
 
 const TUTORIAL_GROUP = "tutorial_manager"
 const JOYSTICK_TAG = "joystick"
+const DASH_TAG = "dash"
 const COINS_TAG = "coins"
 const TIMER_TAG = "timer"
 const UPGRADE_TAG = "upgrade"

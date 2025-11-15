@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bjhraywhhpn3h"]
+[gd_scene load_steps=25 format=3 uid="uid://bjhraywhhpn3h"]
 
 [ext_resource type="Texture2D" uid="uid://cy4xfx762bxgb" path="res://assets/sprites/BG.png" id="1_5tue2"]
 [ext_resource type="Script" uid="uid://fylssyuoxjey" path="res://scenes/arena/arena.gd" id="1_asdgj"]
@@ -7,11 +7,8 @@
 [ext_resource type="Script" uid="uid://c1r0p6xkr6l1v" path="res://scenes/arena/spawner.gd" id="7_6w4xk"]
 [ext_resource type="Script" uid="uid://bst7pbtwe4mop" path="res://resources/waves/wave_data.gd" id="8_2ml6w"]
 [ext_resource type="Resource" uid="uid://b3ujmw2s2sx6f" path="res://resources/waves/data/wave_1_to_2.tres" id="8_ybinm"]
-[ext_resource type="Resource" uid="uid://bprgswhaf3ehv" path="res://resources/waves/data/wave_2_to_3.tres" id="9_5ilg6"]
 [ext_resource type="Script" uid="uid://dslkq61ggb3ft" path="res://resources/units/unit_stats.gd" id="9_fv88w"]
-[ext_resource type="Resource" uid="uid://bfvtbjvn7carh" path="res://resources/waves/data/wave_3_to_4.tres" id="10_bxbl0"]
 [ext_resource type="Resource" uid="uid://cxvbykjlw4gle" path="res://resources/units/enemies/stats_enemy_charger.tres" id="10_w4nra"]
-[ext_resource type="Resource" uid="uid://vntp60x758pe" path="res://resources/waves/data/wave_4_to_5.tres" id="11_5ilg6"]
 [ext_resource type="Resource" uid="uid://c52c4qj5v27y1" path="res://resources/units/enemies/stats_enemy_chaser_fast.tres" id="11_t3vx8"]
 [ext_resource type="Resource" uid="uid://dpgg6c8kxhpvl" path="res://resources/units/enemies/stats_enemy_chaser_mid.tres" id="12_rhjlh"]
 [ext_resource type="Resource" uid="uid://bot26fxolfx55" path="res://resources/units/enemies/stats_enemy_chaser_slow.tres" id="13_tp84n"]
@@ -52,7 +49,7 @@ script = ExtResource("4_aj7ud")
 
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource("7_6w4xk")
-waves_data = Array[ExtResource("8_2ml6w")]([ExtResource("8_ybinm"), ExtResource("9_5ilg6"), ExtResource("10_bxbl0"), ExtResource("11_5ilg6")])
+waves_data = Array[ExtResource("8_2ml6w")]([ExtResource("8_ybinm")])
 enemy_collection = Array[ExtResource("9_fv88w")]([ExtResource("10_w4nra"), ExtResource("11_t3vx8"), ExtResource("12_rhjlh"), ExtResource("13_tp84n"), ExtResource("14_8kk48")])
 
 [node name="SpawnTimer" type="Timer" parent="Spawner"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3if6e64nlj3c"]
+[gd_scene load_steps=7 format=3 uid="uid://b3if6e64nlj3c"]
 
 [ext_resource type="Script" uid="uid://qe7rjwd5d80i" path="res://scenes/menu/sub_screen.gd" id="1_70g3w"]
 
@@ -9,8 +9,16 @@ bg_color = Color(0, 0, 0, 1)
 font_size = 72
 font_color = Color(1, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_slurr"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_70g3w"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_txd37"]
+font_size = 24
+
 [node name="SubScreen" type="Panel"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,5 +63,35 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 text = "Back menu"
+
+[node name="KillsLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 900.0
+offset_top = 354.0
+offset_right = 1028.0
+offset_bottom = 383.0
+text = "Kill label"
+label_settings = SubResource("LabelSettings_slurr")
+
+[node name="RecordLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 885.0
+offset_top = 403.0
+offset_right = 1060.0
+offset_bottom = 432.0
+text = "record label"
+label_settings = SubResource("LabelSettings_70g3w")
+
+[node name="NewRecordLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 854.0
+offset_top = 450.0
+offset_right = 1088.0
+offset_bottom = 479.0
+text = "New record label"
+label_settings = SubResource("LabelSettings_txd37")
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

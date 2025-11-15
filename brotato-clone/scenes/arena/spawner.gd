@@ -69,6 +69,12 @@ func spawn_enemy() -> void:
 		get_parent().add_child(spawn_anim)
 		spawn_anim.global_position = spawn_pos
 		await spawn_anim.anim_player.animation_finished
+		
+		# ✅ KIỂM TRA PAUSE SAU KHI AWAIT
+		if Global.game_paused:
+			spawn_anim.queue_free()
+			return
+		
 		spawn_anim.queue_free()
 		
 		var enemy_instance := enemy_scene.instantiate() as Enemy
@@ -105,6 +111,11 @@ func get_wave_timer_text() -> String:
 func _on_spawn_timer_timeout() -> void:
 	if not current_wave_data or wave_timer.is_stopped():
 		spawn_timer.stop()
+		return
+		
+	# ✅ NẾU PAUSE, CHỜ VÀ RESTART TIMER
+	if Global.game_paused:
+		spawn_timer.start()  # Restart timer để thử lại sau
 		return
 	
 	spawn_enemy()

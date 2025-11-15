@@ -38,7 +38,6 @@ func heal(amount: float) -> void:
 
 func die() -> void:
 	owner.queue_free()
-	print("End1")
 
 	if owner.is_in_group("player"):
 		Global.game_paused = true

@@ -5,10 +5,13 @@ class_name DashButton
 
 var _is_touch_pressed := false
 var _touch_index := -1
+var has_dash := false
 
 func _ready() -> void:
 	button_down.connect(_on_button_down)
 	button_up.connect(_on_button_up)
+	
+	add_to_group(Global.DASH_TAG)
 
 
 func _input(event: InputEvent) -> void:
@@ -19,6 +22,14 @@ func _input(event: InputEvent) -> void:
 				_touch_index = event.index
 				_press_action()
 				get_viewport().set_input_as_handled()
+				
+				# Kiểm tra chuyển động lần đầu tiên
+				if not has_dash:
+					has_dash = true
+					var tutorial = get_tree().get_first_node_in_group(Global.TUTORIAL_GROUP)
+					if tutorial:
+						tutorial.check_step_condition("dash")
+				
 			elif not event.pressed and event.index == _touch_index:
 				_touch_index = -1
 				_release_action()

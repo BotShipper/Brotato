@@ -47,10 +47,19 @@ func _on_tutorial_finished() -> void:
 
 
 func _on_game_paused_changed(is_paused: bool) -> void:
-	if spawner.spawn_timer and not spawner.spawn_timer.is_stopped():
-		spawner.spawn_timer.paused = is_paused
-	if spawner.wave_timer and not spawner.wave_timer.is_stopped():
-		spawner.wave_timer.paused = is_paused
+	if is_paused:
+		# Pause: dừng các timer
+		if spawner.spawn_timer and not spawner.spawn_timer.is_stopped():
+			spawner.spawn_timer.stop()
+		if spawner.wave_timer and not spawner.wave_timer.is_stopped():
+			spawner.wave_timer.stop()
+	else:
+		# Unpause: tiếp tục các timer
+		if spawner.current_wave_data:
+			if spawner.spawn_timer.is_stopped():
+				spawner.set_spawn_timer()  # Restart spawn timer
+			if spawner.wave_timer.is_stopped():
+				spawner.wave_timer.start()  # Restart wave timer_paused
 
 
 func create_floating_text(unit: Node2D) -> FloatingText:
