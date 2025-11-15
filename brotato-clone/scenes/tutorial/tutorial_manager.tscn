@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://8p24iu8c60jx"]
+[gd_scene load_steps=7 format=3 uid="uid://8p24iu8c60jx"]
 
 [ext_resource type="Script" uid="uid://bk8nqd4lg0ncw" path="res://scenes/tutorial/tutorial_manager.gd" id="1_vxwfl"]
 [ext_resource type="Script" uid="uid://w8k3w63rpajl" path="res://scenes/tutorial/skip_button.gd" id="2_ml2ud"]
 [ext_resource type="Texture2D" uid="uid://cmr4xxqrthts7" path="res://assets/sprites/Projectiles/Projectile_1.png" id="3_pprqe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4onf4"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_ml2ud"]
+font_size = 28
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4onf4"]
 bg_color = Color(0.58679664, 0.3578974, 0.1548725, 1)
@@ -22,7 +28,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -300.0
-offset_top = -200.0
+offset_top = -300.0
 offset_right = 300.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -35,8 +41,8 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -200.0
-offset_right = 200.0
+offset_left = -208.0
+offset_right = 208.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 8
@@ -53,6 +59,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
 text = "step 1/7"
+label_settings = SubResource("LabelSettings_4onf4")
 
 [node name="MessageLabel" type="Label" parent="TutorialPanel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 0)
@@ -60,6 +67,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 18
 text = "Instructional content"
+label_settings = SubResource("LabelSettings_ml2ud")
 autowrap_mode = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TutorialPanel/MarginContainer"]

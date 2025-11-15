@@ -13,6 +13,7 @@ signal on_wave_completed
 var wave_index := 1
 var current_wave_data: WaveData
 var spawned_enemies: Array[Enemy] = []
+var is_wave_active := false  # ✅ Flag để kiểm tra wave đang chạy
 
 
 func find_wave_data() -> WaveData:
@@ -34,6 +35,7 @@ func start_wave() -> void:
 		wave_timer.stop()
 		return
 	
+	is_wave_active = true  # ✅ Đánh dấu wave đang active
 	wave_timer.wait_time = current_wave_data.wave_time
 	wave_timer.start()
 	
@@ -70,8 +72,8 @@ func spawn_enemy() -> void:
 		spawn_anim.global_position = spawn_pos
 		await spawn_anim.anim_player.animation_finished
 		
-		# ✅ KIỂM TRA PAUSE SAU KHI AWAIT
-		if Global.game_paused:
+		# ✅ KIỂM TRA PAUSE HOẶC WAVE ĐÃ KẾT THÚC
+		if Global.game_paused or not is_wave_active:
 			spawn_anim.queue_free()
 			return
 		
@@ -82,7 +84,9 @@ func spawn_enemy() -> void:
 		get_parent().add_child(enemy_instance)
 		spawned_enemies.append(enemy_instance)
 	
-	set_spawn_timer()
+	# ✅ CHỈ SET TIMER NẾU WAVE VẪN ĐANG ACTIVE
+	if is_wave_active:
+		set_spawn_timer()
 
 
 func update_enemies_new_wave() -> void:
@@ -109,10 +113,11 @@ func get_wave_timer_text() -> String:
 
 
 func _on_spawn_timer_timeout() -> void:
-	if not current_wave_data or wave_timer.is_stopped():
+	# ✅ KIỂM TRA WAVE CÒN ACTIVE KHÔNG
+	if not is_wave_active or not current_wave_data or wave_timer.is_stopped():
 		spawn_timer.stop()
 		return
-		
+	
 	# ✅ NẾU PAUSE, CHỜ VÀ RESTART TIMER
 	if Global.game_paused:
 		spawn_timer.start()  # Restart timer để thử lại sau
@@ -122,9 +127,10 @@ func _on_spawn_timer_timeout() -> void:
 
 
 func _on_wave_timer_timeout() -> void:
+	is_wave_active = false  # ✅ Đánh dấu wave đã kết thúc
 	Global.game_paused = true
 	Global.get_harvesting_coins()
+	spawn_timer.stop()  # Dừng spawn timer
 	on_wave_completed.emit()
-	spawn_timer.stop()
 	clear_enemies()
 	update_enemies_new_wave()

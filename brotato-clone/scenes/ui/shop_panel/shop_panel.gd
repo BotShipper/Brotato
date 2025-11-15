@@ -50,7 +50,7 @@ func _on_new_wave_button_pressed() -> void:
 	SoundManager.play_sound(SoundManager.Sound.UI)
 	
 	var tutorial = get_tree().get_first_node_in_group(Global.TUTORIAL_GROUP)
-	if not tutorial && not tutorial.tutorial_completed:
+	if tutorial && tutorial.is_tutorial_active:
 		tutorial.check_step_condition("complete")
 		return
 	
