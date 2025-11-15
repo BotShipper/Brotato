@@ -75,6 +75,6 @@ layout_mode = 0
 offset_top = -6.0
 offset_right = 1032.0
 offset_bottom = 1026.0
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.11, 0.11)
 icon = ExtResource("2_pkg12")
 script = ExtResource("3_pkg12")

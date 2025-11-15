@@ -26,6 +26,7 @@ func _ready() -> void:
 	Global.on_create_heal_text.connect(_on_create_heal_text)
 	Global.on_enemy_died.connect(_on_enemy_died)
 	Global.game_paused_changed.connect(_on_game_paused_changed)
+	Global.equipped_weapons.clear()
 	
 	# Tạo group đễ dễ truy cập
 	tutorial_manager.add_to_group(Global.TUTORIAL_GROUP)

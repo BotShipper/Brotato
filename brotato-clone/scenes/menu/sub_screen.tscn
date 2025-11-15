@@ -10,13 +10,13 @@ font_size = 72
 font_color = Color(1, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_slurr"]
-font_size = 24
+font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_70g3w"]
-font_size = 24
+font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_txd37"]
-font_size = 24
+font_size = 32
 
 [node name="SubScreen" type="Panel"]
 anchors_preset = 15
@@ -67,31 +67,28 @@ text = "Back menu"
 [node name="KillsLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 900.0
-offset_top = 354.0
-offset_right = 1028.0
-offset_bottom = 383.0
-text = "Kill label"
+offset_left = 155.0
+offset_top = 133.0
+offset_right = 351.0
+offset_bottom = 171.66667
 label_settings = SubResource("LabelSettings_slurr")
 
 [node name="RecordLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 885.0
-offset_top = 403.0
-offset_right = 1060.0
-offset_bottom = 432.0
-text = "record label"
+offset_left = 155.0
+offset_top = 194.0
+offset_right = 372.0
+offset_bottom = 232.66667
 label_settings = SubResource("LabelSettings_70g3w")
 
 [node name="NewRecordLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 854.0
-offset_top = 450.0
-offset_right = 1088.0
-offset_bottom = 479.0
-text = "New record label"
+offset_left = 155.0
+offset_top = 258.0
+offset_right = 389.0
+offset_bottom = 296.66666
 label_settings = SubResource("LabelSettings_txd37")
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
