@@ -27,22 +27,70 @@ func load_players() -> void:
 	if players.is_empty():
 		return
 	
-	for player: UnitStats in players:
+	#for player: UnitStats in players:
+		#var card: SelectionCard = Global.SELECTION_CARD_SCENE.instantiate()
+		#card.pressed.connect(_on_player_selected.bind(player))
+		#player_container.add_child(card)
+		#card.set_icon(player.icon)
+	
+	for i in players.size():
+		var player: UnitStats = players[i]
 		var card: SelectionCard = Global.SELECTION_CARD_SCENE.instantiate()
-		card.pressed.connect(_on_player_selected.bind(player))
+		
+		# THAY ĐỔI: Thêm thông tin unlock
+		var player_id = "character_%d" % (i + 1)
+		card.item_type = "characters"
+		card.item_id = player_id
+		card.item_data = player  # Lưu data để dùng sau
+		
+		# Kiểm tra unlock
+		var is_unlocked = UnlockManager.is_unlocked(GameManager.total_lifetime_kills,"characters", player_id)
+		
+		if is_unlocked:
+			card.pressed.connect(_on_player_selected.bind(player))
+		else:
+			card.disabled = true
+		
 		player_container.add_child(card)
 		card.set_icon(player.icon)
+		
+		# Setup lock state
+		card.update_lock_state()
 
 
 func load_weapons() -> void:
 	if start_weapons.is_empty():
 		return
 	
-	for weapon: ItemWeapon in start_weapons:
+	#for weapon: ItemWeapon in start_weapons:
+		#var card: SelectionCard = Global.SELECTION_CARD_SCENE.instantiate()
+		#card.pressed.connect(_on_weapon_selected.bind(weapon))
+		#weapon_container.add_child(card)
+		#card.icon = weapon.item_icon
+	
+	for i in start_weapons.size():
+		var weapon: ItemWeapon = start_weapons[i]
 		var card: SelectionCard = Global.SELECTION_CARD_SCENE.instantiate()
-		card.pressed.connect(_on_weapon_selected.bind(weapon))
+		
+		# THAY ĐỔI: Thêm thông tin unlock
+		var weapon_id = "weapon_%d" % (i + 1)
+		card.item_type = "weapons"
+		card.item_id = weapon_id
+		card.item_data = weapon  # Lưu data để dùng sau
+		
+		# Kiểm tra unlock
+		var is_unlocked = UnlockManager.is_unlocked(GameManager.total_lifetime_kills,"weapons", weapon_id)
+		
+		if is_unlocked:
+			card.pressed.connect(_on_weapon_selected.bind(weapon))
+		else:
+			card.disabled = true
+		
 		weapon_container.add_child(card)
 		card.icon = weapon.item_icon
+		
+		# Setup lock state
+		card.update_lock_state()
 
 
 func show_player_info(value: bool) -> void:
