@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="WaveData" load_steps=7 format=3 uid="uid://vntp60x758pe"]
+[gd_resource type="Resource" script_class="WaveData" load_steps=9 format=3 uid="uid://vntp60x758pe"]
 
 [ext_resource type="Script" uid="uid://bst7pbtwe4mop" path="res://resources/waves/wave_data.gd" id="1_sek43"]
 [ext_resource type="Script" uid="uid://cm3fr3a2qascq" path="res://resources/waves/wave_unit_data.gd" id="2_c4x71"]
 [ext_resource type="PackedScene" uid="uid://klee8qrodifa" path="res://scenes/unit/enemy/enemy_chaser_fast.tscn" id="3_xp703"]
 [ext_resource type="PackedScene" uid="uid://bjtqmtfqxufqq" path="res://scenes/unit/enemy/enemy_shooter.tscn" id="4_kflbt"]
+[ext_resource type="PackedScene" uid="uid://b4e7q33xixefa" path="res://scenes/unit/enemy/enemy_chaser_slow.tscn" id="5_ugips"]
 
 [sub_resource type="Resource" id="Resource_l0cts"]
 script = ExtResource("2_c4x71")
@@ -17,12 +18,16 @@ unit_scene = ExtResource("4_kflbt")
 weight = 0.4
 metadata/_custom_type_script = "uid://cm3fr3a2qascq"
 
+[sub_resource type="Resource" id="Resource_dlcck"]
+script = ExtResource("2_c4x71")
+unit_scene = ExtResource("5_ugips")
+metadata/_custom_type_script = "uid://cm3fr3a2qascq"
+
 [resource]
 script = ExtResource("1_sek43")
 from = 1
 to = 5
-wave_time = 15.0
-units = Array[ExtResource("2_c4x71")]([SubResource("Resource_l0cts"), SubResource("Resource_4l53m")])
+units = Array[ExtResource("2_c4x71")]([SubResource("Resource_l0cts"), SubResource("Resource_4l53m"), SubResource("Resource_dlcck")])
 spawn_type = 0
 fixed_spawn_time = 0.01
 min_spawn_time = 0.1

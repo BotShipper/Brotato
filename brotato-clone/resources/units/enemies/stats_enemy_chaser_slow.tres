@@ -8,5 +8,5 @@ script = ExtResource("1_m42qi")
 name = "Chaser Slow"
 type = 1
 icon = ExtResource("1_cneyk")
-health = 39
+health = 200
 metadata/_custom_type_script = "uid://dslkq61ggb3ft"

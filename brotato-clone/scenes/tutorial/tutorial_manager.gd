@@ -23,9 +23,6 @@ var is_started = false
 
 # Định nghĩa các bước tutorial
 func _ready():
-	var save_path = ProjectSettings.globalize_path("user://")
-	print("📁 Thư mục save: ", save_path)
-	
 	hide_tutorial()
 
 

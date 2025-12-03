@@ -28,9 +28,13 @@ func _ready() -> void:
 	Global.game_paused_changed.connect(_on_game_paused_changed)
 	Global.equipped_weapons.clear()
 	
+	var save_path = ProjectSettings.globalize_path("user://")
+	print("📁 Thư mục save: ", save_path)
+	
 	# Tạo group đễ dễ truy cập
 	tutorial_manager.add_to_group(Global.TUTORIAL_GROUP)
 	sub_screen.add_to_group("sub_screen")
+	touch_controls.add_to_group("touch_controls")
 	
 	# Connect signals
 	tutorial_manager.tutorial_finished.connect(_on_tutorial_finished)

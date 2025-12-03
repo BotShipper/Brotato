@@ -8,12 +8,9 @@
 
 [resource]
 script = ExtResource("1_yy6db")
-type = 0
 scene = ExtResource("2_wusse")
 stats = ExtResource("3_wusse")
 upgrade_to = ExtResource("4_67gbg")
 item_name = "Axe I"
 item_icon = ExtResource("1_i86bm")
-item_tier = 0
-item_type = 0
 item_cost = 22
