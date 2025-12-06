@@ -43,32 +43,37 @@ func create_lock_overlay() -> void:
 	
 	# Style cho panel (nền tối mờ)
 	var style_box = StyleBoxFlat.new()
-	style_box.bg_color = Color(0, 0, 0, 0.75)
+	style_box.bg_color = Color(0, 0, 0, 0.8)
 	lock_overlay.add_theme_stylebox_override("panel", style_box)
-	
 	add_child(lock_overlay)
 	
-	# Icon khóa (dùng emoji hoặc ColorRect)
-	lock_icon = ColorRect.new()
-	lock_icon.name = "LockIcon"
-	lock_icon.color = Color(0.8, 0.8, 0.8, 0.3)
-	lock_icon.custom_minimum_size = Vector2(30, 30)
-	lock_icon.position = Vector2(size.x / 2 - 15, size.y / 3 - 15)
-	lock_overlay.add_child(lock_icon)
+	# Container để center mọi thứ
+	var center_container = VBoxContainer.new()
+	center_container.set_anchors_preset(Control.PRESET_FULL_RECT)
+	center_container.alignment = BoxContainer.ALIGNMENT_CENTER
+	lock_overlay.add_child(center_container)
 	
-	# Label hiển thị yêu cầu
+	# Icon khóa (Label với emoji lớn)
+	var lock_icon_label = Label.new()
+	lock_icon_label.text = "🔒"
+	lock_icon_label.add_theme_font_size_override("font_size", 40)
+	lock_icon_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	center_container.add_child(lock_icon_label)
+	
+	# Spacer nhỏ
+	var spacer = Control.new()
+	spacer.custom_minimum_size = Vector2(0, 5)
+	center_container.add_child(spacer)
+	
+	# Label yêu cầu
 	lock_label = Label.new()
-	lock_label.name = "LockLabel"
+	lock_label.name = "RequiredLabel"
 	lock_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	lock_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	lock_label.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-	lock_label.position.y = -20
-	lock_label.size = Vector2(size.x, 30)
-	lock_label.add_theme_font_size_override("font_size", 12)
-	lock_label.add_theme_color_override("font_color", Color(1, 0.9, 0.5))
+	lock_label.add_theme_font_size_override("font_size", 14)
+	lock_label.add_theme_color_override("font_color", Color(1, 0.84, 0))  # Màu vàng gold
 	lock_label.add_theme_color_override("font_outline_color", Color(0, 0, 0))
-	lock_label.add_theme_constant_override("outline_size", 2)
-	lock_overlay.add_child(lock_label)
+	lock_label.add_theme_constant_override("outline_size", 3)
+	center_container.add_child(lock_label)
 
 func update_lock_state() -> void:
 	if item_type.is_empty() or item_id.is_empty():

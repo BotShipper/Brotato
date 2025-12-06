@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://be4y0ch5v7qa5"]
+[gd_scene load_steps=27 format=3 uid="uid://be4y0ch5v7qa5"]
 
 [ext_resource type="Script" uid="uid://dtnbj3i3i3tyx" path="res://scenes/ui/selection_panel/selection_panel.gd" id="1_un15a"]
 [ext_resource type="Script" uid="uid://dslkq61ggb3ft" path="res://resources/units/unit_stats.gd" id="2_hu73q"]
@@ -23,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://cus7cp8qtvf2x" path="res://resources/items/weapons/range/revolver/item_revolver_1.tres" id="17_8831k"]
 [ext_resource type="Resource" uid="uid://4sxp5j11l8yy" path="res://resources/items/weapons/range/shotgun/item_shotgun_1.tres" id="18_t1bfq"]
 [ext_resource type="Resource" uid="uid://xa5yx3ou1hck" path="res://resources/items/weapons/range/smg/item_smg_1.tres" id="19_khnca"]
+[ext_resource type="Texture2D" uid="uid://l5hst1cf27oo" path="res://assets/sprites/Weapons/Melee/Weapon_Punch.png" id="22_3scu4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbokc"]
 content_margin_left = 0.0
@@ -153,6 +154,20 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "Description"
+
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/Control/Panel/MarginContainer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("22_3scu4")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="ContinueButtom" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource("4_58qwm")]
 layout_mode = 1

@@ -13,12 +13,14 @@ signal on_selection_completed
 @onready var player_name: Label = %PlayerName
 @onready var player_title: Label = %PlayerTitle
 @onready var player_description: RichTextLabel = %PlayerDescription
+@onready var item_icon: TextureRect = %ItemIcon
 
 func _ready() -> void:
 	for child in player_container.get_children(): child.queue_free()
 	for child in weapon_container.get_children(): child.queue_free()
 	
 	show_player_info(false)
+	show_item_info(false)
 	load_players()
 	load_weapons()
 
@@ -100,6 +102,10 @@ func show_player_info(value: bool) -> void:
 	player_description.visible = value
 
 
+func show_item_info(value: bool) -> void:
+	item_icon.visible = value
+
+
 func _on_player_selected(player: UnitStats) -> void:
 	Global.main_player_selected = player
 	show_player_info(true)
@@ -111,6 +117,9 @@ func _on_player_selected(player: UnitStats) -> void:
 
 func _on_weapon_selected(weapon: ItemWeapon) -> void:
 	Global.main_weapon_selected = weapon
+	
+	show_item_info(true)
+	item_icon.texture = weapon.item_icon
 
 
 func _on_continue_buttom_pressed() -> void:
