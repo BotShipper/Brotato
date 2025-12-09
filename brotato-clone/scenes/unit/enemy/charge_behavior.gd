@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 		if current_cooldown > 0:
 			current_cooldown -= delta
 		else:
-			if is_instance_valid(Global.player):
+			if is_instance_valid(Global.player) && !Global.game_paused:
 				charge_attack_position = Global.player.global_position
 				start_charge()
 

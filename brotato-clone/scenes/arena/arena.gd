@@ -16,6 +16,7 @@ class_name Arena
 @onready var touch_controls: CanvasLayer = %TouchControls
 @onready var sub_screen: SubScreen = %SubScreen
 @onready var tutorial_manager: TutorialManager = %TutorialManager
+@onready var pause_screen: PauseScreen = %PauseScreen
 
 var gold_list: Array[Coins]
 
@@ -173,3 +174,8 @@ func _on_selection_panel_on_selection_completed() -> void:
 	Global.game_paused = false
 	touch_controls.show()
 	tutorial_manager.start()
+
+
+func _on_pause_game_pressed() -> void:
+	Global.game_paused = true
+	pause_screen.visible = true

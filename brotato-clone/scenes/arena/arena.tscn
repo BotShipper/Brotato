@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bjhraywhhpn3h"]
+[gd_scene load_steps=31 format=3 uid="uid://bjhraywhhpn3h"]
 
 [ext_resource type="Texture2D" uid="uid://cy4xfx762bxgb" path="res://assets/sprites/BG.png" id="1_5tue2"]
 [ext_resource type="Script" uid="uid://fylssyuoxjey" path="res://scenes/arena/arena.gd" id="1_asdgj"]
@@ -25,12 +25,18 @@
 [ext_resource type="PackedScene" uid="uid://b3if6e64nlj3c" path="res://scenes/menu/sub_screen.tscn" id="18_wqbss"]
 [ext_resource type="PackedScene" uid="uid://dml5iq6dbq4p3" path="res://scenes/touch/touch_controls.tscn" id="19_8kk48"]
 [ext_resource type="PackedScene" uid="uid://8p24iu8c60jx" path="res://scenes/tutorial/tutorial_manager.tscn" id="21_fir7s"]
+[ext_resource type="Texture2D" uid="uid://dthxygeq7biw8" path="res://assets/download/setting4.png" id="23_bxbl0"]
+[ext_resource type="PackedScene" uid="uid://dybhrjw448vuj" path="res://scenes/menu/pause_screen.tscn" id="26_bxbl0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6w4xk"]
 font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ml6w"]
 font_size = 64
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxbl0"]
+atlas = ExtResource("23_bxbl0")
+region = Rect2(256, 249, 512, 510)
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_asdgj")
@@ -106,6 +112,32 @@ visible = false
 [node name="SubScreen" parent="GameUI" instance=ExtResource("18_wqbss")]
 unique_name_in_owner = true
 
+[node name="PauseGame" type="Button" parent="GameUI"]
+custom_minimum_size = Vector2(70, 70)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -519.0
+offset_right = -21.0
+offset_bottom = -449.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="GameUI/PauseGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_bxbl0")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="TouchControls" parent="." instance=ExtResource("19_8kk48")]
 unique_name_in_owner = true
 visible = false
@@ -113,6 +145,10 @@ visible = false
 [node name="TutorialManager" parent="." instance=ExtResource("21_fir7s")]
 unique_name_in_owner = true
 layer = 2
+visible = false
+
+[node name="PauseScreen" parent="." instance=ExtResource("26_bxbl0")]
+unique_name_in_owner = true
 visible = false
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
@@ -126,3 +162,4 @@ bus = &"Music"
 [connection signal="timeout" from="Spawner/WaveTimer" to="Spawner" method="_on_wave_timer_timeout"]
 [connection signal="on_shop_next_wave" from="GameUI/ShopPanel" to="." method="_on_shop_panel_on_shop_next_wave"]
 [connection signal="on_selection_completed" from="GameUI/SelectionPanel" to="." method="_on_selection_panel_on_selection_completed"]
+[connection signal="pressed" from="GameUI/PauseGame" to="." method="_on_pause_game_pressed"]

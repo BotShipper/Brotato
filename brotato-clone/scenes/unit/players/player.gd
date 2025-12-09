@@ -112,7 +112,7 @@ func _on_hp_regen_timer_timeout() -> void:
 	if health_component.current_health <= 0:
 		return
 	
-	if health_component.current_health < stats.health:
+	if health_component.current_health < stats.health && !Global.game_paused:
 		var heal := stats.hp_regen
 		health_component.heal(heal)
 		Global.on_create_heal_text.emit(self, heal)

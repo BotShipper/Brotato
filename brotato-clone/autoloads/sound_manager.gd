@@ -31,3 +31,7 @@ func get_free_stream_player() -> AudioStreamPlayer:
 			return stream
 	
 	return null
+
+func set_volume(volume_percent):
+	var db = linear_to_db(volume_percent / 100.0)
+	AudioServer.set_bus_volume_db(0, db)
