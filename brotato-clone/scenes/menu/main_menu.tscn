@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cb10h88yku4ja"]
+[gd_scene load_steps=13 format=3 uid="uid://cb10h88yku4ja"]
 
 [ext_resource type="Script" uid="uid://jvmbhcenwotr" path="res://scenes/menu/main_menu.gd" id="1_3rkf3"]
 [ext_resource type="Texture2D" uid="uid://cd5miclta1xlb" path="res://assets/download/PC _ Computer - Brotato - Miscellaneous - Title Screen.png" id="1_nl8w3"]
 [ext_resource type="AudioStream" uid="uid://prc8bub0x4s1" path="res://assets/audio/Bg Music.mp3" id="3_247la"]
+[ext_resource type="PackedScene" uid="uid://djhnyl7hk8mhi" path="res://scenes/menu/setting.tscn" id="4_kiqgm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nl8w3"]
 atlas = ExtResource("1_nl8w3")
@@ -136,6 +137,13 @@ offset_right = 189.0
 offset_bottom = 108.208336
 label_settings = SubResource("LabelSettings_kiqgm")
 
+[node name="VolumeSetting" parent="." instance=ExtResource("4_kiqgm")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VolumeSetting/Button" to="." method="_on_button_pressed"]
+
+[editable path="VolumeSetting"]

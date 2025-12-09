@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dybhrjw448vuj"]
+[gd_scene load_steps=3 format=3 uid="uid://dybhrjw448vuj"]
 
 [ext_resource type="Script" uid="uid://cnaskjy7yie40" path="res://scenes/menu/pause_screen.gd" id="1_s4fn5"]
+[ext_resource type="PackedScene" uid="uid://djhnyl7hk8mhi" path="res://scenes/menu/setting.tscn" id="2_04k7x"]
 
 [node name="PauseScreen" type="CanvasLayer"]
 script = ExtResource("1_s4fn5")
@@ -48,6 +49,16 @@ theme_override_font_sizes/font_size = 32
 text = "Back main
 "
 
+[node name="VolumeSetting" parent="." instance=ExtResource("2_04k7x")]
+visible = false
+
+[node name="Panel" parent="VolumeSetting" index="0"]
+modulate = Color(0.056291588, 0.056291603, 0.056291595, 1)
+self_modulate = Color(0.09239707, 0.09239706, 0.09239706, 1)
+
 [connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/BackMainButton" to="." method="_on_back_main_button_pressed"]
+[connection signal="pressed" from="VolumeSetting/Button" to="." method="_on_button_pressed"]
+
+[editable path="VolumeSetting"]

@@ -4,6 +4,7 @@ class_name MainMenu
 # THÊM MỚI: Reference đến label hiển thị record
 @onready var record_label: Label = %RecordLabel
 @onready var stats_label: Label = %StatsLabel
+@onready var volume_setting: Control = $VolumeSetting
 
 func _ready():
 	_update_record_display()
@@ -32,7 +33,11 @@ func _on_start_button_pressed() -> void:
 	get_tree().change_scene_to_file(Global.ARENA_SCENE_PATH)
 
 func _on_setting_button_pressed() -> void:
-	print("Setting clicked")
+	volume_setting.visible = true
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_button_pressed() -> void:
+	volume_setting.visible = false
