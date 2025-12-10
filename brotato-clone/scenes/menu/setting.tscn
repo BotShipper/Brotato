@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://djhnyl7hk8mhi"]
+[gd_scene load_steps=6 format=3 uid="uid://djhnyl7hk8mhi"]
 
 [ext_resource type="Script" uid="uid://h5m1cwkhlk27" path="res://scenes/menu/setting.gd" id="1_ng53p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ng53p"]
+bg_color = Color(0.2, 0.2, 0.2, 0.9019608)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ng53p"]
 font_size = 24
@@ -18,20 +21,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -149.0
-offset_top = 18.0
-offset_right = 175.0
-offset_bottom = 18.0
+offset_left = -162.0
+offset_right = 162.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-offset_left = -128.0
-offset_top = -99.000015
-offset_right = -88.0
-offset_bottom = -59.000015
+offset_left = -345.00003
+offset_top = -263.0
+offset_right = -276.8049
+offset_bottom = -169.62256
 scale = Vector2(14.429178, 5.761563)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ng53p")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -40,12 +42,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -162.0
-offset_top = -32.5
-offset_right = 162.0
-offset_bottom = 32.5
+offset_left = -283.0
+offset_top = -142.0
+offset_right = 308.0
+offset_bottom = 125.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
 script = ExtResource("1_ng53p")
 
 [node name="MasterVolume" type="HBoxContainer" parent="VBoxContainer"]
@@ -101,10 +105,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.5
-offset_top = 63.0
-offset_right = 25.5
-offset_bottom = 91.0
+offset_left = -50.0
+offset_top = 103.0
+offset_right = 50.0
+offset_bottom = 133.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "BACK"
