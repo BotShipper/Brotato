@@ -81,6 +81,10 @@ func _on_hurtbox_component_on_damaged(hitbox: HitboxComponent) -> void:
 	super._on_hurtbox_component_on_damaged(hitbox)
 	
 	if hitbox.knockback_power > 0:
+		# Kiểm tra xem hitbox và hitbox.source còn hợp lệ không
+		if not is_instance_valid(hitbox) or not is_instance_valid(hitbox.source):
+			return
+		
 		var dir := hitbox.source.global_position.direction_to(global_position)
 		apply_knockback(dir, hitbox.knockback_power)
 

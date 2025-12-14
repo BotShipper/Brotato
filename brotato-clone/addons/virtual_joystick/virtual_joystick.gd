@@ -96,7 +96,6 @@ func _input(event: InputEvent) -> void:
 					
 					# Kiểm tra chuyển động lần đầu tiên
 					if not has_moved:
-						has_moved = true
 						var tutorial = get_tree().get_first_node_in_group(Global.TUTORIAL_GROUP)
 						if tutorial:
 							tutorial.check_step_condition("move")
